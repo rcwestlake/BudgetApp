@@ -1,6 +1,6 @@
-
-import React, { Component } from 'react'
 import firebase from 'firebase'
+import { usersReference, signIn } from './app/firebase.js'
+import React, { Component } from 'react'
 import {
   AppRegistry,
   StyleSheet,
@@ -8,21 +8,25 @@ import {
   View
 } from 'react-native';
 
-const config = {
-  apiKey: "AIzaSyCAjJio9TjM53Vspna4z5j6ch2UXqrgLDo",
-  authDomain: "budgetapp-b7608.firebaseapp.com",
-  databaseURL: "https://budgetapp-b7608.firebaseio.com",
-  storageBucket: "budgetapp-b7608.appspot.com",
-  messagingSenderId: "295664394992"
-};
-firebase.initializeApp(config);
 
 export default class BudgetApp extends Component {
+  constructor(){
+    super()
+    usersReference.push({
+      users: 'test'
+    })
+    // let reference = new Firebase('https://budgetapp-b7608.firebaseio.com/')
+    // reference.set({
+    //   users: [],
+    //   title: 'Andrew',
+    //   budget: 10
+    // })
+  }
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native - boss man!
+        Welcome boss man!
         </Text>
         <Text style={styles.instructions}>
           To get started, edit index.ios.js

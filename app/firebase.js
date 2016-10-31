@@ -13,6 +13,6 @@ const auth = firebase.auth();
 
 const provider = new firebase.auth.GoogleAuthProvider()
 export const signOut = () => auth.signOut()
-export const users = firebase.database().ref('users')
+export const usersReference = firebase.database().ref('users')
 
 export default firebase

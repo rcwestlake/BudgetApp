@@ -63,11 +63,19 @@ export default class Welcome extends Component {
   }
 
   goToLogIn() {
-
+    console.log('log in log in func');
+    this.props.navigator.push({
+      title: 'Log In',
+      component: LogIn
+    })
   }
 
   goToSignUp() {
-
+    console.log('log in sign up');
+    this.props.navigator.push({
+      title: 'Sign Up',
+      component: SignUp
+    })
   }
 
   render() {
@@ -80,11 +88,17 @@ export default class Welcome extends Component {
           - Bill Murray
         </Text>
         <Text style={styles.privacy}>Privacy: [company name] is serious about your privacy. Log in is handled through Google Auth.</Text>
-        <TouchableHighlight style={styles.button} underlayColor='black'>
+        <TouchableHighlight
+          style={styles.button}
+          underlayColor='black'
+          onPress={() => this.goToLogIn()}>
           <Text style={styles.buttonText}>Log in</Text>
         </TouchableHighlight>
-        <TouchableHighlight style={styles.button} underlayColor='black'>
-          <Text style={styles.buttonText}>Sign up</Text>
+        <TouchableHighlight
+          style={styles.button}
+          underlayColor='black'
+          onPress={() => this.goToSignUp()}>
+            <Text style={styles.buttonText}>Sign up</Text>
         </TouchableHighlight>
       </View>
     );

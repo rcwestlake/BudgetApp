@@ -16,8 +16,8 @@ const styles = StyleSheet.create({
 export default class LogIn extends Component {
   render() {
     return (
-      <View>
-        <Text> testing login comp</Text>
+      <View style={styles.container}>
+        <Text> testing login comp </Text>
       </View>
     )
   }

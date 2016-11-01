@@ -7,7 +7,7 @@ import {
   StyleSheet,
   NavigatorIOS
  } from 'react-native';
-import Welcome from './app/components/Main.js'
+import Welcome from './app/components/Welcome.js'
 
 const styles = StyleSheet.create({
   container: {

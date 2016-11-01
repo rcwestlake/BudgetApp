@@ -57,14 +57,6 @@ export default class SignUp extends Component {
     }
   }
 
-  login(email, password) {
-     firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-    });
-    console.log(email, password);
-  }
-
   render() {
     const { email, password } = this.state
     return (
@@ -85,7 +77,7 @@ export default class SignUp extends Component {
         <TouchableHighlight
           style={styles.button}
           underlayColor='black'
-          onPress={() => this.login(email, password) }
+          onPress={() => signIn(email, password) }
         >
           <Text style={styles.buttonText} >Sign Up with Google</Text>
         </TouchableHighlight>

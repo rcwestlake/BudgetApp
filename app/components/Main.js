@@ -4,8 +4,10 @@ import {
   Text,
   View,
   TouchableHighlight,
-  ActivityIndicator,
+  NavigatorIOS
 } from 'react-native';
+import LogIn from './LogIn.js';
+import SignUp from './SignUp.js';
 
 const styles = StyleSheet.create({
   container: {
@@ -59,6 +61,15 @@ export default class Welcome extends Component {
   constructor(props){
     super(props)
   }
+
+  goToLogIn() {
+
+  }
+
+  goToSignUp() {
+
+  }
+
   render() {
     return (
       <View style={styles.container}>

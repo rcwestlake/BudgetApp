@@ -48,18 +48,44 @@ const styles = StyleSheet.create({
 })
 
 export default class SignUp extends Component {
+  constructor(){
+    super()
+    this.state = {
+      email: null,
+      password: null,
+      isLoading: false
+    }
+  }
+
+  login(email, password) {
+     firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+    });
+    console.log(email, password);
+  }
+
   render() {
+    const { email, password } = this.state
     return (
       <View style={styles.container}>
-        <TextInput placeholder="Email" style={styles.searchInput} >
-
-        </TextInput>
-        <TextInput placeholder="Password" style={styles.searchInput} >
-        </TextInput>
+        <TextInput
+          placeholder="Email"
+          style={styles.searchInput}
+          keyboardType="email-address"
+          onChangeText={(email) => this.setState({ email })}
+        />
+        <TextInput
+          placeholder="Password"
+          secureTextEntry='true'
+          style={styles.searchInput}
+          keyboardType="email-address"
+          onChangeText={(password) => this.setState({ password })}
+        />
         <TouchableHighlight
-        style={styles.button}
-        underlayColor='black'
-        onPress={() => signIn() }
+          style={styles.button}
+          underlayColor='black'
+          onPress={() => this.login(email, password) }
         >
           <Text style={styles.buttonText} >Sign Up with Google</Text>
         </TouchableHighlight>

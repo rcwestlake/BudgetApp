@@ -87,7 +87,6 @@ export default class Welcome extends Component {
           The Best Way to teach your kids about taxes is by eating 30% of their ice cream
           - Bill Murray
         </Text>
-        <Text style={styles.privacy}>Privacy: [company name] is serious about your privacy. Log in is handled through Google Auth.</Text>
         <TouchableHighlight
           style={styles.button}
           underlayColor='black'

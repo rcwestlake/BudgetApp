@@ -68,37 +68,58 @@ export default class ExpenseSetUp extends Component {
       utilities: false
     }
   }
+
+  // toggleState(text) {
+  //   if(text) {
+  //     return !text
+  //   } else if(!text){
+  //     return text
+  //   } else {
+  //     return
+  //   }
+  // }
+
+  // toggleState(text) {
+  //   console.log(text);
+  //   const pizza = this.state.text
+  //   pizza ? this.setState({
+  //     [text]: false
+  //   }) : this.setState({
+  //     [text]: true
+  //   })
+  // }
+
+
+
   render() {
-    // let color = styles.button
-    // if (this.state.housing === true){
-    //   color = styles.selectedButton
-    // }
     return (
       <View style = {styles.container}>
       <Text> Select all recurring expenses. Amounts will be entered on the next page.</Text>
         <TouchableHighlight
           style={ this.state.housing ? styles.selectedButton : styles.button}
           underlayColor='black'
-          onPress={() => this.setState({ housing: true })}
+          onPress={() => this.setState({ housing: !this.state.housing})}
           >
           <Text style={styles.buttonText} >Rent/Mortgage</Text>
         </TouchableHighlight>
         <TouchableHighlight
           style={ this.state.auto ? styles.selectedButton : styles.button}
           underlayColor='black'
-          onPress={() => this.setState({ auto: true })}
+          onPress={() => this.setState({ auto: !this.state.auto })}
           >
           <Text style={styles.buttonText} >Auto</Text>
         </TouchableHighlight>
         <TouchableHighlight
-          style={styles.button}
+          style={ this.state.insurance ? styles.selectedButton : styles.button}
           underlayColor='black'
+          onPress={() => this.setState({ insurance: !this.state.insurance })}
           >
           <Text style={styles.buttonText} >Insurance</Text>
         </TouchableHighlight>
         <TouchableHighlight
-          style={styles.button}
+          style={ this.state.utilities ? styles.selectedButton : styles.button}
           underlayColor='black'
+          onPress={() => this.setState({ utilities: !this.state.utilities })}
           >
           <Text style={styles.buttonText} >Utilities</Text>
         </TouchableHighlight>

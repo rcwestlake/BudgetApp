@@ -80,13 +80,8 @@ export default class IncomeSetUp extends Component {
     }
   }
 
-  componentDidMount() {
-    firebase.auth().onAuthStateChanged(user => this.setState({ user }));
-  }
-
-
   handleSubmit() {
-    let userReference = reference.child('Income');
+    let userReference = reference.child(`${user.uid}`);
     userReference.push({
       income: 500
     })

@@ -62,10 +62,8 @@ export default class SignUp extends Component {
 
 
   handleSignUp(email, password) {
-    this.setState({
-      user: 'Ryan'
-    })
     signIn(email, password);
+    firebase.auth().onAuthStateChanged(user => this.setState({ user }));
     this.props.navigator.push({
       title: 'Income',
       component: IncomeSetUp,

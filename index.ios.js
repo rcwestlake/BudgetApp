@@ -7,28 +7,7 @@ import {
   StyleSheet,
   NavigatorIOS
  } from 'react-native';
-import Welcome from './app/components/Welcome.js'
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#111111'
-  },
-});
-
-export default class Application extends Component {
-  render() {
-    return (
-      <NavigatorIOS
-        style={styles.container}
-        initialRoute={{
-          title: 'BudgetApp',
-          component: Welcome
-        }} />
-    );
-  }
-}
-
+import Application from './app/components/Application.js';
 
 
 AppRegistry.registerComponent('BudgetApp', () => Application);

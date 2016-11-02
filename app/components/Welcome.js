@@ -61,10 +61,6 @@ export default class Welcome extends Component {
   constructor(props){
     super(props)
 
-    this.state = {
-      user: null,
-      dataBaseRef: null,
-    }
   }
 
   goToLogIn() {

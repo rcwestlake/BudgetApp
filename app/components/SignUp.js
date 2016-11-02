@@ -62,10 +62,14 @@ export default class SignUp extends Component {
 
 
   handleSignUp(email, password) {
+    this.setState({
+      user: 'Ryan'
+    })
     signIn(email, password);
     this.props.navigator.push({
       title: 'Income',
       component: IncomeSetUp,
+      passProps: { user: this.state.user }
     })
   }
 

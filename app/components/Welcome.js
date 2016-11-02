@@ -4,7 +4,7 @@ import {
   Text,
   View,
   TouchableHighlight,
-  NavigatorIOS
+  NavigatorIOS,
 } from 'react-native';
 import LogIn from './LogIn.js';
 import SignUp from './SignUp.js';
@@ -60,7 +60,9 @@ const styles = StyleSheet.create({
 export default class Welcome extends Component {
   constructor(props){
     super(props)
-
+      this.state = {
+        user: null
+      }
   }
 
   goToLogIn() {

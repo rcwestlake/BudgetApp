@@ -81,9 +81,11 @@ export default class IncomeSetUp extends Component {
   }
 
   handleSubmit() {
-    let userReference = reference.child(`${user.uid}`);
+    let user = this.props.user;
+    let userReference = reference.child(`${user.uid}`)
+    let {income} = this.state
     userReference.push({
-      income: 500
+      income
     })
     this.props.navigator.push({
       title: 'Recurring Expenses',
@@ -92,6 +94,7 @@ export default class IncomeSetUp extends Component {
   }
 
   render() {
+    console.log(this.props.user);
     return (
       <View style={styles.container}>
         <Text> Income </Text>

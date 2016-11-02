@@ -81,7 +81,8 @@ export default class IncomeSetUp extends Component {
   }
 
   handleSubmit() {
-    let userReference = reference.child(`${user.uid}`);
+    let user = this.props.user;
+    let userReference = reference.child(`${user}`);
     userReference.push({
       income: 500
     })
@@ -92,6 +93,7 @@ export default class IncomeSetUp extends Component {
   }
 
   render() {
+    console.log(this.props.user);
     return (
       <View style={styles.container}>
         <Text> Income </Text>

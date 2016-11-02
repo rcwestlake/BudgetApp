@@ -8,7 +8,7 @@ import {
   TouchableHighlight,
   NavigatorIOS
 } from 'react-native';
-import Welcome from './Welcome';
+import Welcome from './Welcome.js';
 import Summary from './Summary';
 
 const styles = StyleSheet.create({
@@ -27,16 +27,21 @@ export default class Application extends Component {
     }
   }
 
-  // componentDidMount() {
-  //   firebase.auth().onAuthStateChanged(user => this.setState({ user }));
-  // }
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged(user => this.setState({ user }));
+  }
 
 
   render() {
     const { user } = this.state;
     return (
       <View style={styles.container}>
-        { user ? <Summary user={ user } /> : <Welcome /> }
+        <NavigatorIOS
+          initialRoute={{
+            component: Welcome,
+            title: "Welcome"
+          }}
+        />
       </View>
     );
   }

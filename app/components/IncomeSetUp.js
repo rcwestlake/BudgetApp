@@ -9,6 +9,7 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import Separator from '../Helpers/Separator';
+import ExpenseSetUp from './ExpenseSetUp';
 
 const styles = StyleSheet.create({
   container: {
@@ -18,6 +19,11 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     backgroundColor: '#48BBEC'
+  },
+  text: {
+    fontSize: 18,
+    color: '#111',
+    textAlign: 'center'
   },
   buttonText: {
     fontSize: 18,
@@ -79,7 +85,7 @@ export default class IncomeSetUp extends Component {
   }
 
 
-  handleSumbit() {
+  handleSubmit() {
     this.props.navigator.push({
       title: 'Recurring Expenses',
       component: ExpenseSetUp
@@ -95,6 +101,7 @@ export default class IncomeSetUp extends Component {
           onChangeText={(text) => this.setState({ income: text })}
           placeholder='Enter income'
           />
+        <Text> How Often? </Text>
         <TouchableHighlight
             style={styles.button}
             underlayColor='black'
@@ -103,28 +110,32 @@ export default class IncomeSetUp extends Component {
         </TouchableHighlight>
         <TouchableHighlight
             style={styles.button}
+            underlayColor='black'
             onPress={() => this.setState({ biweekly: true })}>
             <Text style={styles.buttonText}> Biweekly </Text>
         </TouchableHighlight>
         <TouchableHighlight
             style={styles.button}
+            underlayColor='black'
             onPress={() => this.setState({ monthly: true })}>
             <Text style={styles.buttonText}> Monthly </Text>
         </TouchableHighlight>
         <TouchableHighlight
             style={styles.button}
+            underlayColor='black'
             onPress={() => this.setState({ annually: true })}>
             <Text style={styles.buttonText}> Annually </Text>
         </TouchableHighlight>
         <TouchableHighlight
             style={styles.button}
+            underlayColor='black'
             onPress={() => this.setState({ none: true })}>
             <Text style={styles.buttonText}> None </Text>
         </TouchableHighlight>
         <TouchableHighlight
             style={styles.button}
-            disabled='true'
-            onPress={() => this.handleSumbit()}>
+            underlayColor='black'
+            onPress={() => this.handleSubmit()}>
             <Text style={styles.buttonText}> Continue </Text>
         </TouchableHighlight>
       </View>

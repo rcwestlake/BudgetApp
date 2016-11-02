@@ -60,6 +60,11 @@ const styles = StyleSheet.create({
 export default class Welcome extends Component {
   constructor(props){
     super(props)
+
+    this.state = {
+      user: null,
+      dataBaseRef: null,
+    }
   }
 
   goToLogIn() {
@@ -71,7 +76,6 @@ export default class Welcome extends Component {
   }
 
   goToSignUp() {
-    console.log('log in sign up');
     this.props.navigator.push({
       title: 'Sign Up',
       component: SignUp

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import firebase, { reference, signIn } from '../firebase.js'
+import firebase, { reference, signIn } from '../firebase.js';
 import {
   StyleSheet,
   Text,
@@ -8,6 +8,7 @@ import {
   TouchableHighlight,
   ActivityIndicator,
 } from 'react-native';
+import IncomeSetUp from './IncomeSetUp';
 
 const styles = StyleSheet.create({
   container: {
@@ -51,10 +52,21 @@ export default class SignUp extends Component {
   constructor(){
     super()
     this.state = {
+      user: null,
       email: null,
       password: null,
       isLoading: false
     }
+  }
+
+
+
+  handleSignUp(email, password) {
+    signIn(email, password);
+    this.props.navigator.push({
+      title: 'Income',
+      component: IncomeSetUp,
+    })
   }
 
   render() {
@@ -77,7 +89,7 @@ export default class SignUp extends Component {
         <TouchableHighlight
           style={styles.button}
           underlayColor='black'
-          onPress={() => signIn(email, password) }
+          onPress={() =>  this.handleSignUp(email, password)}
         >
           <Text style={styles.buttonText} >Sign Up with Google</Text>
         </TouchableHighlight>

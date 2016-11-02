@@ -57,13 +57,59 @@ const styles = StyleSheet.create({
      color: 'white'
  },
 })
-
+//TODO: change styles when each button is selected
 export default class ExpenseSetUp extends Component {
+  constructor(){
+    super()
+    this.state = {
+      housing: false,
+      auto: false,
+      insurance: false,
+      utilities: false
+    }
+  }
   render() {
+    let color = styles.button
+    console.log(color)
+    console.log('in the console')
+    if (this.state.housing === true){
+      color=styles.selectedButton
+    }
     return (
-      <View>
-        <Text> made it to expense</Text>
-      </View>
+      <View style = {styles.container}>
+      <Text> Select all recurring expenses. Amounts will be entered on the next page.</Text>
+        <TouchableHighlight
+          style={color}
+          underlayColor='black'
+          >
+          <Text style={styles.buttonText} >Rent/Mortgage</Text>
+        </TouchableHighlight>
+        <TouchableHighlight
+          style={styles.button}
+          underlayColor='black'
+          >
+          <Text style={styles.buttonText} >Auto</Text>
+        </TouchableHighlight>
+        <TouchableHighlight
+          style={styles.button}
+          underlayColor='black'
+          >
+          <Text style={styles.buttonText} >Insurance</Text>
+        </TouchableHighlight>
+        <TouchableHighlight
+          style={styles.button}
+          underlayColor='black'
+          >
+          <Text style={styles.buttonText} >Utilities</Text>
+        </TouchableHighlight>
+        <TouchableHighlight
+          style={styles.button}
+          underlayColor='black'
+          >
+          <Text style={styles.buttonText} >Continue</Text>
+        </TouchableHighlight>
+
+    </View>
     )
   }
 }

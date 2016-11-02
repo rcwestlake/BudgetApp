@@ -19,13 +19,13 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 18,
-    color: '#111',
+    color: '#FFFFFF',
     alignSelf: 'center'
   },
   selectedButton: {
     height: 45,
     flexDirection: 'row',
-    backgroundColor: 'black',
+    backgroundColor: '#10DDC2',
     borderColor: 'white',
     borderWidth: 1,
     borderRadius: 8,
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   button: {
     height: 45,
     flexDirection: 'row',
-    backgroundColor: 'white',
+    backgroundColor: '#19B5CB',
     borderColor: 'white',
     borderWidth: 1,
     borderRadius: 8,
@@ -69,24 +69,24 @@ export default class ExpenseSetUp extends Component {
     }
   }
   render() {
-    let color = styles.button
-    console.log(color)
-    console.log('in the console')
-    if (this.state.housing === true){
-      color=styles.selectedButton
-    }
+    // let color = styles.button
+    // if (this.state.housing === true){
+    //   color = styles.selectedButton
+    // }
     return (
       <View style = {styles.container}>
       <Text> Select all recurring expenses. Amounts will be entered on the next page.</Text>
         <TouchableHighlight
-          style={color}
+          style={ this.state.housing ? styles.selectedButton : styles.button}
           underlayColor='black'
+          onPress={() => this.setState({ housing: true })}
           >
           <Text style={styles.buttonText} >Rent/Mortgage</Text>
         </TouchableHighlight>
         <TouchableHighlight
-          style={styles.button}
+          style={ this.state.auto ? styles.selectedButton : styles.button}
           underlayColor='black'
+          onPress={() => this.setState({ auto: true })}
           >
           <Text style={styles.buttonText} >Auto</Text>
         </TouchableHighlight>

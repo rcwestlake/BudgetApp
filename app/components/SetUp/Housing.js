@@ -70,13 +70,22 @@ class Housing extends Component {
   }
 
   setHousingState(expense) {
-    this.setState({ housing: expense });
+    this.setState({ housing: expense })
   }
 
   goBack = () => {
+    const { user } = this.props;
+    console.log('housing user ', user);
+    console.log('user id', user.uid);
+    const { housing } = this.state;
+    firebase.database().ref(`users/${user.uid}`).update({
+      housing: housing
+    });
+
     this.props.navigator.push({
       title: 'Recurring Expenses',
       component: ExpenseSetUp,
+      passProps: { housing }
     });
   }
 

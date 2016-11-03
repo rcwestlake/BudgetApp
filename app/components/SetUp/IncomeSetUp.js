@@ -87,6 +87,7 @@ export default class IncomeSetUp extends Component {
     this.props.navigator.push({
       title: 'Recurring Expenses',
       component: ExpenseSetUp,
+      passProps: { user },
     });
   }
 
@@ -95,18 +96,22 @@ export default class IncomeSetUp extends Component {
       const adjustedIncome = Math.floor((income * 52) / 12);
       return adjustedIncome;
     }
+
     if (this.state.biweekly) {
       const adjustedIncome = Math.floor((income * 26) / 12);
       return adjustedIncome;
     }
+
     if (this.state.monthly) {
       const adjustedIncome = Math.floor(income);
       return adjustedIncome;
     }
+
     if (this.state.annually) {
       const adjustedIncome = Math.floor(income / 12);
       return adjustedIncome;
     }
+
     if (this.state.none) {
       return income;
     }

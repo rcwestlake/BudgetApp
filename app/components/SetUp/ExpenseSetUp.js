@@ -76,16 +76,21 @@ export default class ExpenseSetUp extends Component {
   // setUtilitiesState = () => this.setState({ utilities: !this.state.utilities })
 
   handleHousingSubmit() {
+    const { user } = this.props;
+    console.log('expense user ', user);
     this.props.navigator.push({
       title: 'Rent/Mortgage',
       component: Housing,
+      passProps: { user },
     });
   }
 
   handleAutoSubmit() {
+    const { user } = this.props;
     this.props.navigator.push({
       title: 'Auto',
       component: Auto,
+      passProps: { user },
     });
   }
 

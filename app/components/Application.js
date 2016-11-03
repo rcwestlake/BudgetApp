@@ -1,20 +1,16 @@
 import React, { Component } from 'react';
-import firebase, { reference, signIn } from '../firebase.js';
 import {
   StyleSheet,
-  Text,
   View,
-  TextInput,
-  TouchableHighlight,
-  NavigatorIOS
+  NavigatorIOS,
 } from 'react-native';
+import firebase from '../firebase.js';
 import Welcome from './Welcome.js';
-import Summary from './Summary';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#111111'
+    backgroundColor: '#111111',
   },
 });
 
@@ -23,8 +19,8 @@ export default class Application extends Component {
     super(props);
 
     this.state = {
-      user: null
-    }
+      user: null,
+    };
   }
 
   componentDidMount() {
@@ -33,13 +29,12 @@ export default class Application extends Component {
 
 
   render() {
-    const { user } = this.state;
     return (
       <View style={styles.container}>
         <NavigatorIOS
           initialRoute={{
             component: Welcome,
-            title: "Welcome"
+            title: 'Welcome',
           }}
         />
       </View>

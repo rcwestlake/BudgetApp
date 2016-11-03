@@ -3,8 +3,6 @@ import {
   Text,
   View,
   StyleSheet,
-  TouchableHighlight,
-  ActivityIndicator,
 } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -14,9 +12,9 @@ const styles = StyleSheet.create({
     marginTop: 65,
     flexDirection: 'column',
     justifyContent: 'center',
-    backgroundColor: '#48BBEC'
-  }
-})
+    backgroundColor: '#48BBEC',
+  },
+});
 
 export default class LogIn extends Component {
   render() {
@@ -24,6 +22,6 @@ export default class LogIn extends Component {
       <View style={styles.container}>
         <Text> testing login comp </Text>
       </View>
-    )
+    );
   }
 }

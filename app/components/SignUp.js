@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
-import firebase, { reference, signIn } from '../firebase.js';
+import React, { Component, PropTypes } from 'react';
 import {
   StyleSheet,
   Text,
   View,
   TextInput,
   TouchableHighlight,
-  ActivityIndicator,
 } from 'react-native';
+import firebase, { signIn } from '../firebase.js';
 import IncomeSetUp from './IncomeSetUp';
 
 const styles = StyleSheet.create({
@@ -17,18 +16,18 @@ const styles = StyleSheet.create({
     marginTop: 65,
     flexDirection: 'column',
     justifyContent: 'center',
-    backgroundColor: '#48BBEC'
+    backgroundColor: '#48BBEC',
   },
   buttonText: {
     fontSize: 18,
     color: '#111',
-    alignSelf: 'center'
+    alignSelf: 'center',
   },
   disabledButton: {
     height: 0,
     flexDirection: 'row',
     alignSelf: 'stretch',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   button: {
     height: 45,
@@ -40,32 +39,30 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     marginTop: 10,
     alignSelf: 'stretch',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   searchInput: {
-     height: 50,
-     padding: 4,
-     marginRight: 5,
-     fontSize: 23,
-     borderWidth: 1,
-     borderColor: 'white',
-     borderRadius: 8,
-     color: 'white'
- },
-})
+    height: 50,
+    padding: 4,
+    marginRight: 5,
+    fontSize: 23,
+    borderWidth: 1,
+    borderColor: 'white',
+    borderRadius: 8,
+    color: 'white',
+  },
+});
 
 export default class SignUp extends Component {
-  constructor(){
-    super()
+  constructor() {
+    super();
     this.state = {
       user: null,
       email: null,
       password: null,
-      isLoading: false
-    }
+      isLoading: false,
+    };
   }
-
-
 
   handleSignUp(email, password) {
     signIn(email, password);
@@ -73,14 +70,13 @@ export default class SignUp extends Component {
       this.props.navigator.push({
         title: 'Income',
         component: IncomeSetUp,
-        passProps: { user }
-      })
+        passProps: { user },
+      });
     }));
   }
 
   render() {
-    console.log(this.state.user);
-    const { email, password } = this.state
+    const { email, password } = this.state;
     return (
       <View style={styles.container}>
         <TextInput
@@ -99,11 +95,16 @@ export default class SignUp extends Component {
         <TouchableHighlight
           style={this.state.email && this.state.password ? styles.button : styles.disabledButton}
           underlayColor='black'
-          onPress={() =>  this.handleSignUp(email, password)}
+          onPress={() => this.handleSignUp(email, password)}
         >
           <Text style={styles.buttonText} > Sign Up </Text>
         </TouchableHighlight>
       </View>
-    )
+    );
   }
 }
+
+SignUp.propTypes = {
+  navigator: PropTypes.string,
+  push: PropTypes.string,
+};

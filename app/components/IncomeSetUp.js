@@ -55,15 +55,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   searchInput: {
-     height: 50,
-     padding: 4,
-     marginRight: 5,
-     fontSize: 23,
-     borderWidth: 1,
-     borderColor: 'white',
-     borderRadius: 8,
-     color: 'white'
- },
+    height: 50,
+    padding: 4,
+    marginRight: 5,
+    fontSize: 23,
+    borderWidth: 1,
+    borderColor: 'white',
+    borderRadius: 8,
+    color: 'white'
+  },
 })
 
 export default class IncomeSetUp extends Component {
@@ -82,11 +82,10 @@ export default class IncomeSetUp extends Component {
 
   handleSubmit() {
     let user = this.props.user;
-    let userReference = reference.child(`${user.uid}`)
-    let { income } = this.state
-    reference.child(`${user.uid}`).push({
-        income: this.calculateIncome(income)
-      })
+    let { income } = this.state;
+    firebase.database().ref('users/' + user.uid).set ({
+      income: this.calculateIncome(income)
+    })
     this.props.navigator.push({
       title: 'Recurring Expenses',
       component: ExpenseSetUp
@@ -94,58 +93,71 @@ export default class IncomeSetUp extends Component {
   }
 
   calculateIncome(income) {
-    if(true) {
+    if(this.state.weekly) {
       return income = Math.floor((income * 52) / 12);
       console.log('weekly income', income);
     }
+    if(this.state.biweekly) {
+      return income = Math.floor((income * 26) / 12);
+    }
+    if(this.state.monthly) {
+      return income = Math.floor(income);
+    }
+    if(this.state.annually) {
+      return income = Math.floor(income/12);
+    }
+    if(this.state.none) {
+      return income
+    }
   }
+
 
   render() {
     console.log(this.props.user);
     return (
       <View style={styles.container}>
-        <Text> Income </Text>
-        <TextInput
-          style={styles.searchInput}
-          onChangeText={(text) => this.setState({ income: text })}
-          placeholder='Enter income'
-          />
-        <Text> How Often? </Text>
-        <TouchableHighlight
-            style={ this.state.weekly ? styles.selectedButton : styles.button}          underlayColor='black'
-            onPress={() => this.setState({ weekly: !this.state.weekly })}>
-            <Text style={styles.buttonText}> Weekly </Text>
-        </TouchableHighlight>
-        <TouchableHighlight
-            style={ this.state.biweekly ? styles.selectedButton : styles.button}
-            underlayColor='black'
-            onPress={() => this.setState({ biweekly: !this.state.biweekly })}>
-            <Text style={styles.buttonText}> Biweekly </Text>
-        </TouchableHighlight>
-        <TouchableHighlight
-            style={ this.state.monthly ? styles.selectedButton : styles.button}
-            underlayColor='black'
-            onPress={() => this.setState({ monthly: !this.state.monthly })}>
-            <Text style={styles.buttonText}> Monthly </Text>
-        </TouchableHighlight>
-        <TouchableHighlight
-            style={ this.state.annually ? styles.selectedButton : styles.button}
-            underlayColor='black'
-            onPress={() => this.setState({ annually: !this.state.annually })}>
-            <Text style={styles.buttonText}> Annually </Text>
-        </TouchableHighlight>
-        <TouchableHighlight
-            style={ this.state.none ? styles.selectedButton : styles.button}
-            underlayColor='black'
-            onPress={() => this.setState({ none: !this.state.none })}>
-            <Text style={styles.buttonText}> None </Text>
-        </TouchableHighlight>
-        <TouchableHighlight
-            style={styles.button}
-            underlayColor='black'
-            onPress={() => this.handleSubmit()}>
-            <Text style={styles.buttonText}> Continue </Text>
-        </TouchableHighlight>
+      <Text> Income </Text>
+      <TextInput
+      style={styles.searchInput}
+      onChangeText={(text) => this.setState({ income: text })}
+      placeholder='Enter income'
+      />
+      <Text> How Often? </Text>
+      <TouchableHighlight
+        style={ this.state.weekly ? styles.selectedButton : styles.button}          underlayColor='black'
+        onPress={() => this.setState({ weekly: !this.state.weekly })}>
+        <Text style={styles.buttonText}> Weekly </Text>
+      </TouchableHighlight>
+      <TouchableHighlight
+        style={ this.state.biweekly ? styles.selectedButton : styles.button}
+        underlayColor='black'
+        onPress={() => this.setState({ biweekly: !this.state.biweekly })}>
+        <Text style={styles.buttonText}> Biweekly </Text>
+      </TouchableHighlight>
+      <TouchableHighlight
+        style={ this.state.monthly ? styles.selectedButton : styles.button}
+        underlayColor='black'
+        onPress={() => this.setState({ monthly: !this.state.monthly })}>
+        <Text style={styles.buttonText}> Monthly </Text>
+      </TouchableHighlight>
+      <TouchableHighlight
+        style={ this.state.annually ? styles.selectedButton : styles.button}
+        underlayColor='black'
+        onPress={() => this.setState({ annually: !this.state.annually })}>
+        <Text style={styles.buttonText}> Annually </Text>
+      </TouchableHighlight>
+      <TouchableHighlight
+        style={ this.state.none ? styles.selectedButton : styles.button}
+        underlayColor='black'
+        onPress={() => this.setState({ none: !this.state.none })}>
+        <Text style={styles.buttonText}> None </Text>
+      </TouchableHighlight>
+      <TouchableHighlight
+      style={styles.button}
+      underlayColor='black'
+      onPress={() => this.handleSubmit()}>
+      <Text style={styles.buttonText}> Continue </Text>
+      </TouchableHighlight>
       </View>
     )
   }

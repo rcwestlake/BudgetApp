@@ -69,26 +69,6 @@ export default class ExpenseSetUp extends Component {
     }
   }
 
-  // toggleState(text) {
-  //   if(text) {
-  //     return !text
-  //   } else if(!text){
-  //     return text
-  //   } else {
-  //     return
-  //   }
-  // }
-
-  // toggleState(text) {
-  //   console.log(text);
-  //   const pizza = this.state.text
-  //   pizza ? this.setState({
-  //     [text]: false
-  //   }) : this.setState({
-  //     [text]: true
-  //   })
-  // }
-
 
 
   render() {

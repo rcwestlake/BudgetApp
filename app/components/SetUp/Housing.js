@@ -7,6 +7,8 @@ import {
   TouchableHighlight,
   } from 'react-native';
 import firebase from '../../firebase.js';
+import ExpenseSetUp from './ExpenseSetUp';
+
 
 const styles = StyleSheet.create({
   container: {
@@ -71,6 +73,13 @@ class Housing extends Component {
     this.setState({ housing: expense });
   }
 
+  goBack = () => {
+    this.props.navigator.push({
+      title: 'Recurring Expenses',
+      component: ExpenseSetUp,
+    });
+  }
+
   render() {
     console.log(this.state.housing)
     return (
@@ -84,6 +93,7 @@ class Housing extends Component {
         />
         <TouchableHighlight
           style={styles.button}
+          onPress={this.goBack}
         >
           <Text
             style={styles.buttonText}

@@ -61,7 +61,6 @@ const styles = StyleSheet.create({
 });
 
 class Housing extends Component {
-
   constructor() {
     super();
     this.state = {
@@ -75,8 +74,6 @@ class Housing extends Component {
 
   goBack = () => {
     const { user } = this.props;
-    console.log('housing user ', user);
-    console.log('user id', user.uid);
     const { housing } = this.state;
     firebase.database().ref(`users/${user.uid}`).update({
       housing: housing

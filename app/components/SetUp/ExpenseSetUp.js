@@ -77,7 +77,6 @@ export default class ExpenseSetUp extends Component {
 
   handleHousingSubmit() {
     const { user } = this.props;
-    console.log('expense user ', user);
     this.props.navigator.push({
       title: 'Rent/Mortgage',
       component: Housing,

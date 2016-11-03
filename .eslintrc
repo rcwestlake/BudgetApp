@@ -13,5 +13,7 @@
    "quotes": [2, "single"],
    "max-len": ["warn", 100],
    "arrow-body-style": 0,
+   "class-methods-use-this": "off",
+   "import/no-extraneous-dependencies": "off",
  }
 }

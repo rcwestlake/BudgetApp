@@ -68,7 +68,7 @@ class Housing extends Component {
   }
 
   setHousingState(expense) {
-    this.setState({ housing: expense })
+    this.setState({ housing: expense });
   }
 
   render() {

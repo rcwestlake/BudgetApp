@@ -6,7 +6,8 @@ import {
   TouchableHighlight,
 } from 'react-native';
 import firebase, { reference, signIn } from '../../firebase.js';
-import Housing from './Housing.js'
+import Housing from './Housing.js';
+import Auto from './Auto.js';
 
 const styles = StyleSheet.create({
   container: {
@@ -77,16 +78,15 @@ export default class ExpenseSetUp extends Component {
   handleHousingSubmit() {
     this.props.navigator.push({
       title: 'Rent/Mortgage',
-      component: Housing
-    })
+      component: Housing,
+    });
+  }
 
-    handleAutoSubmit() {
-      this.props.navigator.push({
-        title: 'Auto',
-        component: Auto
-      })
-    }
-
+  handleAutoSubmit() {
+    this.props.navigator.push({
+      title: 'Auto',
+      component: Auto,
+    });
   }
 
   render() {

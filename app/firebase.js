@@ -13,7 +13,7 @@ const auth = firebase.auth();
 
 const provider = new firebase.auth.GoogleAuthProvider()
 
-export const signIn = (email, password) =>
+export const signIn = (email, password) =>  
   firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
   const errorCode = error.code;
   const errorMessage = error.message;

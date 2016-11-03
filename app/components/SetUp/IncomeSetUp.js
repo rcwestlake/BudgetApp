@@ -6,7 +6,7 @@ import {
   TextInput,
   TouchableHighlight,
   } from 'react-native';
-import firebase from '../firebase.js';
+import firebase from '../../firebase.js';
 import ExpenseSetUp from './ExpenseSetUp';
 
 const styles = StyleSheet.create({

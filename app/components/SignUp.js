@@ -7,7 +7,7 @@ import {
   TouchableHighlight,
 } from 'react-native';
 import firebase, { signIn } from '../firebase.js';
-import IncomeSetUp from './IncomeSetUp';
+import IncomeSetUp from './SetUp/IncomeSetUp';
 
 const styles = StyleSheet.create({
   container: {
@@ -94,7 +94,7 @@ export default class SignUp extends Component {
         />
         <TouchableHighlight
           style={this.state.email && this.state.password ? styles.button : styles.disabledButton}
-          underlayColor='black'
+          underlayColor="black"
           onPress={() => this.handleSignUp(email, password)}
         >
           <Text style={styles.buttonText} > Sign Up </Text>
@@ -105,6 +105,6 @@ export default class SignUp extends Component {
 }
 
 SignUp.propTypes = {
-  navigator: PropTypes.string,
   push: PropTypes.string,
+  navigator: PropTypes.object,
 };

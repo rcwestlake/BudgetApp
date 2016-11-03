@@ -90,14 +90,14 @@ export default class Welcome extends Component {
         </Text>
         <TouchableHighlight
           style={styles.button}
-          underlayColor='black'
+          underlayColor="black"
           onPress={() => this.goToLogIn()}
         >
           <Text style={styles.buttonText}>Log in</Text>
         </TouchableHighlight>
         <TouchableHighlight
           style={styles.button}
-          underlayColor='black'
+          underlayColor="black"
           onPress={() => this.goToSignUp()}
         >
           <Text style={styles.buttonText}>Sign up</Text>
@@ -109,5 +109,5 @@ export default class Welcome extends Component {
 
 Welcome.propTypes = {
   push: PropTypes.string,
-  navigator: PropTypes.string.isRequired,
+  navigator: PropTypes.object,
 };

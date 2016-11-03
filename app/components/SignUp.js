@@ -24,6 +24,12 @@ const styles = StyleSheet.create({
     color: '#111',
     alignSelf: 'center'
   },
+  disabledButton: {
+    height: 0,
+    flexDirection: 'row',
+    alignSelf: 'stretch',
+    justifyContent: 'center'
+  },
   button: {
     height: 45,
     flexDirection: 'row',
@@ -91,11 +97,11 @@ export default class SignUp extends Component {
           onChangeText={(password) => this.setState({ password })}
         />
         <TouchableHighlight
-          style={styles.button}
+          style={this.state.email && this.state.password ? styles.button : styles.disabledButton}
           underlayColor='black'
           onPress={() =>  this.handleSignUp(email, password)}
         >
-          <Text style={styles.buttonText} >Sign Up with Google</Text>
+          <Text style={styles.buttonText} > Sign Up </Text>
         </TouchableHighlight>
       </View>
     )

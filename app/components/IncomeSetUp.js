@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   selectedButton: {
     height: 45,
     flexDirection: 'row',
-    backgroundColor: 'black',
+    backgroundColor: '#10DDC2',
     borderColor: 'white',
     borderWidth: 1,
     borderRadius: 8,
@@ -83,14 +83,24 @@ export default class IncomeSetUp extends Component {
   handleSubmit() {
     let user = this.props.user;
     let userReference = reference.child(`${user.uid}`)
-    let {income} = this.state
+    let { income } = this.state
     userReference.push({
-      income
+      income: income,
+      weekly: false,
+      biweekly: false,
+      monthly: false,
+      annually: false
     })
     this.props.navigator.push({
       title: 'Recurring Expenses',
       component: ExpenseSetUp
     })
+  }
+
+  calculateIncome() {
+    if(this.state.weekly) {
+      
+    }
   }
 
   render() {
@@ -105,33 +115,32 @@ export default class IncomeSetUp extends Component {
           />
         <Text> How Often? </Text>
         <TouchableHighlight
-            style={styles.button}
-            underlayColor='black'
-            onPress={() => this.setState({ weekly: true })}>
+            style={ this.state.weekly ? styles.selectedButton : styles.button}          underlayColor='black'
+            onPress={() => this.setState({ weekly: !this.state.weekly })}>
             <Text style={styles.buttonText}> Weekly </Text>
         </TouchableHighlight>
         <TouchableHighlight
-            style={styles.button}
+            style={ this.state.biweekly ? styles.selectedButton : styles.button}
             underlayColor='black'
-            onPress={() => this.setState({ biweekly: true })}>
+            onPress={() => this.setState({ biweekly: !this.state.biweekly })}>
             <Text style={styles.buttonText}> Biweekly </Text>
         </TouchableHighlight>
         <TouchableHighlight
-            style={styles.button}
+            style={ this.state.monthly ? styles.selectedButton : styles.button}
             underlayColor='black'
-            onPress={() => this.setState({ monthly: true })}>
+            onPress={() => this.setState({ monthly: !this.state.monthly })}>
             <Text style={styles.buttonText}> Monthly </Text>
         </TouchableHighlight>
         <TouchableHighlight
-            style={styles.button}
+            style={ this.state.annually ? styles.selectedButton : styles.button}
             underlayColor='black'
-            onPress={() => this.setState({ annually: true })}>
+            onPress={() => this.setState({ annually: !this.state.annually })}>
             <Text style={styles.buttonText}> Annually </Text>
         </TouchableHighlight>
         <TouchableHighlight
-            style={styles.button}
+            style={ this.state.none ? styles.selectedButton : styles.button}
             underlayColor='black'
-            onPress={() => this.setState({ none: true })}>
+            onPress={() => this.setState({ none: !this.state.none })}>
             <Text style={styles.buttonText}> None </Text>
         </TouchableHighlight>
         <TouchableHighlight

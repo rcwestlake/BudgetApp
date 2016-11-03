@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import {
   StyleSheet,
   Text,
   View,
   TouchableHighlight,
-  NavigatorIOS,
 } from 'react-native';
 import LogIn from './LogIn.js';
 import SignUp from './SignUp.js';
@@ -16,13 +15,13 @@ const styles = StyleSheet.create({
     marginTop: 65,
     flexDirection: 'column',
     justifyContent: 'center',
-    backgroundColor: '#48BBEC'
+    backgroundColor: '#48BBEC',
   },
   title: {
     marginBottom: 10,
     fontSize: 25,
     textAlign: 'center',
-    color: '#fff'
+    color: '#fff',
   },
   tagline: {
     fontSize: 12,
@@ -41,7 +40,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 18,
     color: '#111',
-    alignSelf: 'center'
+    alignSelf: 'center',
   },
   button: {
     height: 45,
@@ -53,31 +52,31 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     marginTop: 10,
     alignSelf: 'stretch',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
 });
 
 export default class Welcome extends Component {
-  constructor(props){
-    super(props)
-      this.state = {
-        user: null
-      }
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: null,
+    };
   }
 
   goToLogIn() {
     console.log('log in log in func');
     this.props.navigator.push({
       title: 'Log In',
-      component: LogIn
-    })
+      component: LogIn,
+    });
   }
 
   goToSignUp() {
     this.props.navigator.push({
       title: 'Sign Up',
-      component: SignUp
-    })
+      component: SignUp,
+    });
   }
 
   render() {
@@ -92,16 +91,23 @@ export default class Welcome extends Component {
         <TouchableHighlight
           style={styles.button}
           underlayColor='black'
-          onPress={() => this.goToLogIn()}>
+          onPress={() => this.goToLogIn()}
+        >
           <Text style={styles.buttonText}>Log in</Text>
         </TouchableHighlight>
         <TouchableHighlight
           style={styles.button}
           underlayColor='black'
-          onPress={() => this.goToSignUp()}>
-            <Text style={styles.buttonText}>Sign up</Text>
+          onPress={() => this.goToSignUp()}
+        >
+          <Text style={styles.buttonText}>Sign up</Text>
         </TouchableHighlight>
       </View>
     );
   }
 }
+
+Welcome.propTypes = {
+  push: PropTypes.string,
+  navigator: PropTypes.string.isRequired,
+};

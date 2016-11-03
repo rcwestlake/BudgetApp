@@ -1,12 +1,8 @@
-import React, { Component } from 'react';
-import firebase, { reference, signIn } from '../firebase.js';
+import React, { Component, PropTypes } from 'react';
 import {
   StyleSheet,
   Text,
   View,
-  TextInput,
-  TouchableHighlight,
-  ActivityIndicator,
 } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -16,14 +12,14 @@ const styles = StyleSheet.create({
     marginTop: 65,
     flexDirection: 'column',
     justifyContent: 'center',
-    backgroundColor: '#48BBEC'
+    backgroundColor: '#48BBEC',
   },
   text: {
     fontSize: 18,
     color: '#111',
-    textAlign: 'center'
-  }
-})
+    textAlign: 'center',
+  },
+});
 
 export default class Summary extends Component {
   render() {
@@ -32,6 +28,10 @@ export default class Summary extends Component {
       <View style={styles.container}>
         <Text> the summary page</Text>
       </View>
-    )
+    );
   }
 }
+
+Summary.propTypes = {
+  user: PropTypes.string,
+};

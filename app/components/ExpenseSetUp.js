@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
      color: 'white'
  },
 })
-//TODO: change styles when each button is selected
+
 export default class ExpenseSetUp extends Component {
   constructor(){
     super()

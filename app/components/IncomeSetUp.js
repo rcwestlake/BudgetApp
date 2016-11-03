@@ -84,22 +84,19 @@ export default class IncomeSetUp extends Component {
     let user = this.props.user;
     let userReference = reference.child(`${user.uid}`)
     let { income } = this.state
-    userReference.push({
-      income: income,
-      weekly: false,
-      biweekly: false,
-      monthly: false,
-      annually: false
-    })
+    reference.child(`${user.uid}`).push({
+        income: this.calculateIncome(income)
+      })
     this.props.navigator.push({
       title: 'Recurring Expenses',
       component: ExpenseSetUp
     })
   }
 
-  calculateIncome() {
-    if(this.state.weekly) {
-      
+  calculateIncome(income) {
+    if(true) {
+      return income = Math.floor((income * 52) / 12);
+      console.log('weekly income', income);
     }
   }
 

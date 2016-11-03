@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
      color: 'white'
  },
 })
-//TODO: change styles when each button is selected
+
 export default class ExpenseSetUp extends Component {
   constructor(){
     super()
@@ -68,26 +68,6 @@ export default class ExpenseSetUp extends Component {
       utilities: false
     }
   }
-
-  // toggleState(text) {
-  //   if(text) {
-  //     return !text
-  //   } else if(!text){
-  //     return text
-  //   } else {
-  //     return
-  //   }
-  // }
-
-  // toggleState(text) {
-  //   console.log(text);
-  //   const pizza = this.state.text
-  //   pizza ? this.setState({
-  //     [text]: false
-  //   }) : this.setState({
-  //     [text]: true
-  //   })
-  // }
 
 
 

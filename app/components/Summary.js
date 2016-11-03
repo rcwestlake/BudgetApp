@@ -23,7 +23,6 @@ const styles = StyleSheet.create({
 
 export default class Summary extends Component {
   render() {
-    console.log(this.props.user);
     return (
       <View style={styles.container}>
         <Text> the summary page</Text>

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import {
   StyleSheet,
   Text,
@@ -75,19 +75,19 @@ class Housing extends Component {
   goBack = () => {
     const { user } = this.props;
     const { housing } = this.state;
-    firebase.database().ref(`users/${user.uid}`).update({
-      housing: housing
-    });
+    firebase.database().ref(`users/${user.uid}`).update(
+      {
+        housing,
+      });
 
     this.props.navigator.push({
       title: 'Recurring Expenses',
       component: ExpenseSetUp,
-      passProps: { housing }
+      passProps: { housing, user },
     });
   }
 
   render() {
-    console.log(this.state.housing)
     return (
       <View
         style={styles.container}
@@ -111,4 +111,11 @@ class Housing extends Component {
       );
   }
 }
+
+
+Housing.propTypes = {
+  user: PropTypes.object,
+  navigator: PropTypes.object.isRequired,
+};
+
 export default Housing;

@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import {
   StyleSheet,
   Text,
   View,
   TouchableHighlight,
 } from 'react-native';
-import firebase, { reference, signIn } from '../../firebase.js';
 import Housing from './Housing.js';
 import Auto from './Auto.js';
+import Insurance from './Insurance.js';
+import Utilities from './Utilities.js';
 
 const styles = StyleSheet.create({
   container: {
@@ -59,7 +60,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class ExpenseSetUp extends Component {
+class ExpenseSetUp extends Component {
   constructor() {
     super();
     this.state = {
@@ -69,23 +70,46 @@ export default class ExpenseSetUp extends Component {
       utilities: false,
     };
   }
-//May not need these functions\/
+
+//May not need these functions\
   // setHouseState = () => this.setState({ housing: !this.state.housing })
   // setAutoState = () => this.setState({ auto: !this.state.auto })
   // setInsuranceState = () => this.setState({ insurance: !this.state.insurance })
   // setUtilitiesState = () => this.setState({ utilities: !this.state.utilities })
 
-  handleHousingSubmit() {
+  handleHousingSubmit = () => {
+    const { user } = this.props;
     this.props.navigator.push({
       title: 'Rent/Mortgage',
       component: Housing,
+      passProps: { user },
     });
   }
 
-  handleAutoSubmit() {
+  handleAutoSubmit = () => {
+    const { user } = this.props;
     this.props.navigator.push({
       title: 'Auto',
       component: Auto,
+      passProps: { user },
+    });
+  }
+
+  handleInsuranceSubmit = () => {
+    const { user } = this.props;
+    this.props.navigator.push({
+      title: 'Insurance',
+      component: Insurance,
+      passProps: { user },
+    });
+  }
+
+  handleUtilitiesSubmit = () => {
+    const { user } = this.props;
+    this.props.navigator.push({
+      title: 'Utilities',
+      component: Utilities,
+      passProps: { user },
     });
   }
 
@@ -97,33 +121,33 @@ export default class ExpenseSetUp extends Component {
         <TouchableHighlight
           style={this.state.housing ? styles.selectedButton : styles.button}
           underlayColor="black"
-          onPress={() => this.handleHousingSubmit()}
+          onPress={this.handleHousingSubmit}
         >
-          <Text style={styles.buttonText} >Rent/Mortgage</Text>
+          <Text style={styles.buttonText}> Rent/Mortgage </Text>
         </TouchableHighlight>
 
         <TouchableHighlight
           style={this.state.auto ? styles.selectedButton : styles.button}
           underlayColor="black"
-          onPress={() => this.handleAutoSubmit()}
+          onPress={this.handleAutoSubmit}
         >
-          <Text style={styles.buttonText} >Auto</Text>
+          <Text style={styles.buttonText}> Auto </Text>
         </TouchableHighlight>
 
         <TouchableHighlight
           style={this.state.insurance ? styles.selectedButton : styles.button}
           underlayColor="black"
-          onPress={this.setInsuranceState}
+          onPress={this.handleInsuranceSubmit}
         >
-          <Text style={styles.buttonText} >Insurance</Text>
+          <Text style={styles.buttonText}> Insurance </Text>
         </TouchableHighlight>
 
         <TouchableHighlight
           style={this.state.utilities ? styles.selectedButton : styles.button}
           underlayColor="black"
-          onPress={this.setUtilitiesState}
+          onPress={this.handleUtilitiesSubmit}
         >
-          <Text style={styles.buttonText} >Utilities</Text>
+          <Text style={styles.buttonText}> Utilities </Text>
         </TouchableHighlight>
 
         <TouchableHighlight
@@ -137,3 +161,10 @@ export default class ExpenseSetUp extends Component {
     );
   }
 }
+
+ExpenseSetUp.propTypes = {
+  user: PropTypes.object.isRequired,
+  navigator: PropTypes.object,
+};
+
+export default ExpenseSetUp;

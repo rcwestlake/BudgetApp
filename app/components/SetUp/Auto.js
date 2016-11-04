@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import {
   StyleSheet,
   Text,
@@ -6,6 +6,7 @@ import {
   TextInput,
   TouchableHighlight,
 } from 'react-native';
+import firebase from '../../firebase.js';
 import ExpenseSetUp from './ExpenseSetUp';
 
 const styles = StyleSheet.create({
@@ -59,7 +60,7 @@ const styles = StyleSheet.create({
 });
 
 
-class Housing extends Component {
+class Auto extends Component {
   constructor() {
     super();
     this.state = {
@@ -68,18 +69,27 @@ class Housing extends Component {
   }
 
   setAutoState(expense) {
-    this.setState({ auto: expense });
+    const number = parseInt(expense, 10);
+    this.setState({ auto: number });
   }
 
   goBack = () => {
+    const { user } = this.props;
+    const { auto } = this.state;
+
+    firebase.database().ref(`users/${user.uid}`).update(
+      {
+        auto,
+      });
+
     this.props.navigator.push({
       title: 'Recurring Expenses',
       component: ExpenseSetUp,
+      passProps: { auto, user },
     });
   }
 
   render() {
-    console.log(this.state.auto);
     return (
       <View
         style={styles.container}
@@ -103,4 +113,11 @@ class Housing extends Component {
       );
   }
 }
-export default Housing;
+
+Auto.propTypes = {
+  user: PropTypes.object.isRequired,
+  navigator: PropTypes.object.isRequired,
+};
+
+
+export default Auto;

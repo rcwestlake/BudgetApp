@@ -113,6 +113,7 @@ class Auto extends Component {
 }
 
 Auto.propTypes = {
+  user: PropTypes.object.isRequired,
   navigator: PropTypes.object.isRequired,
 };
 

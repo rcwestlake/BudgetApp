@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import {
   StyleSheet,
   Text,
   View,
   TouchableHighlight,
 } from 'react-native';
-import firebase, { reference, signIn } from '../../firebase.js';
 import Housing from './Housing.js';
 import Auto from './Auto.js';
 
@@ -59,7 +58,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class ExpenseSetUp extends Component {
+class ExpenseSetUp extends Component {
   constructor() {
     super();
     this.state = {
@@ -69,7 +68,8 @@ export default class ExpenseSetUp extends Component {
       utilities: false,
     };
   }
-//May not need these functions\/
+
+//May not need these functions\
   // setHouseState = () => this.setState({ housing: !this.state.housing })
   // setAutoState = () => this.setState({ auto: !this.state.auto })
   // setInsuranceState = () => this.setState({ insurance: !this.state.insurance })
@@ -141,3 +141,10 @@ export default class ExpenseSetUp extends Component {
     );
   }
 }
+
+ExpenseSetUp.propTypes = {
+  user: PropTypes.object.isRequired,
+  navigator: PropTypes.object,
+};
+
+export default ExpenseSetUp;

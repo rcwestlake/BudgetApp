@@ -114,7 +114,7 @@ class Housing extends Component {
 
 
 Housing.propTypes = {
-  user: PropTypes.object,
+  user: PropTypes.object.isRequired,
   navigator: PropTypes.object.isRequired,
 };
 

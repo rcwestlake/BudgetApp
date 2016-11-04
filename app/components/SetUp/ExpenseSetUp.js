@@ -7,6 +7,8 @@ import {
 } from 'react-native';
 import Housing from './Housing.js';
 import Auto from './Auto.js';
+import Insurance from './Insurance.js';
+import Utilities from './Utilities.js';
 
 const styles = StyleSheet.create({
   container: {
@@ -75,7 +77,7 @@ class ExpenseSetUp extends Component {
   // setInsuranceState = () => this.setState({ insurance: !this.state.insurance })
   // setUtilitiesState = () => this.setState({ utilities: !this.state.utilities })
 
-  handleHousingSubmit() {
+  handleHousingSubmit = () => {
     const { user } = this.props;
     this.props.navigator.push({
       title: 'Rent/Mortgage',
@@ -84,11 +86,29 @@ class ExpenseSetUp extends Component {
     });
   }
 
-  handleAutoSubmit() {
+  handleAutoSubmit = () => {
     const { user } = this.props;
     this.props.navigator.push({
       title: 'Auto',
       component: Auto,
+      passProps: { user },
+    });
+  }
+
+  handleInsuranceSubmit = () => {
+    const { user } = this.props;
+    this.props.navigator.push({
+      title: 'Insurance',
+      component: Insurance,
+      passProps: { user },
+    });
+  }
+
+  handleUtilitiesSubmit = () => {
+    const { user } = this.props;
+    this.props.navigator.push({
+      title: 'Utilities',
+      component: Utilities,
       passProps: { user },
     });
   }
@@ -101,33 +121,33 @@ class ExpenseSetUp extends Component {
         <TouchableHighlight
           style={this.state.housing ? styles.selectedButton : styles.button}
           underlayColor="black"
-          onPress={() => this.handleHousingSubmit()}
+          onPress={this.handleHousingSubmit}
         >
-          <Text style={styles.buttonText} >Rent/Mortgage</Text>
+          <Text style={styles.buttonText}> Rent/Mortgage </Text>
         </TouchableHighlight>
 
         <TouchableHighlight
           style={this.state.auto ? styles.selectedButton : styles.button}
           underlayColor="black"
-          onPress={() => this.handleAutoSubmit()}
+          onPress={this.handleAutoSubmit}
         >
-          <Text style={styles.buttonText} >Auto</Text>
+          <Text style={styles.buttonText}> Auto </Text>
         </TouchableHighlight>
 
         <TouchableHighlight
           style={this.state.insurance ? styles.selectedButton : styles.button}
           underlayColor="black"
-          onPress={this.setInsuranceState}
+          onPress={this.handleInsuranceSubmit}
         >
-          <Text style={styles.buttonText} >Insurance</Text>
+          <Text style={styles.buttonText}> Insurance </Text>
         </TouchableHighlight>
 
         <TouchableHighlight
           style={this.state.utilities ? styles.selectedButton : styles.button}
           underlayColor="black"
-          onPress={this.setUtilitiesState}
+          onPress={this.handleUtilitiesSubmit}
         >
-          <Text style={styles.buttonText} >Utilities</Text>
+          <Text style={styles.buttonText}> Utilities </Text>
         </TouchableHighlight>
 
         <TouchableHighlight

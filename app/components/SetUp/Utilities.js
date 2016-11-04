@@ -5,10 +5,9 @@ import {
   View,
   TextInput,
   TouchableHighlight,
-  } from 'react-native';
+} from 'react-native';
 import firebase from '../../firebase.js';
 import ExpenseSetUp from './ExpenseSetUp';
-
 
 const styles = StyleSheet.create({
   container: {
@@ -60,31 +59,32 @@ const styles = StyleSheet.create({
   },
 });
 
-class Housing extends Component {
+
+class Utilities extends Component {
   constructor() {
     super();
     this.state = {
-      housing: '',
+      utilities: '',
     };
   }
 
-  setHousingState(expense) {
+  setUtilitiesState(expense) {
     const number = parseInt(expense, 10);
-    this.setState({ housing: number })
+    this.setState({ utilities: number });
   }
 
   goBack = () => {
     const { user } = this.props;
-    const { housing } = this.state;
+    const { utilities } = this.state;
     firebase.database().ref(`users/${user.uid}`).update(
       {
-        housing,
+        utilities,
       });
 
     this.props.navigator.push({
       title: 'Recurring Expenses',
       component: ExpenseSetUp,
-      passProps: { housing, user },
+      passProps: { utilities, user },
     });
   }
 
@@ -94,8 +94,8 @@ class Housing extends Component {
         style={styles.container}
       >
         <TextInput
-          placeholder="Enter housing expense"
-          onChangeText={expense => this.setHousingState(expense)}
+          placeholder="Enter utilities expense"
+          onChangeText={expense => this.setUtilitiesState(expense)}
           style={styles.searchInput}
         />
         <TouchableHighlight
@@ -113,10 +113,10 @@ class Housing extends Component {
   }
 }
 
-
-Housing.propTypes = {
+Utilities.propTypes = {
   user: PropTypes.object.isRequired,
   navigator: PropTypes.object.isRequired,
 };
 
-export default Housing;
+
+export default Utilities;

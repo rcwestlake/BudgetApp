@@ -69,12 +69,14 @@ class Auto extends Component {
   }
 
   setAutoState(expense) {
-    this.setState({ auto: expense });
+    const number = parseInt(expense, 10);
+    this.setState({ auto: number });
   }
 
   goBack = () => {
     const { user } = this.props;
     const { auto } = this.state;
+
     firebase.database().ref(`users/${user.uid}`).update(
       {
         auto,

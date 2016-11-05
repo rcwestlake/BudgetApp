@@ -102,12 +102,12 @@ class Summary extends Component {
   calculateBudget() {
     const { data } = this.state;
     const income = data.income;
-    const expenses = map(data.recurring, (val) => val);
+    const expenses = sum(map(data.recurring, (val) => val));
+    console.log('expenses ', expenses);
     const savings = data.savings;
-    debugger
     this.setState(
       {
-        fundsAvailable: income - savings,
+        fundsAvailable: income - expenses - savings,
       }
     );
   }

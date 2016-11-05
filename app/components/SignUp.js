@@ -6,21 +6,31 @@ import {
   TextInput,
   TouchableHighlight,
 } from 'react-native';
+import { title } from '../styles/main';
 import firebase, { signIn } from '../firebase.js';
 import IncomeSetUp from './SetUp/IncomeSetUp';
+import Separator from '../helpers/Separator';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 30,
-    marginTop: 65,
     flexDirection: 'column',
     justifyContent: 'center',
-    backgroundColor: '#48BBEC',
+  },
+  title: {
+    fontSize: 45,
+    marginLeft: 15,
+    color: '#00AD7C',
+  },
+  intro: {
+    marginTop: 30,
+    marginBottom: 30,
+    marginLeft: 25,
+    marginRight: 25,
   },
   buttonText: {
-    fontSize: 18,
-    color: '#111',
+    fontSize: 20,
+    color: '#ffffff',
     alignSelf: 'center',
   },
   disabledButton: {
@@ -32,28 +42,34 @@ const styles = StyleSheet.create({
   button: {
     height: 45,
     flexDirection: 'row',
-    backgroundColor: 'white',
-    borderColor: 'white',
-    borderWidth: 1,
+    backgroundColor: '#19B5CB',
+    borderColor: '#19B5CB',
+    borderWidth: 0.2,
     borderRadius: 8,
-    marginBottom: 10,
     marginTop: 10,
+    marginRight: 30,
+    marginLeft: 30,
     alignSelf: 'stretch',
     justifyContent: 'center',
   },
-  searchInput: {
+  input: {
+    borderRightWidth: 0,
+    borderLeftWidth: 0,
+    borderTopWidth: 0,
+    borderBottomWidth: 10,
+    borderColor: '#19B5CB',
+    borderRadius: 8,
     height: 50,
     padding: 4,
-    marginRight: 5,
+    marginRight: 15,
+    marginLeft: 20,
+    marginBottom: 10,
     fontSize: 23,
-    borderWidth: 1,
-    borderColor: 'white',
-    borderRadius: 8,
-    color: 'white',
+    color: '#393E46',
   },
 });
 
-export default class SignUp extends Component {
+class SignUp extends Component {
   constructor() {
     super();
     this.state = {
@@ -79,22 +95,30 @@ export default class SignUp extends Component {
     const { email, password } = this.state;
     return (
       <View style={styles.container}>
+        <Text style={styles.title}>
+          Great decision.
+        </Text>
+        <Separator />
+        <Text style={styles.intro}>
+          We're glad you made it. You are a simple step away from a better financial future,
+          and a better way to create a monthly budget.
+        </Text>
         <TextInput
           placeholder="Email"
-          style={styles.searchInput}
+          style={styles.input}
           keyboardType="email-address"
           onChangeText={(email) => this.setState({ email })}
         />
         <TextInput
           placeholder="Password"
-          secureTextEntry='true'
-          style={styles.searchInput}
+          secureTextEntry="true"
+          style={styles.input}
           keyboardType="email-address"
           onChangeText={(password) => this.setState({ password })}
         />
         <TouchableHighlight
           style={this.state.email && this.state.password ? styles.button : styles.disabledButton}
-          underlayColor="black"
+          underlayColor="#10DDC2"
           onPress={() => this.handleSignUp(email, password)}
         >
           <Text style={styles.buttonText} > Sign Up </Text>
@@ -108,3 +132,5 @@ SignUp.propTypes = {
   push: PropTypes.string,
   navigator: PropTypes.object,
 };
+
+export default SignUp;

@@ -122,6 +122,7 @@ export default class IncomeSetUp extends Component {
     return (
       <View style={styles.container}>
         <Text> Income </Text>
+        <Text> What is your monthly income? Include salary, hourly wage, investment income, anything that leads to more money in your pocket </Text>
         <TextInput
           style={styles.searchInput}
           onChangeText={text => this.setState({ income: text })}

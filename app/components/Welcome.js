@@ -15,12 +15,11 @@ const styles = StyleSheet.create({
     marginTop: 65,
     flexDirection: 'column',
     justifyContent: 'center',
-    backgroundColor: 'white',
   },
   main: {
     flexDirection: 'column',
+    alignSelf: 'center',
     justifyContent: 'center',
-    backgroundColor: 'white',
   },
   title: {
     marginBottom: 10,
@@ -50,7 +49,6 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: 'row',
     alignSelf: 'stretch',
-    justifyContent: 'space-between',
   },
   button: {
     height: 75,
@@ -60,8 +58,6 @@ const styles = StyleSheet.create({
     borderColor: '#ffffff',
     marginTop: 10,
     alignSelf: 'stretch',
-    justifyContent: 'center',
-    width: 190,
   },
 });
 

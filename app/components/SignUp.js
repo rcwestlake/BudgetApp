@@ -6,7 +6,6 @@ import {
   TextInput,
   TouchableHighlight,
 } from 'react-native';
-import { title } from '../styles/main';
 import firebase, { signIn } from '../firebase.js';
 import IncomeSetUp from './SetUp/IncomeSetUp';
 import Separator from '../helpers/Separator';

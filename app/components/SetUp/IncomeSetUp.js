@@ -15,7 +15,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 30,
-    marginTop: 65,
     flexDirection: 'column',
     justifyContent: 'center',
   },
@@ -65,12 +64,9 @@ const styles = StyleSheet.create({
   searchInput: {
     height: 50,
     padding: 4,
-    marginRight: 5,
+    marginLeft: 40,
+    marginRight: 40,
     fontSize: 23,
-    borderWidth: 1,
-    borderColor: 'white',
-    borderRadius: 8,
-    color: 'white',
   },
 });
 
@@ -127,6 +123,12 @@ export default class IncomeSetUp extends Component {
     }
   }
 
+  updateState = (name, state) => {
+    this.setState({
+      [name]: !state,
+    });
+  }
+
 
   render() {
     return (
@@ -149,7 +151,7 @@ export default class IncomeSetUp extends Component {
 
         <TouchableHighlight
           style={this.state.weekly ? styles.selectedButton : styles.button}
-          onPress={() => this.setState({ weekly: !this.state.weekly })}
+          onPress={() => this.updateState('weekly', this.state.weekly)}
         >
           <Text style={this.state.weekly ? styles.selectedButtonText : styles.buttonText}>
             Weekly
@@ -158,7 +160,7 @@ export default class IncomeSetUp extends Component {
 
         <TouchableHighlight
           style={this.state.biweekly ? styles.selectedButton : styles.button}
-          onPress={() => this.setState({ biweekly: !this.state.biweekly })}
+          onPress={() => this.updateState('biweekly', this.state.biweekly)}
         >
           <Text style={this.state.biweekly ? styles.selectedButtonText : styles.buttonText}>
             Biweekly
@@ -167,7 +169,7 @@ export default class IncomeSetUp extends Component {
 
         <TouchableHighlight
           style={this.state.monthly ? styles.selectedButton : styles.button}
-          onPress={() => this.setState({ monthly: !this.state.monthly })}
+          onPress={() => this.updateState('monthly', this.state.monthly)}
         >
           <Text style={this.state.monthly ? styles.selectedButtonText : styles.buttonText}>
             Monthly
@@ -176,7 +178,7 @@ export default class IncomeSetUp extends Component {
 
         <TouchableHighlight
           style={this.state.annually ? styles.selectedButton : styles.button}
-          onPress={() => this.setState({ annually: !this.state.annually })}
+          onPress={() => this.updateState('annually', this.state.annually)}
         >
           <Text style={this.state.annually ? styles.selectedButtonText : styles.buttonText}>
             Annually
@@ -185,7 +187,7 @@ export default class IncomeSetUp extends Component {
 
         <TouchableHighlight
           style={this.state.none ? styles.selectedButton : styles.button}
-          onPress={() => this.setState({ none: !this.state.none })}
+          onPress={() => this.updateState('none', this.state.none)}
         >
           <Text style={this.state.none ? styles.selectedButtonText : styles.buttonText}>
             None

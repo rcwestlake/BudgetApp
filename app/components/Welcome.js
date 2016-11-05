@@ -4,6 +4,7 @@ import {
   Text,
   View,
   TouchableHighlight,
+  ScrollView,
 } from 'react-native';
 import LogIn from './LogIn.js';
 import SignUp from './SignUp.js';
@@ -11,17 +12,20 @@ import SignUp from './SignUp.js';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 30,
     marginTop: 65,
     flexDirection: 'column',
     justifyContent: 'center',
-    backgroundColor: '#48BBEC',
+  },
+  main: {
+    flexDirection: 'column',
+    alignSelf: 'center',
+    justifyContent: 'center',
   },
   title: {
     marginBottom: 10,
     fontSize: 25,
     textAlign: 'center',
-    color: '#fff',
+    color: '#000',
   },
   tagline: {
     fontSize: 12,
@@ -39,20 +43,21 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 18,
-    color: '#111',
+    color: '#ffffff',
     alignSelf: 'center',
   },
-  button: {
-    height: 45,
+  buttonContainer: {
     flexDirection: 'row',
-    backgroundColor: 'white',
-    borderColor: 'white',
-    borderWidth: 1,
-    borderRadius: 8,
-    marginBottom: 10,
+    alignSelf: 'stretch',
+  },
+  button: {
+    height: 75,
+    flexDirection: 'row',
+    backgroundColor: '#00AD7C',
+    borderRightWidth: 1,
+    borderColor: '#ffffff',
     marginTop: 10,
     alignSelf: 'stretch',
-    justifyContent: 'center',
   },
 });
 
@@ -65,7 +70,6 @@ export default class Welcome extends Component {
   }
 
   goToLogIn() {
-    console.log('log in log in func');
     this.props.navigator.push({
       title: 'Log In',
       component: LogIn,
@@ -82,26 +86,32 @@ export default class Welcome extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}> The app logo </Text>
-        <Text style={styles.tagline}>The monthly budget you’ll use and like</Text>
-        <Text style={styles.quote}>
-          The Best Way to teach your kids about taxes is by eating 30% of their ice cream
-          - Bill Murray
-        </Text>
-        <TouchableHighlight
-          style={styles.button}
-          underlayColor="black"
-          onPress={() => this.goToLogIn()}
-        >
-          <Text style={styles.buttonText}>Log in</Text>
-        </TouchableHighlight>
-        <TouchableHighlight
-          style={styles.button}
-          underlayColor="black"
-          onPress={() => this.goToSignUp()}
-        >
-          <Text style={styles.buttonText}>Sign up</Text>
-        </TouchableHighlight>
+        <ScrollView>
+          <View style={styles.main}>
+            <Text style={styles.title}> The app logo </Text>
+            <Text style={styles.tagline}>The monthly budget you’ll use and like</Text>
+            <Text style={styles.quote}>
+            The Best Way to teach your kids about taxes is by eating 30% of their ice cream
+            - Bill Murray
+            </Text>
+          </View>
+        </ScrollView>
+        <View style={styles.buttonContainer}>
+          <TouchableHighlight
+            style={styles.button}
+            underlayColor="#52D681"
+            onPress={() => this.goToLogIn()}
+          >
+            <Text style={styles.buttonText}>Log in</Text>
+          </TouchableHighlight>
+          <TouchableHighlight
+            style={styles.button}
+            underlayColor="#52D681"
+            onPress={() => this.goToSignUp()}
+          >
+            <Text style={styles.buttonText}>Sign up</Text>
+          </TouchableHighlight>
+        </View>
       </View>
     );
   }

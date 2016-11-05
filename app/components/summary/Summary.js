@@ -5,6 +5,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import { map, sum } from 'lodash';
 import firebase from 'firebase';
 import ExpenseSummary from './ExpenseSummary';
 
@@ -99,8 +100,11 @@ class Summary extends Component {
   }
 
   calculateBudget() {
-    const income = this.state.data.income;
-    const savings = this.state.data.savings;
+    const { data } = this.state;
+    const income = data.income;
+    const expenses = map(data.recurring, (val) => val);
+    const savings = data.savings;
+    debugger
     this.setState(
       {
         fundsAvailable: income - savings,

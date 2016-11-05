@@ -101,7 +101,7 @@ export default class Savings extends Component {
   handleSubmit() {
     const user = this.props.user;
     const { savings } = this.state;
-    firebase.database().ref(`users/${user.uid}`).set(
+    firebase.database().ref(`users/${user.uid}`).update(
       {
         savings,
       }

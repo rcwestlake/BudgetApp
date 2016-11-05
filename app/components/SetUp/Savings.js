@@ -10,6 +10,7 @@ import mStyles from '../../styles/main';
 import Separator from '../../helpers/Separator';
 import firebase from '../../firebase.js';
 import ExpenseSetUp from './ExpenseSetUp';
+import Summary from '../Summary';
 
 const styles = StyleSheet.create({
   container: {
@@ -99,13 +100,15 @@ export default class Savings extends Component {
 
   handleSubmit() {
     const user = this.props.user;
-    const { income } = this.state;
-    firebase.database().ref(`users/${user.uid}`).set({
-      income: this.calculateIncome(income),
-    });
+    const { savings } = this.state;
+    firebase.database().ref(`users/${user.uid}`).set(
+      {
+        savings,
+      }
+  );
     this.props.navigator.push({
-      title: 'Recurring Expenses',
-      component: ExpenseSetUp,
+      title: 'Summary',
+      component: Summary,
       passProps: { user },
     });
   }
@@ -132,7 +135,6 @@ export default class Savings extends Component {
     );
 
     const percent = Math.floor((number / income) * 100);
-
     this.setState(
       {
         percent,
@@ -179,7 +181,8 @@ export default class Savings extends Component {
           underlayColor="#10DDC2"
           onPress={() => this.handleSubmit()}
         >
-          <Text style={styles.buttonText}> Continue </Text>
+          <Text
+          style={styles.buttonText}> Continue </Text>
         </TouchableHighlight>
       </View>
     );

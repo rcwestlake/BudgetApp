@@ -20,7 +20,15 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 16,
-    color: '#111',
+    fontWeight: 'bold',
+    color: '#19B5CB',
+    marginBottom: 15,
+    textAlign: 'center',
+  },
+  percent: {
+    color: '#393E46',
+    fontSize: 30,
+    marginBottom: 100,
     textAlign: 'center',
   },
   buttonText: {
@@ -61,12 +69,14 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     justifyContent: 'center',
   },
-  searchInput: {
+  input: {
     height: 50,
     padding: 4,
     marginLeft: 40,
     marginRight: 40,
+    marginBottom: 40,
     fontSize: 23,
+    textAlign: 'center',
   },
 });
 
@@ -76,8 +86,8 @@ export default class Savings extends Component {
 
     this.state = {
       income: '',
-      percentSave: '',
-      dollarSave: '',
+      percent: '',
+      savings: '',
     };
   }
 
@@ -112,17 +122,28 @@ export default class Savings extends Component {
     });
   }
 
-  dollarSavings() {
+  handleInputChange(input) {
+    const { income } = this.state;
+    const number = parseInt(input, 10);
+    this.setState(
+      {
+        savings: number,
+      }
+    );
 
-  }
+    const percent = Math.floor((number / income) * 100);
 
-  percentSavings() {
-
+    this.setState(
+      {
+        percent,
+      }
+    );
   }
 
   render() {
-    console.log(this.state.dollarSave);
-    console.log(this.state.percentSave);
+    console.log('savings, ', this.state.savings);
+    console.log('income', this.state.income);
+    console.log('percent, ', this.state.percent);
     return (
       <View style={styles.container}>
         <Text style={mStyles.title}> Savings </Text>
@@ -136,17 +157,22 @@ export default class Savings extends Component {
           amount for the future.
         </Text>
 
-        <TextInput
-          style={styles.searchInput}
-          onChangeText={text => this.setState({ dollarSave: text })}
-          placeholder="Enter dollar amount you want to save"
-        />
+        <Text style={styles.text}>
+          $ Amount
+        </Text>
 
         <TextInput
-          style={styles.searchInput}
-          onChangeText={text => this.setState({ percentSave: text })}
-          placeholder="Enter percent of your income you want to save"
+          style={styles.input}
+          onChangeText={input => this.handleInputChange(input)}
+          placeholder="$"
         />
+
+        <Text style={styles.text}>
+          % of Monthly Income
+        </Text>
+        <Text style={styles.percent}>
+          {this.state.percent} %
+        </Text>
 
         <TouchableHighlight
           style={styles.button}

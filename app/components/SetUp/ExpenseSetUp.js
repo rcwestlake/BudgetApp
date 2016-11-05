@@ -9,7 +9,7 @@ import Housing from './Housing.js';
 import Auto from './Auto.js';
 import Insurance from './Insurance.js';
 import Utilities from './Utilities.js';
-import Savings from './Savings.js'
+import Savings from './Savings.js';
 
 const styles = StyleSheet.create({
   container: {

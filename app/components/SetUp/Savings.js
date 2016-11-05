@@ -7,7 +7,7 @@ import {
   TouchableHighlight,
   } from 'react-native';
 import mStyles from '../../styles/main';
-import Separator from '../../helpers/Separator';
+import Separator from '../../Helpers/Separator';
 import firebase from '../../firebase.js';
 import ExpenseSetUp from './ExpenseSetUp';
 import Summary from '../Summary';

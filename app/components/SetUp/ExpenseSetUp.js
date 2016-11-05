@@ -9,6 +9,7 @@ import Housing from './Housing.js';
 import Auto from './Auto.js';
 import Insurance from './Insurance.js';
 import Utilities from './Utilities.js';
+import Savings from './Savings.js'
 
 const styles = StyleSheet.create({
   container: {
@@ -113,6 +114,15 @@ class ExpenseSetUp extends Component {
     });
   }
 
+  handleContinue = () => {
+    const { user } = this.props;
+    this.props.navigator.push({
+      title: 'Savings',
+      component: Savings,
+      passProps: { user },
+    });
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -120,7 +130,7 @@ class ExpenseSetUp extends Component {
 
         <TouchableHighlight
           style={this.state.housing ? styles.selectedButton : styles.button}
-          underlayColor="black"
+          underlayColor="#19B5CB"
           onPress={this.handleHousingSubmit}
         >
           <Text style={styles.buttonText}> Rent/Mortgage </Text>
@@ -128,7 +138,7 @@ class ExpenseSetUp extends Component {
 
         <TouchableHighlight
           style={this.state.auto ? styles.selectedButton : styles.button}
-          underlayColor="black"
+          underlayColor="#19B5CB"
           onPress={this.handleAutoSubmit}
         >
           <Text style={styles.buttonText}> Auto </Text>
@@ -136,7 +146,7 @@ class ExpenseSetUp extends Component {
 
         <TouchableHighlight
           style={this.state.insurance ? styles.selectedButton : styles.button}
-          underlayColor="black"
+          underlayColor="#19B5CB"
           onPress={this.handleInsuranceSubmit}
         >
           <Text style={styles.buttonText}> Insurance </Text>
@@ -144,7 +154,7 @@ class ExpenseSetUp extends Component {
 
         <TouchableHighlight
           style={this.state.utilities ? styles.selectedButton : styles.button}
-          underlayColor="black"
+          underlayColor="#19B5CB"
           onPress={this.handleUtilitiesSubmit}
         >
           <Text style={styles.buttonText}> Utilities </Text>
@@ -152,7 +162,8 @@ class ExpenseSetUp extends Component {
 
         <TouchableHighlight
           style={styles.button}
-          underlayColor="black"
+          underlayColor="#19B5CB"
+          onPress={this.handleContinue}
         >
           <Text style={styles.buttonText} >Continue</Text>
         </TouchableHighlight>

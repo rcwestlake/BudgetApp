@@ -84,6 +84,12 @@ export default class IncomeSetUp extends Component {
     };
   }
 
+  updateState = (name, state) => {
+    this.setState({
+      [name]: !state,
+    });
+  }
+
   handleSubmit() {
     const user = this.props.user;
     const { income } = this.state;
@@ -122,13 +128,6 @@ export default class IncomeSetUp extends Component {
       return income;
     }
   }
-
-  updateState = (name, state) => {
-    this.setState({
-      [name]: !state,
-    });
-  }
-
 
   render() {
     return (

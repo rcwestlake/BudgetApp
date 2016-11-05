@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import firebase, { signIn } from '../firebase.js';
 import Separator from '../helpers/Separator';
-import Summary from './Summary';
+import Summary from './summary/Summary';
 
 const styles = StyleSheet.create({
   container: {

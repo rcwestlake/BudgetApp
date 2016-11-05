@@ -1,10 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import {
   StyleSheet,
+  TouchableHighlight,
   Text,
   View,
 } from 'react-native';
-import firebase from 'firebase'
+import firebase from 'firebase';
+import ExpenseSummary from './ExpenseSummary';
 
 const styles = StyleSheet.create({
   container: {
@@ -74,11 +76,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
-export default class Summary extends Component {
+class Summary extends Component {
   constructor() {
     super();
     this.state = {
       data: '',
+      fundsAvailable: null,
     };
   }
 
@@ -86,25 +89,54 @@ export default class Summary extends Component {
     const user = this.props.user;
     firebase.database().ref(`users/${user.uid}`).on('value', (snapshot) => {
       const data = snapshot.val() || 0;
-      debugger;
       this.setState(
         {
           data,
         }
       );
+      this.calculateBudget();
+    });
+  }
+
+  calculateBudget() {
+    const income = this.state.data.income;
+    const savings = this.state.data.savings;
+    this.setState(
+      {
+        fundsAvailable: income - savings,
+      }
+    );
+  }
+
+  goToExpenses = () => {
+    const { user } = this.props;
+    this.props.navigator.push({
+      title: 'Edit Expenses',
+      component: ExpenseSummary,
+      passProps: { user },
     });
   }
   render() {
-    console.log('user', this.props.user);
-    console.log('user data, ', this.state.data);
     return (
       <View style={styles.container}>
-        <Text>{this.state.data.income}</Text>
+        <Text>
+          {this.state.fundsAvailable}
+        </Text>
+        <TouchableHighlight>
+          <Text>
+            Edit Expenses
+          </Text>
+        </TouchableHighlight>
       </View>
     );
   }
 }
 
 Summary.propTypes = {
-  user: PropTypes.string,
+  user: PropTypes.object.isRequired,
+  navigator: PropTypes.object,
+  push: PropTypes.object,
 };
+
+
+export default Summary;

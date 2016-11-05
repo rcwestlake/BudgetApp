@@ -10,7 +10,7 @@ import mStyles from '../../styles/main';
 import Separator from '../../helpers/Separator';
 import firebase from '../../firebase.js';
 import ExpenseSetUp from './ExpenseSetUp';
-import Summary from '../Summary';
+import Summary from '../summary/Summary';
 
 const styles = StyleSheet.create({
   container: {
@@ -182,7 +182,9 @@ export default class Savings extends Component {
           onPress={() => this.handleSubmit()}
         >
           <Text
-          style={styles.buttonText}> Continue </Text>
+            style={styles.buttonText}>
+            Continue
+          </Text>
         </TouchableHighlight>
       </View>
     );

@@ -6,8 +6,8 @@ import {
   TouchableHighlight,
   ScrollView,
 } from 'react-native';
-import LogIn from './LogIn.js';
-import SignUp from './SignUp.js';
+import LogIn from './LogIn';
+import SignUp from './SignUp';
 
 const styles = StyleSheet.create({
   container: {
@@ -69,14 +69,14 @@ export default class Welcome extends Component {
     };
   }
 
-  goToLogIn() {
+  goToLogIn = () => {
     this.props.navigator.push({
       title: 'Log In',
       component: LogIn,
     });
   }
 
-  goToSignUp() {
+  goToSignUp = () => {
     this.props.navigator.push({
       title: 'Sign Up',
       component: SignUp,
@@ -88,11 +88,16 @@ export default class Welcome extends Component {
       <View style={styles.container}>
         <ScrollView>
           <View style={styles.main}>
-            <Text style={styles.title}> The app logo </Text>
-            <Text style={styles.tagline}>The monthly budget you’ll use and like</Text>
+            <Text style={styles.title}>
+              The app logo
+            </Text>
+            <Text style={styles.tagline}>
+              The monthly budget you’ll use and like
+            </Text>
             <Text style={styles.quote}>
-            The Best Way to teach your kids about taxes is by eating 30% of their ice cream
-            - Bill Murray
+              The Best Way to teach your kids about taxes is by eating 30%
+              of their ice cream
+              - Bill Murray
             </Text>
           </View>
         </ScrollView>
@@ -100,14 +105,14 @@ export default class Welcome extends Component {
           <TouchableHighlight
             style={styles.button}
             underlayColor="#52D681"
-            onPress={() => this.goToLogIn()}
+            onPress={this.goToLogIn}
           >
             <Text style={styles.buttonText}>Log in</Text>
           </TouchableHighlight>
           <TouchableHighlight
             style={styles.button}
             underlayColor="#52D681"
-            onPress={() => this.goToSignUp()}
+            onPress={this.goToSignUp}
           >
             <Text style={styles.buttonText}>Sign up</Text>
           </TouchableHighlight>

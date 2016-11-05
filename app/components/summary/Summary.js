@@ -7,6 +7,8 @@ import {
 } from 'react-native';
 import { map, sum } from 'lodash';
 import firebase from 'firebase';
+import mStyles from '../../styles/main';
+import Separator from '../../helpers/Separator';
 import ExpenseSummary from './ExpenseSummary';
 
 const styles = StyleSheet.create({
@@ -16,6 +18,10 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
   },
+  fundsAvailable: {
+    fontSize: 45,
+    textAlign: 'center',
+  },
   text: {
     fontSize: 16,
     fontWeight: 'bold',
@@ -23,36 +29,11 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     textAlign: 'center',
   },
-  percent: {
-    color: '#393E46',
-    fontSize: 30,
-    marginBottom: 100,
-    textAlign: 'center',
-  },
   buttonText: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#00AD7C',
+    color: '#393E46',
     alignSelf: 'center',
-  },
-  selectedButtonText: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#ffffff',
-    alignSelf: 'center',
-  },
-  selectedButton: {
-    height: 40,
-    flexDirection: 'row',
-    backgroundColor: '#00AD7C',
-    borderColor: '#00AD7C',
-    borderWidth: 0.2,
-    borderRadius: 8,
-    marginTop: 10,
-    marginRight: 80,
-    marginLeft: 80,
-    alignSelf: 'stretch',
-    justifyContent: 'center',
   },
   button: {
     height: 40,
@@ -62,21 +43,11 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
     borderRadius: 8,
     marginTop: 10,
-    marginRight: 80,
-    marginLeft: 80,
     alignSelf: 'stretch',
     justifyContent: 'center',
   },
-  input: {
-    height: 50,
-    padding: 4,
-    marginLeft: 40,
-    marginRight: 40,
-    marginBottom: 40,
-    fontSize: 23,
-    textAlign: 'center',
-  },
 });
+
 class Summary extends Component {
   constructor() {
     super();
@@ -120,15 +91,26 @@ class Summary extends Component {
       passProps: { user },
     });
   }
+
   render() {
+    console.log('user ', this.props.user);
     const { fundsAvailable } = this.state;
     return (
       <View style={styles.container}>
-        <Text>
-          {fundsAvailable}
+        <Text style={mStyles.title}>
+          Summary
         </Text>
-        <TouchableHighlight style={styles.button}>
-          <Text>
+        <Separator />
+
+        <Text style={styles.fundsAvailable}>
+          $ {fundsAvailable}
+        </Text>
+        <Separator />
+
+        <TouchableHighlight
+          style={styles.button}
+        >
+          <Text style={styles.buttonText}>
             Edit Expenses
           </Text>
         </TouchableHighlight>

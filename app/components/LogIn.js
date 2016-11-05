@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import {
   Text,
   TextInput,
@@ -6,7 +6,7 @@ import {
   View,
   StyleSheet,
 } from 'react-native';
-import firebase, { signIn } from '../firebase.js';
+import firebase, { signIn } from '../firebase';
 import Separator from '../helpers/Separator';
 import Summary from './summary/Summary';
 
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class LogIn extends Component {
+class LogIn extends Component {
   constructor() {
     super();
 
@@ -92,6 +92,9 @@ export default class LogIn extends Component {
 
   render() {
     const { email, password } = this.state;
+    console.log('log in email', email);
+    console.log('log in password', password);
+    console.log('log in user', this.state.user);
     return (
       <View style={styles.container}>
         <Text style={styles.title}>
@@ -125,3 +128,10 @@ export default class LogIn extends Component {
     );
   }
 }
+
+LogIn.propTypes = {
+  navigator: PropTypes.object.isRequired,
+  push: PropTypes.object,
+};
+
+export default LogIn;

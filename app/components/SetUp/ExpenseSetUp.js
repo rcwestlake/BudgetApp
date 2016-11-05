@@ -5,11 +5,11 @@ import {
   View,
   TouchableHighlight,
 } from 'react-native';
-import Housing from './Housing.js';
-import Auto from './Auto.js';
-import Insurance from './Insurance.js';
-import Utilities from './Utilities.js';
-import Savings from './Savings.js'
+import Housing from './Housing';
+import Auto from './Auto';
+import Insurance from './Insurance';
+import Utilities from './Utilities';
+import Savings from './Savings';
 
 const styles = StyleSheet.create({
   container: {

@@ -102,9 +102,9 @@ class Summary extends Component {
   calculateBudget() {
     const { data } = this.state;
     const income = data.income;
-    const expenses = sum(map(data.recurring, (val) => val));
-    console.log('expenses ', expenses);
+    const expenses = sum(map(data.recurring, val => val));
     const savings = data.savings;
+
     this.setState(
       {
         fundsAvailable: income - expenses - savings,
@@ -121,12 +121,13 @@ class Summary extends Component {
     });
   }
   render() {
+    const { fundsAvailable } = this.state;
     return (
       <View style={styles.container}>
         <Text>
-          {this.state.fundsAvailable}
+          {fundsAvailable}
         </Text>
-        <TouchableHighlight>
+        <TouchableHighlight style={styles.button}>
           <Text>
             Edit Expenses
           </Text>

@@ -77,7 +77,7 @@ class Auto extends Component {
     const { user } = this.props;
     const { auto } = this.state;
 
-    firebase.database().ref(`users/${user.uid}`).update(
+    firebase.database().ref(`users/${user.uid}/recurring`).update(
       {
         auto,
       });

@@ -5,11 +5,11 @@ import {
   View,
   TouchableHighlight,
 } from 'react-native';
-import Housing from './Housing.js';
-import Auto from './Auto.js';
-import Insurance from './Insurance.js';
-import Utilities from './Utilities.js';
-import Savings from './Savings.js'
+import Housing from './Housing';
+import Auto from './Auto';
+import Insurance from './Insurance';
+import Utilities from './Utilities';
+import Savings from './Savings';
 
 const styles = StyleSheet.create({
   container: {
@@ -71,12 +71,6 @@ class ExpenseSetUp extends Component {
       utilities: false,
     };
   }
-
-//May not need these functions\
-  // setHouseState = () => this.setState({ housing: !this.state.housing })
-  // setAutoState = () => this.setState({ auto: !this.state.auto })
-  // setInsuranceState = () => this.setState({ insurance: !this.state.insurance })
-  // setUtilitiesState = () => this.setState({ utilities: !this.state.utilities })
 
   handleHousingSubmit = () => {
     const { user } = this.props;

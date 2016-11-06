@@ -76,7 +76,7 @@ class Utilities extends Component {
   goBack = () => {
     const { user } = this.props;
     const { utilities } = this.state;
-    firebase.database().ref(`users/${user.uid}`).update(
+    firebase.database().ref(`users/${user.uid}/recurring`).update(
       {
         utilities,
       });

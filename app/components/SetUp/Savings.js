@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import {
   StyleSheet,
   Text,
@@ -9,8 +9,7 @@ import {
 import mStyles from '../../styles/main';
 import Separator from '../../Helpers/Separator';
 import firebase from '../../firebase.js';
-import ExpenseSetUp from './ExpenseSetUp';
-import Summary from '../Summary';
+import Summary from '../summary/Summary';
 
 const styles = StyleSheet.create({
   container: {
@@ -81,7 +80,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class Savings extends Component {
+class Savings extends Component {
   constructor(props) {
     super(props);
 
@@ -90,27 +89,6 @@ export default class Savings extends Component {
       percent: '',
       savings: '',
     };
-  }
-
-  updateState = (name, state) => {
-    this.setState({
-      [name]: !state,
-    });
-  }
-
-  handleSubmit() {
-    const user = this.props.user;
-    const { savings } = this.state;
-    firebase.database().ref(`users/${user.uid}`).set(
-      {
-        savings,
-      }
-  );
-    this.props.navigator.push({
-      title: 'Summary',
-      component: Summary,
-      passProps: { user },
-    });
   }
 
   componentDidMount() {
@@ -124,6 +102,28 @@ export default class Savings extends Component {
       );
     });
   }
+
+  updateState = (name, state) => {
+    this.setState({
+      [name]: !state,
+    });
+  }
+
+  handleSubmit() {
+    const user = this.props.user;
+    const { savings } = this.state;
+    firebase.database().ref(`users/${user.uid}`).update(
+      {
+        savings,
+      }
+  );
+    this.props.navigator.push({
+      title: 'Summary',
+      component: Summary,
+      passProps: { user },
+    });
+  }
+
 
   handleInputChange(input) {
     const { income } = this.state;
@@ -143,9 +143,6 @@ export default class Savings extends Component {
   }
 
   render() {
-    console.log('savings, ', this.state.savings);
-    console.log('income', this.state.income);
-    console.log('percent, ', this.state.percent);
     return (
       <View style={styles.container}>
         <Text style={mStyles.title}> Savings </Text>
@@ -182,9 +179,20 @@ export default class Savings extends Component {
           onPress={() => this.handleSubmit()}
         >
           <Text
-          style={styles.buttonText}> Continue </Text>
+            style={styles.buttonText}
+          >
+            Continue
+          </Text>
         </TouchableHighlight>
       </View>
     );
   }
 }
+
+Savings.propTypes = {
+  user: PropTypes.object.isRequired,
+  navigator: PropTypes.object.isRequired,
+  push: PropTypes.func,
+};
+
+export default Savings;

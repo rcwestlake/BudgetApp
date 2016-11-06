@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class IncomeSetUp extends Component {
+class IncomeSetUp extends Component {
   constructor(props) {
     super(props);
 
@@ -136,7 +136,7 @@ export default class IncomeSetUp extends Component {
         <Separator />
 
         <Text style={mStyles.intro}>
-          What is your monthly income? Include salary, hourly wage,
+          What is your income? Include salary, hourly wage,
           investment income, anything that leads to more money in your pocket.
         </Text>
 
@@ -204,3 +204,5 @@ export default class IncomeSetUp extends Component {
     );
   }
 }
+
+export default IncomeSetUp;

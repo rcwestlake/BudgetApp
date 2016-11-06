@@ -72,12 +72,6 @@ class ExpenseSetUp extends Component {
     };
   }
 
-//May not need these functions\
-  // setHouseState = () => this.setState({ housing: !this.state.housing })
-  // setAutoState = () => this.setState({ auto: !this.state.auto })
-  // setInsuranceState = () => this.setState({ insurance: !this.state.insurance })
-  // setUtilitiesState = () => this.setState({ utilities: !this.state.utilities })
-
   handleHousingSubmit = () => {
     const { user } = this.props;
     this.props.navigator.push({
@@ -132,6 +126,7 @@ class ExpenseSetUp extends Component {
           style={this.state.housing ? styles.selectedButton : styles.button}
           underlayColor="#19B5CB"
           onPress={this.handleHousingSubmit}
+
         >
           <Text style={styles.buttonText}> Rent/Mortgage </Text>
         </TouchableHighlight>

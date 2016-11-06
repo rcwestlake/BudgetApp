@@ -72,6 +72,7 @@ export default class Welcome extends Component {
   goToLogIn() {
     this.props.navigator.push({
       title: 'Log In',
+      navigationBarHidden: 'false',
       component: LogIn,
     });
   }
@@ -79,6 +80,7 @@ export default class Welcome extends Component {
   goToSignUp() {
     this.props.navigator.push({
       title: 'Sign Up',
+      navigationBarHidden: 'false',
       component: SignUp,
     });
   }

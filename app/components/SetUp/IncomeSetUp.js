@@ -99,6 +99,7 @@ class IncomeSetUp extends Component {
     this.props.navigator.push({
       title: 'Recurring Expenses',
       component: ExpenseSetUp,
+      navigationBarHidden: 'false',
       passProps: { user },
     });
   }

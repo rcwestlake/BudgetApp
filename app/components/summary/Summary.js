@@ -74,12 +74,14 @@ class Summary extends Component {
   calculateBudget() {
     const { data } = this.state;
     const income = data.income;
-    const expenses = sum(map(data.recurring, val => val));
+    const recurring = sum(map(data.recurring, val => val));
+    const expenses = sum(map(data.expenses, val => val.dollar));
+    console.log(expenses);
     const savings = data.savings;
 
     this.setState(
       {
-        fundsAvailable: income - expenses - savings,
+        fundsAvailable: income - recurring - expenses - savings,
       }
     );
   }
@@ -89,6 +91,7 @@ class Summary extends Component {
     this.props.navigator.push({
       title: 'Edit Expenses',
       component: ExpenseSummary,
+      navigationBarHidden: 'false',
       passProps: { user },
     });
   }
@@ -98,6 +101,7 @@ class Summary extends Component {
     this.props.navigator.push({
       title: 'Edit Income',
       component: IncomeSummary,
+      navigationBarHidden: 'false',
       passProps: { user },
     });
   }

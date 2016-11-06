@@ -20,6 +20,7 @@ export default class Application extends Component {
     return (
       <NavigatorIOS
         style={styles.container}
+        navigationBarHidden={true}
         initialRoute={{
           component: Welcome,
           title: 'Welcome',

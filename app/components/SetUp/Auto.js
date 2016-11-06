@@ -85,6 +85,7 @@ class Auto extends Component {
     this.props.navigator.push({
       title: 'Recurring Expenses',
       component: ExpenseSetUp,
+      navigationBarHidden: 'false',
       passProps: { auto, user },
     });
   }

@@ -84,6 +84,7 @@ class Insurance extends Component {
     this.props.navigator.push({
       title: 'Recurring Expenses',
       component: ExpenseSetUp,
+      navigationBarHidden: 'false',
       passProps: { insurance, user },
     });
   }

@@ -103,12 +103,6 @@ class Savings extends Component {
     });
   }
 
-  updateState = (name, state) => {
-    this.setState({
-      [name]: !state,
-    });
-  }
-
   handleSubmit() {
     const user = this.props.user;
     const { savings } = this.state;

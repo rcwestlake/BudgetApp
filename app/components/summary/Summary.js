@@ -93,6 +93,15 @@ class Summary extends Component {
     });
   }
 
+  goToIncome = () => {
+    const { user } = this.props;
+    this.props.navigator.push({
+      title: 'Edit Income',
+      component: IncomeSummary,
+      passProps: { user },
+    });
+  }
+
   signOut() {
     firebase.auth().signOut().then(() => {
       this.props.navigator.push({
@@ -121,9 +130,17 @@ class Summary extends Component {
 
         <TouchableHighlight
           style={styles.button}
+          onPress={this.goToExpenses}
         >
           <Text style={styles.buttonText}>
             Edit Expenses
+          </Text>
+        </TouchableHighlight>
+        <TouchableHighlight
+          style={styles.button}
+        >
+          <Text style={styles.buttonText}>
+            Edit Income
           </Text>
         </TouchableHighlight>
         <TouchableHighlight

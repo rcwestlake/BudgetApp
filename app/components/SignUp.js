@@ -6,7 +6,7 @@ import {
   TextInput,
   TouchableHighlight,
 } from 'react-native';
-import firebase, { signIn } from '../firebase';
+import firebase, { signUp } from '../firebase';
 import IncomeSetUp from './SetUp/IncomeSetUp';
 import Separator from '../helpers/Separator';
 
@@ -80,7 +80,7 @@ class SignUp extends Component {
   }
 
   handleSignUp(email, password) {
-    signIn(email, password);
+    signUp(email, password);
     firebase.auth().onAuthStateChanged(user => this.setState({ user }, () => {
       this.props.navigator.push({
         title: 'Income',

@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class IncomeSetUp extends Component {
+class IncomeSetUp extends Component {
   constructor(props) {
     super(props);
 
@@ -204,3 +204,5 @@ export default class IncomeSetUp extends Component {
     );
   }
 }
+
+export default IncomeSetUp;

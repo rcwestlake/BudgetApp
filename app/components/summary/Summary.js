@@ -10,6 +10,7 @@ import firebase from 'firebase';
 import mStyles from '../../styles/main';
 import Separator from '../../helpers/Separator';
 import ExpenseSummary from './ExpenseSummary';
+import Welcome from '../Welcome';
 
 const styles = StyleSheet.create({
   container: {
@@ -92,8 +93,20 @@ class Summary extends Component {
     });
   }
 
+  signOut() {
+    firebase.auth().signOut().then(() => {
+      this.props.navigator.push({
+        title: 'Welcome',
+        component: Welcome,
+      });
+    }, (error) => {
+      console.log('Error with sign out process', error);
+    });
+  }
+
+
   render() {
-    console.log('user ', this.props.user);
+    console.log('summary user ', this.props.user);
     const { fundsAvailable } = this.state;
     return (
       <View style={styles.container}>
@@ -114,6 +127,14 @@ class Summary extends Component {
             Edit Expenses
           </Text>
         </TouchableHighlight>
+        <TouchableHighlight
+          style={styles.button}
+          onPress={() => this.signOut()}
+        >
+          <Text>
+            Sign Out
+          </Text>
+        </TouchableHighlight>
       </View>
     );
   }
@@ -124,6 +145,5 @@ Summary.propTypes = {
   navigator: PropTypes.object,
   push: PropTypes.object,
 };
-
 
 export default Summary;

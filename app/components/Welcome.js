@@ -105,14 +105,14 @@ export default class Welcome extends Component {
           <TouchableHighlight
             style={styles.button}
             underlayColor="#52D681"
-            onPress={this.goToLogIn}
+            onPress={() => this.goToLogIn()}
           >
             <Text style={styles.buttonText}>Log in</Text>
           </TouchableHighlight>
           <TouchableHighlight
             style={styles.button}
             underlayColor="#52D681"
-            onPress={this.goToSignUp}
+            onPress={() => this.goToSignUp()}
           >
             <Text style={styles.buttonText}>Sign up</Text>
           </TouchableHighlight>

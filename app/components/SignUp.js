@@ -80,14 +80,15 @@ class SignUp extends Component {
   }
 
   handleSignUp(email, password) {
-    signUp(email, password);
-    firebase.auth().onAuthStateChanged(user => this.setState({ user }, () => {
-      this.props.navigator.push({
-        title: 'Income',
-        component: IncomeSetUp,
-        passProps: { user },
-      });
-    }));
+    signUp(email, password).then(() => {
+      firebase.auth().onAuthStateChanged(user => this.setState({ user }, () => {
+        this.props.navigator.push({
+          title: 'Income',
+          component: IncomeSetUp,
+          passProps: { user },
+        });
+      }));
+    });
   }
 
   render() {

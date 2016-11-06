@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import {
   StyleSheet,
   Text,
@@ -9,7 +9,6 @@ import {
 import mStyles from '../../styles/main';
 import Separator from '../../helpers/Separator';
 import firebase from '../../firebase.js';
-import ExpenseSetUp from './ExpenseSetUp';
 import Summary from '../summary/Summary';
 
 const styles = StyleSheet.create({
@@ -81,7 +80,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class Savings extends Component {
+class Savings extends Component {
   constructor(props) {
     super(props);
 
@@ -90,6 +89,18 @@ export default class Savings extends Component {
       percent: '',
       savings: '',
     };
+  }
+
+  componentDidMount() {
+    const user = this.props.user;
+    firebase.database().ref(`users/${user.uid}`).child('income').on('value', (snapshot) => {
+      const income = snapshot.val() || 0;
+      this.setState(
+        {
+          income,
+        }
+      );
+    });
   }
 
   updateState = (name, state) => {
@@ -113,17 +124,6 @@ export default class Savings extends Component {
     });
   }
 
-  componentDidMount() {
-    const user = this.props.user;
-    firebase.database().ref(`users/${user.uid}`).child('income').on('value', (snapshot) => {
-      const income = snapshot.val() || 0;
-      this.setState(
-        {
-          income,
-        }
-      );
-    });
-  }
 
   handleInputChange(input) {
     const { income } = this.state;
@@ -143,9 +143,6 @@ export default class Savings extends Component {
   }
 
   render() {
-    console.log('savings, ', this.state.savings);
-    console.log('income', this.state.income);
-    console.log('percent, ', this.state.percent);
     return (
       <View style={styles.container}>
         <Text style={mStyles.title}> Savings </Text>
@@ -182,7 +179,8 @@ export default class Savings extends Component {
           onPress={() => this.handleSubmit()}
         >
           <Text
-            style={styles.buttonText}>
+            style={styles.buttonText}
+          >
             Continue
           </Text>
         </TouchableHighlight>
@@ -190,3 +188,11 @@ export default class Savings extends Component {
     );
   }
 }
+
+Savings.propTypes = {
+  user: PropTypes.object.isRequired,
+  navigator: PropTypes.object.isRequired,
+  push: PropTypes.func,
+};
+
+export default Savings;

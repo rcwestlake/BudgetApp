@@ -80,21 +80,19 @@ class LogIn extends Component {
   }
 
   handleSignUp(email, password) {
-    signIn(email, password);
-    firebase.auth().onAuthStateChanged(user => this.setState({ user }, () => {
-      this.props.navigator.push({
-        title: 'Summary',
-        component: Summary,
-        passProps: { user },
-      });
-    }));
+    signIn(email, password).then(() => {
+      firebase.auth().onAuthStateChanged(user => this.setState({ user }, () => {
+        this.props.navigator.push({
+          title: 'Summary',
+          component: Summary,
+          passProps: { user },
+        });
+      }));
+    });
   }
 
   render() {
     const { email, password } = this.state;
-    console.log('log in email', email);
-    console.log('log in password', password);
-    console.log('log in user', this.state.user);
     return (
       <View style={styles.container}>
         <Text style={styles.title}>

@@ -106,7 +106,6 @@ class Summary extends Component {
 
 
   render() {
-    console.log('summary user ', this.props.user);
     const { fundsAvailable } = this.state;
     return (
       <View style={styles.container}>

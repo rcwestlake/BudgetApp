@@ -69,14 +69,14 @@ export default class Welcome extends Component {
     };
   }
 
-  goToLogIn = () => {
+  goToLogIn() {
     this.props.navigator.push({
       title: 'Log In',
       component: LogIn,
     });
   }
 
-  goToSignUp = () => {
+  goToSignUp() {
     this.props.navigator.push({
       title: 'Sign Up',
       component: SignUp,

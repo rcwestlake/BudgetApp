@@ -63,12 +63,12 @@ class Summary extends Component {
     const user = this.props.user;
     firebase.database().ref(`users/${user.uid}`).on('value', (snapshot) => {
       const data = snapshot.val() || 0;
-      // const fundsAvailable = calculateBudget(data);
+      const fundsAvailable = this.calculateBudget(data);
       this.setState(
         {
-          data,
-        }, this.calculateBudget
-      )
+          data, fundsAvailable,
+        }
+      );
     });
   }
 
@@ -76,18 +76,13 @@ class Summary extends Component {
     console.log('unmount');
   }
 
-  calculateBudget() {
-    const { data } = this.state;
+  calculateBudget(data) {
     const income = data.income;
     const recurring = sum(map(data.recurring, val => val));
     const expenses = sum(map(data.expenses, val => val.dollar));
     const savings = data.savings;
-
-    this.setState(
-      {
-        fundsAvailable: income - recurring - expenses - savings,
-      }
-    );
+    const fundsAvailable = income - recurring - expenses - savings;
+    return fundsAvailable;
   }
 
   goToExpenses = () => {

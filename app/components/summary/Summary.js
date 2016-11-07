@@ -81,10 +81,8 @@ class Summary extends Component {
     return moment().format('ddd, MMMM Do');
   }
 
-  daysLeftThisMonth() {
-    let daysLeft = this.today() - 10;
-    console.log(daysLeft);
-    return daysLeft;
+  daysLeftThisMonth = () => {
+    return moment().daysInMonth() - moment().date();
   }
 
   calculateBudget(data) {
@@ -94,6 +92,12 @@ class Summary extends Component {
     const savings = data.savings;
     const fundsAvailable = income - recurring - expenses - savings;
     return fundsAvailable;
+  }
+
+  dailyAllowance = () => {
+    const { fundsAvailable } = this.state;
+    let daily = Math.floor(fundsAvailable / this.daysLeftThisMonth());
+    console.log(daily);
   }
 
   goToExpenses = () => {
@@ -139,10 +143,12 @@ class Summary extends Component {
             $ {fundsAvailable}
           </Text>
           <Text>{this.today()}</Text>
-          <Text>Days left this month: {this.daysLeftThisMonth()}</Text>
-          <Text style={styles.text}>left this month</Text>
+          <Text>{this.daysLeftThisMonth()}</Text>
+          <Text style={styles.text}> days left this month</Text>
           <Separator />
-
+          <Text style={styles.text}>
+            {this.dailyAllowance()}
+          </Text>
           <TouchableHighlight
             style={styles.button}
             onPress={this.goToExpenses}

@@ -153,14 +153,17 @@ class ExpenseSummary extends Component {
     );
   }
 
-  addExpenseToDataBase = () => {
+  addExpenseToDataBase() {
     const { user } = this.props;
     const { title, dollar } = this.state;
     firebase.database().ref(`users/${user.uid}/expenses`).push(
       {
         title,
         dollar,
-      });
+      }, this.setState({
+        title: '',
+        dollar: '',
+      }));
   }
 
   renderRecurring() {
@@ -202,6 +205,7 @@ class ExpenseSummary extends Component {
           <TextInput
             style={styles.input}
             placeholder="Title"
+            value={this.state.title}
             onChangeText={input => this.handleTitleChange(input)}
           />
 
@@ -209,11 +213,12 @@ class ExpenseSummary extends Component {
             <TextInput
               style={styles.input}
               placeholder="$"
+              value={this.state.dollar}
               onChangeText={input => this.handleDollarChange(input)}
             />
             <TouchableHighlight
               style={styles.inputButton}
-              onPress={this.addExpenseToDataBase}
+              onPress={() => this.addExpenseToDataBase()}
             >
               <Text style={styles.buttonText}>Add</Text>
             </TouchableHighlight>

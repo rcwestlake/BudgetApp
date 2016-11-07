@@ -78,12 +78,13 @@ class Insurance extends Component {
     const { insurance } = this.state;
     firebase.database().ref(`users/${user.uid}/recurring`).update(
       {
-        insurance,
+        Insurance: insurance,
       });
 
     this.props.navigator.push({
       title: 'Recurring Expenses',
       component: ExpenseSetUp,
+      navigationBarHidden: 'false',
       passProps: { insurance, user },
     });
   }

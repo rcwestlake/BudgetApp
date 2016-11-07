@@ -100,7 +100,8 @@ class LogIn extends Component {
         </Text>
         <Separator />
         <Text style={styles.intro}>
-          Log in [comments]
+          We've missed you. Log in to add or edit any expenses
+          and see your funds available.
         </Text>
         <TextInput
           placeholder="Email"

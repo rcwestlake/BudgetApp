@@ -78,12 +78,13 @@ class Utilities extends Component {
     const { utilities } = this.state;
     firebase.database().ref(`users/${user.uid}/recurring`).update(
       {
-        utilities,
+        Utilities: utilities,
       });
 
     this.props.navigator.push({
       title: 'Recurring Expenses',
       component: ExpenseSetUp,
+      navigationBarHidden: 'false',
       passProps: { utilities, user },
     });
   }

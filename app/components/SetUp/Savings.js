@@ -114,6 +114,7 @@ class Savings extends Component {
     this.props.navigator.push({
       title: 'Summary',
       component: Summary,
+      navigationBarHidden: 'false',
       passProps: { user },
     });
   }

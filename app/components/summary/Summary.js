@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#19B5CB',
+    color: '#393E46',
     marginBottom: 15,
     textAlign: 'center',
   },
@@ -74,12 +74,13 @@ class Summary extends Component {
   calculateBudget() {
     const { data } = this.state;
     const income = data.income;
-    const expenses = sum(map(data.recurring, val => val));
+    const recurring = sum(map(data.recurring, val => val));
+    const expenses = sum(map(data.expenses, val => val.dollar));
     const savings = data.savings;
 
     this.setState(
       {
-        fundsAvailable: income - expenses - savings,
+        fundsAvailable: income - recurring - expenses - savings,
       }
     );
   }
@@ -89,6 +90,7 @@ class Summary extends Component {
     this.props.navigator.push({
       title: 'Edit Expenses',
       component: ExpenseSummary,
+      navigationBarHidden: 'false',
       passProps: { user },
     });
   }
@@ -98,6 +100,7 @@ class Summary extends Component {
     this.props.navigator.push({
       title: 'Edit Income',
       component: IncomeSummary,
+      navigationBarHidden: 'false',
       passProps: { user },
     });
   }
@@ -118,7 +121,7 @@ class Summary extends Component {
     const { fundsAvailable } = this.state;
     return (
       <View style={styles.container}>
-        <Text style={mStyles.title}>
+        <Text style={mStyles.colorTitle}>
           Summary
         </Text>
         <Separator />
@@ -126,6 +129,7 @@ class Summary extends Component {
         <Text style={styles.fundsAvailable}>
           $ {fundsAvailable}
         </Text>
+        <Text style={styles.text}>left this month</Text>
         <Separator />
 
         <TouchableHighlight

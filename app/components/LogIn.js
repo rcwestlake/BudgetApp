@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     borderLeftWidth: 0,
     borderTopWidth: 0,
     borderBottomWidth: 10,
-    borderColor: '#19B5CB',
+    borderColor: '#9CB65E',
     borderRadius: 8,
     height: 50,
     padding: 4,
@@ -121,7 +121,7 @@ class LogIn extends Component {
           underlayColor="#9CB65E"
           onPress={() => this.handleSignUp(email, password)}
         >
-          <Text style={styles.buttonText} > Sign Up </Text>
+          <Text style={styles.buttonText} > Sign in </Text>
         </TouchableHighlight>
       </View>
     );

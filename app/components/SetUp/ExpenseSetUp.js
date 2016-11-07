@@ -18,7 +18,6 @@ const styles = StyleSheet.create({
     marginTop: 65,
     flexDirection: 'column',
     justifyContent: 'center',
-    backgroundColor: '#48BBEC',
   },
   buttonText: {
     fontSize: 18,
@@ -28,7 +27,7 @@ const styles = StyleSheet.create({
   selectedButton: {
     height: 45,
     flexDirection: 'row',
-    backgroundColor: '#10DDC2',
+    backgroundColor: '#9CB65E',
     borderColor: 'white',
     borderWidth: 1,
     borderRadius: 8,
@@ -40,7 +39,7 @@ const styles = StyleSheet.create({
   button: {
     height: 45,
     flexDirection: 'row',
-    backgroundColor: '#19B5CB',
+    backgroundColor: '#9CB65E',
     borderColor: 'white',
     borderWidth: 1,
     borderRadius: 8,
@@ -129,7 +128,7 @@ class ExpenseSetUp extends Component {
 
         <TouchableHighlight
           style={this.state.housing ? styles.selectedButton : styles.button}
-          underlayColor="#19B5CB"
+          underlayColor="#9CB65E"
           onPress={this.handleHousingSubmit}
         >
           <Text style={styles.buttonText}> Rent/Mortgage </Text>
@@ -137,7 +136,7 @@ class ExpenseSetUp extends Component {
 
         <TouchableHighlight
           style={this.state.auto ? styles.selectedButton : styles.button}
-          underlayColor="#19B5CB"
+          underlayColor="#9CB65E"
           onPress={this.handleAutoSubmit}
         >
           <Text style={styles.buttonText}> Auto </Text>
@@ -145,7 +144,7 @@ class ExpenseSetUp extends Component {
 
         <TouchableHighlight
           style={this.state.insurance ? styles.selectedButton : styles.button}
-          underlayColor="#19B5CB"
+          underlayColor="#9CB65E"
           onPress={this.handleInsuranceSubmit}
         >
           <Text style={styles.buttonText}> Insurance </Text>
@@ -153,7 +152,7 @@ class ExpenseSetUp extends Component {
 
         <TouchableHighlight
           style={this.state.utilities ? styles.selectedButton : styles.button}
-          underlayColor="#19B5CB"
+          underlayColor="#9CB65E"
           onPress={this.handleUtilitiesSubmit}
         >
           <Text style={styles.buttonText}> Utilities </Text>
@@ -161,7 +160,7 @@ class ExpenseSetUp extends Component {
 
         <TouchableHighlight
           style={styles.button}
-          underlayColor="#19B5CB"
+          underlayColor="#9CB65E"
           onPress={this.handleContinue}
         >
           <Text style={styles.buttonText} >Continue</Text>

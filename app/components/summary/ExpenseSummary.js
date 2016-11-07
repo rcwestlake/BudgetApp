@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   categoryText: {
-    color: '#00AD7C',
+    color: '#9CB65E',
     fontSize: 25,
     fontWeight: 'bold',
     marginLeft: 15,
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#19B5CB',
+    color: '#9CB65E',
     marginBottom: 15,
     textAlign: 'center',
   },
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     flex: 2,
     borderWidth: 1,
     borderBottomWidth: 10,
-    borderColor: '#19B5CB',
+    borderColor: '#9CB65E',
     borderRadius: 8,
     height: 50,
     padding: 4,

@@ -17,7 +17,6 @@ const styles = StyleSheet.create({
     marginTop: 65,
     flexDirection: 'column',
     justifyContent: 'center',
-    backgroundColor: '#48BBEC',
   },
   buttonText: {
     fontSize: 18,
@@ -27,7 +26,7 @@ const styles = StyleSheet.create({
   selectedButton: {
     height: 45,
     flexDirection: 'row',
-    backgroundColor: '#10DDC2',
+    backgroundColor: '#9CB65E',
     borderColor: 'white',
     borderWidth: 1,
     borderRadius: 8,
@@ -39,7 +38,7 @@ const styles = StyleSheet.create({
   button: {
     height: 45,
     flexDirection: 'row',
-    backgroundColor: '#19B5CB',
+    backgroundColor: '#9CB65E',
     borderColor: 'white',
     borderWidth: 1,
     borderRadius: 8,

@@ -9,7 +9,7 @@ const mStyles = StyleSheet.create({
     marginTop: 10,
   },
   colorTitle: {
-    color: '#00AD7C',
+    color: '#9CB65E',
     fontSize: 45,
     fontWeight: 'bold',
     marginTop: 10,
@@ -23,8 +23,8 @@ const mStyles = StyleSheet.create({
   button: {
     height: 45,
     flexDirection: 'row',
-    backgroundColor: '#19B5CB',
-    borderColor: '#19B5CB',
+    backgroundColor: '#9CB65E',
+    borderColor: '#9CB65E',
     borderWidth: 0.2,
     borderRadius: 8,
     marginTop: 10,
@@ -42,8 +42,8 @@ const mStyles = StyleSheet.create({
   selectedButton: {
     height: 30,
     flexDirection: 'row',
-    backgroundColor: '#10DDC2',
-    borderColor: '#10DDC2',
+    backgroundColor: '#9CB65E',
+    borderColor: '#9CB65E',
     borderWidth: 0.2,
     borderRadius: 8,
     marginTop: 10,

@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   categoryText: {
-    color: '#00AD7C',
+    color: '#9CB65E',
     fontSize: 20,
     fontWeight: 'bold',
     marginLeft: 10,

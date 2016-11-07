@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 45,
     marginLeft: 15,
-    color: '#00AD7C',
+    color: '#6A8035',
   },
   intro: {
     marginTop: 30,
@@ -41,8 +41,8 @@ const styles = StyleSheet.create({
   button: {
     height: 45,
     flexDirection: 'row',
-    backgroundColor: '#19B5CB',
-    borderColor: '#19B5CB',
+    backgroundColor: '#B2C777',
+    borderColor: '#B2C777',
     borderWidth: 0.2,
     borderRadius: 8,
     marginTop: 10,
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     borderLeftWidth: 0,
     borderTopWidth: 0,
     borderBottomWidth: 10,
-    borderColor: '#19B5CB',
+    borderColor: '#B2C777',
     borderRadius: 8,
     height: 50,
     padding: 4,
@@ -85,7 +85,6 @@ class SignUp extends Component {
         this.props.navigator.push({
           title: 'Income',
           component: IncomeSetUp,
-          navigationBarHidden: 'false',
           passProps: { user },
         });
       }));
@@ -119,7 +118,7 @@ class SignUp extends Component {
         />
         <TouchableHighlight
           style={this.state.email && this.state.password ? styles.button : styles.disabledButton}
-          underlayColor="#10DDC2"
+          underlayColor="#9CB65E"
           onPress={() => this.handleSignUp(email, password)}
         >
           <Text style={styles.buttonText} > Sign Up </Text>

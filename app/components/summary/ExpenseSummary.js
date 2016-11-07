@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import firebase from 'firebase';
-import { map, forEach } from 'lodash';
+import { map } from 'lodash';
 import {
   StyleSheet,
   Text,
@@ -24,6 +24,14 @@ const styles = StyleSheet.create({
     fontSize: 45,
     textAlign: 'center',
   },
+  categoryText: {
+    color: '#00AD7C',
+    fontSize: 25,
+    fontWeight: 'bold',
+    marginLeft: 15,
+    marginBottom: 10,
+    marginTop: 15,
+  },
   text: {
     fontSize: 16,
     fontWeight: 'bold',
@@ -32,10 +40,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   buttonText: {
-    fontSize: 18,
+    fontSize: 23,
     fontWeight: 'bold',
     color: '#393E46',
     alignSelf: 'center',
+    textAlign: 'center',
   },
   button: {
     height: 40,
@@ -50,6 +59,14 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     flexDirection: 'row',
+  },
+  expenses: {
+    marginLeft: 60,
+  },
+  expenseText: {
+    fontSize: 13,
+    marginBottom: 10,
+    textAlign: 'left',
   },
   input: {
     flex: 2,
@@ -74,6 +91,7 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
     borderRadius: 8,
     marginTop: 10,
+    marginRight: 15,
   },
 });
 
@@ -111,7 +129,7 @@ class ExpenseSummary extends Component {
   }
 
 
-  handleTitleChange(name, input) {
+  handleTitleChange(input) {
     this.setState(
       {
         title: input,
@@ -119,41 +137,13 @@ class ExpenseSummary extends Component {
     );
   }
 
-  handleDollarChange(name, input) {
+  handleDollarChange(input) {
     const number = parseInt(input, 10);
     this.setState(
       {
         dollar: number,
       }
     );
-  }
-
-  renderRecurring() {
-    const { recurringData } = this.state;
-    const expenses = map(recurringData, (item) => {
-      return (
-        <TouchableHighlight key={item.prop} style={styles.button}>
-        <Text style={styles.buttonText}>
-          {item.prop} ${item.value}
-        </Text>
-        </TouchableHighlight>
-      );
-    });
-    return expenses;
-  }
-
-  renderExpenses() {
-    const { expenseData } = this.state;
-    const expenses = map(expenseData, (item) => {
-      return (
-        <TouchableHighlight key={item.prop} style={styles.button}>
-        <Text style={styles.buttonText}>
-          {item.value.title} ${item.value.dollar}
-        </Text>
-        </TouchableHighlight>
-      );
-    });
-    return expenses;
   }
 
   addExpenseToDataBase = () => {
@@ -166,46 +156,69 @@ class ExpenseSummary extends Component {
       });
   }
 
+  renderRecurring() {
+    const { recurringData } = this.state;
+    const expenses = map(recurringData, (item) => {
+      return (
+        <TouchableHighlight key={item.prop} style={styles.button}>
+          <Text style={styles.buttonText}>
+            {item.prop} ${item.value}
+          </Text>
+        </TouchableHighlight>
+      );
+    });
+    return expenses;
+  }
+
+  renderExpenses() {
+    const { expenseData } = this.state;
+    const expenses = map(expenseData, (item) => {
+      return (
+        <View key={item.prop} style={styles.expenses}>
+          <Text style={styles.expenseText}>
+            {item.value.title} - ${item.value.dollar}
+          </Text>
+          <Separator />
+        </View>
+      );
+    });
+    return expenses;
+  }
+
   render() {
-    console.log(this.state.expenseData);
     return (
       <ScrollView>
         <View style={styles.container}>
-          <Text
-            style={mStyles.title}
-          >
-            Life Expenses
-          </Text>
-          <Text>Add/Edit Expenses</Text>
+          <Text style={mStyles.title}>Life Expenses</Text>
+          <Separator />
+          <Text style={styles.categoryText}>Add/Edit Expenses</Text>
           <TextInput
             style={styles.input}
             placeholder="Title"
-            onChangeText={input => this.handleTitleChange('title', input)}
+            onChangeText={input => this.handleTitleChange(input)}
           />
+
           <View style={styles.inputContainer}>
             <TextInput
               style={styles.input}
               placeholder="$"
-              onChangeText={input => this.handleDollarChange('dollar', input)}
+              onChangeText={input => this.handleDollarChange(input)}
             />
             <TouchableHighlight
               style={styles.inputButton}
               onPress={this.addExpenseToDataBase}
             >
-              <Text>Add</Text>
+              <Text style={styles.buttonText}>Add</Text>
             </TouchableHighlight>
           </View>
           <Separator />
-          <Text>
-            Recurring
-          </Text>
+
+          <Text style={styles.categoryText}> Recurring </Text>
           {this.renderRecurring()}
           <Separator />
-          <Text>
-            Other Expenses
-          </Text>
+
+          <Text style={styles.categoryText}> Other Expenses </Text>
           {this.renderExpenses()}
-          <Separator />
         </View>
       </ScrollView>
     );

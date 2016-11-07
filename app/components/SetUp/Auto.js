@@ -79,12 +79,13 @@ class Auto extends Component {
 
     firebase.database().ref(`users/${user.uid}/recurring`).update(
       {
-        auto,
+        Auto: auto,
       });
 
     this.props.navigator.push({
       title: 'Recurring Expenses',
       component: ExpenseSetUp,
+      navigationBarHidden: 'false',
       passProps: { auto, user },
     });
   }

@@ -85,6 +85,7 @@ class SignUp extends Component {
         this.props.navigator.push({
           title: 'Income',
           component: IncomeSetUp,
+          navigationBarHidden: 'false',
           passProps: { user },
         });
       }));

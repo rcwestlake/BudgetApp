@@ -78,12 +78,13 @@ class Housing extends Component {
     const { housing } = this.state;
     firebase.database().ref(`users/${user.uid}/recurring`).update(
       {
-        housing,
+        Housing: housing,
       });
 
     this.props.navigator.push({
       title: 'Recurring Expenses',
       component: ExpenseSetUp,
+      navigationBarHidden: 'false',
       passProps: { housing, user },
     });
   }

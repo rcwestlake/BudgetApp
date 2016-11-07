@@ -77,6 +77,7 @@ class ExpenseSetUp extends Component {
     this.props.navigator.push({
       title: 'Rent/Mortgage',
       component: Housing,
+      navigationBarHidden: 'false',
       passProps: { user },
     });
   }
@@ -86,6 +87,7 @@ class ExpenseSetUp extends Component {
     this.props.navigator.push({
       title: 'Auto',
       component: Auto,
+      navigationBarHidden: 'false',
       passProps: { user },
     });
   }
@@ -95,6 +97,7 @@ class ExpenseSetUp extends Component {
     this.props.navigator.push({
       title: 'Insurance',
       component: Insurance,
+      navigationBarHidden: 'false',
       passProps: { user },
     });
   }
@@ -104,6 +107,7 @@ class ExpenseSetUp extends Component {
     this.props.navigator.push({
       title: 'Utilities',
       component: Utilities,
+      navigationBarHidden: 'false',
       passProps: { user },
     });
   }
@@ -113,6 +117,7 @@ class ExpenseSetUp extends Component {
     this.props.navigator.push({
       title: 'Savings',
       component: Savings,
+      navigationBarHidden: 'false',
       passProps: { user },
     });
   }

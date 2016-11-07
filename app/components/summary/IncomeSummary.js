@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import firebase from 'firebase';
-import { map } from 'lodash';
 import {
   StyleSheet,
   Text,
@@ -9,7 +8,6 @@ import {
   ScrollView,
   TouchableHighlight,
   } from 'react-native';
-import Summary from './Summary';
 import mStyles from '../../styles/main';
 import Separator from '../../helpers/Separator';
 
@@ -70,14 +68,6 @@ const styles = StyleSheet.create({
   inputContainer: {
     flexDirection: 'row',
   },
-  expenses: {
-    marginLeft: 60,
-  },
-  expenseText: {
-    fontSize: 13,
-    marginBottom: 10,
-    textAlign: 'left',
-  },
   input: {
     flex: 2,
     borderWidth: 1,
@@ -122,6 +112,7 @@ class IncomeSummary extends Component {
     firebase.database().ref(`users/${user.uid}`).on('value', (snapshot) => {
       const data = snapshot.val() || 0;
       const income = data.income;
+      console.log('income', income);
       this.setState(
         {
           income,
@@ -129,12 +120,6 @@ class IncomeSummary extends Component {
       );
     });
   }
-
-  // componentWillUnmount() {
-  //   const user = this.props.user;
-  //   firebase.database().ref(`users/${user.uid}`).off();
-  // }
-
 
   handleIncomeChange(input) {
     const number = parseInt(input, 10);
@@ -156,9 +141,7 @@ class IncomeSummary extends Component {
   }
 
   render() {
-    const { income, extraIncome } = this.state;
-    console.log('income', income);
-    console.log('extra income', extraIncome);
+    const { income } = this.state;
     return (
       <ScrollView>
         <View style={styles.container}>
@@ -189,8 +172,6 @@ class IncomeSummary extends Component {
 
 IncomeSummary.propTypes = {
   user: PropTypes.object.isRequired,
-  navigator: PropTypes.object,
-  push: PropTypes.func,
 };
 
 export default IncomeSummary;

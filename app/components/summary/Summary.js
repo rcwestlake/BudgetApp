@@ -76,10 +76,6 @@ class Summary extends Component {
     });
   }
 
-  componentWillUnmount() {
-    console.log('unmount in summary');
-  }
-
   calculateBudget(data) {
     const income = data.income;
     const recurring = sum(map(data.recurring, val => val));

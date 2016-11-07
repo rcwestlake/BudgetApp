@@ -76,10 +76,6 @@ class Summary extends Component {
     });
   }
 
-  componentWillUnmount() {
-    console.log('unmount in summary');
-  }
-
   calculateBudget(data) {
     const income = data.income;
     const recurring = sum(map(data.recurring, val => val));
@@ -154,7 +150,7 @@ class Summary extends Component {
             style={styles.button}
             onPress={this.goToProfile}
           >
-            <Text>
+            <Text style={styles.buttonText}>
               Profile
             </Text>
           </TouchableHighlight>

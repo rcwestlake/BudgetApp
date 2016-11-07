@@ -114,20 +114,10 @@ class ExpenseSummary extends Component {
     console.log('did mount expense summary');
     firebase.database().ref(`users/${user.uid}`).on('value', (snapshot) => {
       const data = snapshot.val() || 0;
-      this.setState(
-        {
-          data,
-        }
-      );
-
-      const recurringMap = map(data.recurring, (value, prop) => ({ prop, value }));
-      const expenseMap = map(data.expenses, (value, prop) => ({ prop, value }));
-      this.setState({
-        recurringData: recurringMap,
-        expenseData: expenseMap,
-      });
+      this.setExpenses(data);
     });
   }
+
 
   componentWillUnmount() {
     const user = this.props.user;
@@ -135,6 +125,14 @@ class ExpenseSummary extends Component {
     console.log('umount in expense summary');
   }
 
+  setExpenses(data) {
+    const recurringMap = map(data.recurring, (value, prop) => ({ prop, value }));
+    const expenseMap = map(data.expenses, (value, prop) => ({ prop, value }));
+    this.setState({
+      recurringData: recurringMap,
+      expenseData: expenseMap,
+    });
+  }
 
   handleTitleChange(input) {
     this.setState(
@@ -160,10 +158,12 @@ class ExpenseSummary extends Component {
       {
         title,
         dollar,
-      }, this.setState({
-        title: '',
-        dollar: '',
-      }));
+      });
+
+    this.setState({
+      title: '',
+      dollar: '',
+    });
   }
 
   renderRecurring() {

@@ -67,13 +67,7 @@ class Summary extends Component {
     const user = this.props.user;
     firebase.database().ref(`users/${user.uid}`).on('value', (snapshot) => {
       const data = snapshot.val() || 0;
-      const fundsAvailable = this.calculateBudget(data);
-      console.log('did mount summary');
-      this.setState(
-        {
-          data, fundsAvailable,
-        }
-      );
+      this.calculateBudget(data);
     });
   }
 
@@ -91,13 +85,16 @@ class Summary extends Component {
     const expenses = sum(map(data.expenses, val => val.dollar));
     const savings = data.savings;
     const fundsAvailable = income - recurring - expenses - savings;
-    return fundsAvailable;
+    this.setState(
+      {
+        fundsAvailable,
+      }
+    );
   }
 
   dailyAllowance = () => {
     const { fundsAvailable } = this.state;
     let daily = Math.floor(fundsAvailable / this.daysLeftThisMonth());
-    console.log(daily);
   }
 
   goToExpenses = () => {

@@ -133,7 +133,6 @@ class IncomeSummary extends Component {
     const { user } = this.props;
     const { income, extraIncome } = this.state;
     const newIncome = income + extraIncome;
-    debugger;
     firebase.database().ref(`users/${user.uid}`).update(
       {
         income: newIncome,
@@ -143,8 +142,7 @@ class IncomeSummary extends Component {
   }
 
   render() {
-    const { income, extraIncome } = this.state;
-    console.log('new income', extraIncome);
+    const { income } = this.state;
     return (
       <ScrollView>
         <View style={styles.container}>

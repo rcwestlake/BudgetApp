@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     height: 40,
     flexDirection: 'row',
     flex: 1,
-    backgroundColor: '#48BBEC',
+    backgroundColor: '#B2C777',
     borderColor: '#ffffff',
     borderWidth: 0.5,
     borderRadius: 8,
@@ -133,6 +133,7 @@ class Summary extends Component {
           <TouchableHighlight
             style={styles.button}
             onPress={this.goToExpenses}
+            underlayColor="#9CB65E"
           >
             <Text style={styles.buttonText}>
               Edit Expenses
@@ -141,6 +142,7 @@ class Summary extends Component {
           <TouchableHighlight
             style={styles.button}
             onPress={this.goToIncome}
+            underlayColor="#9CB65E"
           >
             <Text style={styles.buttonText}>
               Edit Income
@@ -149,6 +151,7 @@ class Summary extends Component {
           <TouchableHighlight
             style={styles.button}
             onPress={this.goToProfile}
+            underlayColor="#9CB65E"
           >
             <Text style={styles.buttonText}>
               Profile

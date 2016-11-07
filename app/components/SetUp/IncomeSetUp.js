@@ -4,6 +4,7 @@ import {
   Text,
   View,
   TextInput,
+  ScrollView,
   TouchableHighlight,
   } from 'react-native';
 import mStyles from '../../styles/main';
@@ -15,6 +16,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 30,
+    marginTop: 30,
     flexDirection: 'column',
     justifyContent: 'center',
   },
@@ -132,76 +134,78 @@ class IncomeSetUp extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={mStyles.title}> Income </Text>
-        <Separator />
+      <ScrollView>
+        <View style={styles.container}>
+          <Text style={mStyles.title}> Income </Text>
+          <Separator />
 
-        <Text style={mStyles.intro}>
-          What is your income? Include salary, hourly wage,
-          investment income, anything that leads to more money in your pocket.
-        </Text>
-
-        <TextInput
-          style={styles.searchInput}
-          onChangeText={text => this.setState({ income: text })}
-          placeholder="Enter income"
-        />
-
-        <Text style={styles.text}> How often? </Text>
-
-        <TouchableHighlight
-          style={this.state.weekly ? styles.selectedButton : styles.button}
-          onPress={() => this.updateState('weekly', this.state.weekly)}
-        >
-          <Text style={this.state.weekly ? styles.selectedButtonText : styles.buttonText}>
-            Weekly
+          <Text style={mStyles.intro}>
+            What is your income? Include salary, hourly wage,
+            investment income, anything that leads to more money in your pocket.
           </Text>
-        </TouchableHighlight>
 
-        <TouchableHighlight
-          style={this.state.biweekly ? styles.selectedButton : styles.button}
-          onPress={() => this.updateState('biweekly', this.state.biweekly)}
-        >
-          <Text style={this.state.biweekly ? styles.selectedButtonText : styles.buttonText}>
-            Biweekly
-          </Text>
-        </TouchableHighlight>
+          <TextInput
+            style={styles.searchInput}
+            onChangeText={text => this.setState({ income: text })}
+            placeholder="Enter income"
+          />
 
-        <TouchableHighlight
-          style={this.state.monthly ? styles.selectedButton : styles.button}
-          onPress={() => this.updateState('monthly', this.state.monthly)}
-        >
-          <Text style={this.state.monthly ? styles.selectedButtonText : styles.buttonText}>
-            Monthly
-          </Text>
-        </TouchableHighlight>
+          <Text style={styles.text}> How often? </Text>
 
-        <TouchableHighlight
-          style={this.state.annually ? styles.selectedButton : styles.button}
-          onPress={() => this.updateState('annually', this.state.annually)}
-        >
-          <Text style={this.state.annually ? styles.selectedButtonText : styles.buttonText}>
-            Annually
-          </Text>
-        </TouchableHighlight>
+          <TouchableHighlight
+            style={this.state.weekly ? styles.selectedButton : styles.button}
+            onPress={() => this.updateState('weekly', this.state.weekly)}
+          >
+            <Text style={this.state.weekly ? styles.selectedButtonText : styles.buttonText}>
+              Weekly
+            </Text>
+          </TouchableHighlight>
 
-        <TouchableHighlight
-          style={this.state.none ? styles.selectedButton : styles.button}
-          onPress={() => this.updateState('none', this.state.none)}
-        >
-          <Text style={this.state.none ? styles.selectedButtonText : styles.buttonText}>
-            None
-          </Text>
-        </TouchableHighlight>
+          <TouchableHighlight
+            style={this.state.biweekly ? styles.selectedButton : styles.button}
+            onPress={() => this.updateState('biweekly', this.state.biweekly)}
+          >
+            <Text style={this.state.biweekly ? styles.selectedButtonText : styles.buttonText}>
+              Biweekly
+            </Text>
+          </TouchableHighlight>
 
-        <TouchableHighlight
-          style={styles.button}
-          underlayColor="#10DDC2"
-          onPress={() => this.handleSubmit()}
-        >
-          <Text style={styles.buttonText}> Continue </Text>
-        </TouchableHighlight>
-      </View>
+          <TouchableHighlight
+            style={this.state.monthly ? styles.selectedButton : styles.button}
+            onPress={() => this.updateState('monthly', this.state.monthly)}
+          >
+            <Text style={this.state.monthly ? styles.selectedButtonText : styles.buttonText}>
+              Monthly
+            </Text>
+          </TouchableHighlight>
+
+          <TouchableHighlight
+            style={this.state.annually ? styles.selectedButton : styles.button}
+            onPress={() => this.updateState('annually', this.state.annually)}
+          >
+            <Text style={this.state.annually ? styles.selectedButtonText : styles.buttonText}>
+              Annually
+            </Text>
+          </TouchableHighlight>
+
+          <TouchableHighlight
+            style={this.state.none ? styles.selectedButton : styles.button}
+            onPress={() => this.updateState('none', this.state.none)}
+          >
+            <Text style={this.state.none ? styles.selectedButtonText : styles.buttonText}>
+              None
+            </Text>
+          </TouchableHighlight>
+
+          <TouchableHighlight
+            style={styles.button}
+            underlayColor="#10DDC2"
+            onPress={() => this.handleSubmit()}
+          >
+            <Text style={styles.buttonText}> Continue </Text>
+          </TouchableHighlight>
+        </View>
+      </ScrollView>
     );
   }
 }

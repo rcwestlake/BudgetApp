@@ -15,7 +15,7 @@ const mStyles = StyleSheet.create({
     marginTop: 10,
   },
   intro: {
-    marginTop: 50,
+    marginTop: 40,
     marginBottom: 50,
     marginLeft: 30,
     marginRight: 30,

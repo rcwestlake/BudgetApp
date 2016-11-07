@@ -4,6 +4,7 @@ import {
   TouchableHighlight,
   Text,
   View,
+  ScrollView,
 } from 'react-native';
 import { map, sum } from 'lodash';
 import firebase from 'firebase';
@@ -17,6 +18,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 30,
+    marginTop: 30,
     flexDirection: 'column',
     justifyContent: 'center',
   },
@@ -119,43 +121,45 @@ class Summary extends Component {
   render() {
     const { fundsAvailable } = this.state;
     return (
-      <View style={styles.container}>
-        <Text style={mStyles.colorTitle}>
-          Summary
-        </Text>
-        <Separator />
+      <ScrollView>
+        <View style={styles.container}>
+          <Text style={mStyles.colorTitle}>
+            Summary
+          </Text>
+          <Separator />
 
-        <Text style={styles.fundsAvailable}>
-          $ {fundsAvailable}
-        </Text>
-        <Text style={styles.text}>left this month</Text>
-        <Separator />
+          <Text style={styles.fundsAvailable}>
+            $ {fundsAvailable}
+          </Text>
+          <Text style={styles.text}>left this month</Text>
+          <Separator />
 
-        <TouchableHighlight
-          style={styles.button}
-          onPress={this.goToExpenses}
-        >
-          <Text style={styles.buttonText}>
-            Edit Expenses
-          </Text>
-        </TouchableHighlight>
-        <TouchableHighlight
-          style={styles.button}
-          onPress={this.goToIncome}
-        >
-          <Text style={styles.buttonText}>
-            Edit Income
-          </Text>
-        </TouchableHighlight>
-        <TouchableHighlight
-          style={styles.button}
-          onPress={this.goToProfile}
-        >
-          <Text>
-            Profile
-          </Text>
-        </TouchableHighlight>
-      </View>
+          <TouchableHighlight
+            style={styles.button}
+            onPress={this.goToExpenses}
+          >
+            <Text style={styles.buttonText}>
+              Edit Expenses
+            </Text>
+          </TouchableHighlight>
+          <TouchableHighlight
+            style={styles.button}
+            onPress={this.goToIncome}
+          >
+            <Text style={styles.buttonText}>
+              Edit Income
+            </Text>
+          </TouchableHighlight>
+          <TouchableHighlight
+            style={styles.button}
+            onPress={this.goToProfile}
+          >
+            <Text>
+              Profile
+            </Text>
+          </TouchableHighlight>
+        </View>
+      </ScrollView>
     );
   }
 }

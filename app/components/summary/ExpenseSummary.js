@@ -116,27 +116,24 @@ class ExpenseSummary extends Component {
     console.log('did mount expense summary');
     firebase.database().ref(`users/${user.uid}`).on('value', (snapshot) => {
       const data = snapshot.val() || 0;
-      this.setState(
-        {
-          data,
-        }
-      );
-
-      const recurringMap = map(data.recurring, (value, prop) => ({ prop, value }));
-      const expenseMap = map(data.expenses, (value, prop) => ({ prop, value }));
-      this.setState({
-        recurringData: recurringMap,
-        expenseData: expenseMap,
-      });
+      this.setExpenses(data);
     });
   }
+
 
   componentWillUnmount() {
     const user = this.props.user;
     firebase.database().ref(`users/${user.uid}/expenses`).off();
-    console.log('umount in expense summary');
   }
 
+  setExpenses(data) {
+    const recurringMap = map(data.recurring, (value, prop) => ({ prop, value }));
+    const expenseMap = map(data.expenses, (value, prop) => ({ prop, value }));
+    this.setState({
+      recurringData: recurringMap,
+      expenseData: expenseMap,
+    });
+  }
 
   handleTitleChange(input) {
     this.setState(
@@ -155,7 +152,7 @@ class ExpenseSummary extends Component {
     );
   }
 
-  addExpenseToDataBase = () => {
+  addExpenseToDataBase() {
     const { user } = this.props;
     const { title, dollar } = this.state;
     firebase.database().ref(`users/${user.uid}/expenses`).push(
@@ -163,6 +160,11 @@ class ExpenseSummary extends Component {
         title,
         dollar,
       });
+
+    this.setState({
+      title: '',
+      dollar: '',
+    });
   }
 
   renderRecurring() {
@@ -204,6 +206,7 @@ class ExpenseSummary extends Component {
           <TextInput
             style={styles.input}
             placeholder="Title"
+            value={this.state.title}
             onChangeText={input => this.handleTitleChange(input)}
           />
 
@@ -211,12 +214,13 @@ class ExpenseSummary extends Component {
             <TextInput
               style={styles.input}
               placeholder="$"
+              value={this.state.dollar}
               onChangeText={input => this.handleDollarChange(input)}
             />
             <TouchableHighlight
               style={styles.inputButton}
-              onPress={this.addExpenseToDataBase}
               underlayColor="#9CB65E"
+              onPress={() => this.addExpenseToDataBase()}
             >
               <Text style={styles.buttonText}>Add</Text>
             </TouchableHighlight>

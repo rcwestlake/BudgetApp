@@ -6,7 +6,6 @@ import {
   View,
 } from 'react-native';
 import firebase from 'firebase';
-import Welcome from '../Welcome';
 import Separator from '../../helpers/Separator';
 import mStyles from '../../styles/main';
 
@@ -58,12 +57,7 @@ const styles = StyleSheet.create({
 class Profile extends Component {
   signOut() {
     firebase.auth().signOut().then(() => {
-      this.props.navigator.push({
-        title: 'Welcome',
-        component: Welcome,
-      });
-    }, (error) => {
-      console.log('Error with sign out process', error);
+      this.props.navigator.popToTop(0);
     });
   }
 
@@ -102,7 +96,6 @@ class Profile extends Component {
 
 Profile.propTypes = {
   navigator: PropTypes.object.isRequired,
-  push: PropTypes.func,
 };
 
 export default Profile;

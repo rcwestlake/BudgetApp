@@ -11,6 +11,7 @@ import mStyles from '../../styles/main';
 import Separator from '../../helpers/Separator';
 import ExpenseSummary from './ExpenseSummary';
 import Profile from './Profile';
+import IncomeSummary from './IncomeSummary';
 
 const styles = StyleSheet.create({
   container: {
@@ -140,6 +141,7 @@ class Summary extends Component {
         </TouchableHighlight>
         <TouchableHighlight
           style={styles.button}
+          onPress={this.goToIncome}
         >
           <Text style={styles.buttonText}>
             Edit Income

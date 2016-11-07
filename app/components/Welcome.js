@@ -8,6 +8,8 @@ import {
 } from 'react-native';
 import LogIn from './LogIn';
 import SignUp from './SignUp';
+import randomQuote from './Quotes';
+
 
 const styles = StyleSheet.create({
   container: {
@@ -95,9 +97,7 @@ export default class Welcome extends Component {
               The monthly budget you’ll use and like
             </Text>
             <Text style={styles.quote}>
-              The Best Way to teach your kids about taxes is by eating 30%
-              of their ice cream
-              - Bill Murray
+              {randomQuote()}
             </Text>
           </View>
         </ScrollView>

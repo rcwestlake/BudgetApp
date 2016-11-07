@@ -4,18 +4,21 @@ import {
   TouchableHighlight,
   Text,
   View,
+  ScrollView,
 } from 'react-native';
 import { map, sum } from 'lodash';
 import firebase from 'firebase';
 import mStyles from '../../styles/main';
 import Separator from '../../helpers/Separator';
 import ExpenseSummary from './ExpenseSummary';
-import Welcome from '../Welcome';
+import Profile from './Profile';
+import IncomeSummary from './IncomeSummary';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 30,
+    marginTop: 30,
     flexDirection: 'column',
     justifyContent: 'center',
   },
@@ -33,14 +36,15 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#393E46',
+    color: '#ffffff',
     alignSelf: 'center',
   },
   button: {
     height: 40,
     flexDirection: 'row',
-    backgroundColor: '#ffffff',
-    borderColor: '#393E46',
+    flex: 1,
+    backgroundColor: '#48BBEC',
+    borderColor: '#ffffff',
     borderWidth: 0.5,
     borderRadius: 8,
     marginTop: 10,
@@ -62,27 +66,27 @@ class Summary extends Component {
     const user = this.props.user;
     firebase.database().ref(`users/${user.uid}`).on('value', (snapshot) => {
       const data = snapshot.val() || 0;
+      const fundsAvailable = this.calculateBudget(data);
+      console.log('did mount summary');
       this.setState(
         {
-          data,
+          data, fundsAvailable,
         }
       );
-      this.calculateBudget();
     });
   }
 
-  calculateBudget() {
-    const { data } = this.state;
+  componentWillUnmount() {
+    console.log('unmount in summary');
+  }
+
+  calculateBudget(data) {
     const income = data.income;
     const recurring = sum(map(data.recurring, val => val));
     const expenses = sum(map(data.expenses, val => val.dollar));
     const savings = data.savings;
-
-    this.setState(
-      {
-        fundsAvailable: income - recurring - expenses - savings,
-      }
-    );
+    const fundsAvailable = income - recurring - expenses - savings;
+    return fundsAvailable;
   }
 
   goToExpenses = () => {
@@ -105,14 +109,11 @@ class Summary extends Component {
     });
   }
 
-  signOut() {
-    firebase.auth().signOut().then(() => {
-      this.props.navigator.push({
-        title: 'Welcome',
-        component: Welcome,
-      });
-    }, (error) => {
-      console.log('Error with sign out process', error);
+  goToProfile = () => {
+    this.props.navigator.push({
+      title: 'Profile',
+      component: Profile,
+      navigationBarHidden: 'false',
     });
   }
 
@@ -120,42 +121,45 @@ class Summary extends Component {
   render() {
     const { fundsAvailable } = this.state;
     return (
-      <View style={styles.container}>
-        <Text style={mStyles.colorTitle}>
-          Summary
-        </Text>
-        <Separator />
+      <ScrollView>
+        <View style={styles.container}>
+          <Text style={mStyles.colorTitle}>
+            Summary
+          </Text>
+          <Separator />
 
-        <Text style={styles.fundsAvailable}>
-          $ {fundsAvailable}
-        </Text>
-        <Text style={styles.text}>left this month</Text>
-        <Separator />
+          <Text style={styles.fundsAvailable}>
+            $ {fundsAvailable}
+          </Text>
+          <Text style={styles.text}>left this month</Text>
+          <Separator />
 
-        <TouchableHighlight
-          style={styles.button}
-          onPress={this.goToExpenses}
-        >
-          <Text style={styles.buttonText}>
-            Edit Expenses
-          </Text>
-        </TouchableHighlight>
-        <TouchableHighlight
-          style={styles.button}
-        >
-          <Text style={styles.buttonText}>
-            Edit Income
-          </Text>
-        </TouchableHighlight>
-        <TouchableHighlight
-          style={styles.button}
-          onPress={() => this.signOut()}
-        >
-          <Text>
-            Sign Out
-          </Text>
-        </TouchableHighlight>
-      </View>
+          <TouchableHighlight
+            style={styles.button}
+            onPress={this.goToExpenses}
+          >
+            <Text style={styles.buttonText}>
+              Edit Expenses
+            </Text>
+          </TouchableHighlight>
+          <TouchableHighlight
+            style={styles.button}
+            onPress={this.goToIncome}
+          >
+            <Text style={styles.buttonText}>
+              Edit Income
+            </Text>
+          </TouchableHighlight>
+          <TouchableHighlight
+            style={styles.button}
+            onPress={this.goToProfile}
+          >
+            <Text>
+              Profile
+            </Text>
+          </TouchableHighlight>
+        </View>
+      </ScrollView>
     );
   }
 }

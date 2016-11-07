@@ -20,8 +20,10 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
   },
-  fundsAvailable: {
+  income: {
+    color: '#00AD7C',
     fontSize: 45,
+    marginBottom: 15,
     textAlign: 'center',
   },
   categoryText: {
@@ -34,9 +36,17 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 16,
-    fontWeight: 'bold',
-    color: '#19B5CB',
+    color: '#393E46',
     marginBottom: 15,
+    marginLeft: 15,
+    textAlign: 'center',
+  },
+  boldText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#393E46',
+    marginBottom: 15,
+    marginLeft: 15,
     textAlign: 'center',
   },
   buttonText: {
@@ -95,147 +105,92 @@ const styles = StyleSheet.create({
   },
 });
 
-class ExpenseSummary extends Component {
+class IncomeSummary extends Component {
   constructor() {
     super();
 
     this.state = {
       data: null,
       user: null,
-      recurringData: null,
-      expenseData: null,
-      title: '',
-      dollar: '',
+      income: null,
+      extraIncome: null,
     };
   }
 
   componentDidMount() {
     const user = this.props.user;
-    console.log('did mount expense summary');
     firebase.database().ref(`users/${user.uid}`).on('value', (snapshot) => {
       const data = snapshot.val() || 0;
+      const income = data.income;
       this.setState(
         {
-          data,
+          income,
         }
       );
-
-      const recurringMap = map(data.recurring, (value, prop) => ({ prop, value }));
-      const expenseMap = map(data.expenses, (value, prop) => ({ prop, value }));
-      this.setState({
-        recurringData: recurringMap,
-        expenseData: expenseMap,
-      });
     });
   }
 
-  componentWillUnmount() {
-    const user = this.props.user;
-    firebase.database().ref(`users/${user.uid}/expenses`).off();
-    console.log('umount in expense summary');
-  }
+  // componentWillUnmount() {
+  //   const user = this.props.user;
+  //   firebase.database().ref(`users/${user.uid}`).off();
+  // }
 
 
-  handleTitleChange(input) {
-    this.setState(
-      {
-        title: input,
-      }
-    );
-  }
-
-  handleDollarChange(input) {
+  handleIncomeChange(input) {
     const number = parseInt(input, 10);
     this.setState(
       {
-        dollar: number,
+        extraIncome: number,
       }
     );
   }
 
-  addExpenseToDataBase = () => {
+  addIncomeToDatabase = () => {
     const { user } = this.props;
-    const { title, dollar } = this.state;
-    firebase.database().ref(`users/${user.uid}/expenses`).push(
+    const { income, extraIncome } = this.state;
+    const newIncome = income + extraIncome;
+    firebase.database().ref(`users/${user.uid}`).update(
       {
-        title,
-        dollar,
+        income: newIncome,
       });
   }
 
-  renderRecurring() {
-    const { recurringData } = this.state;
-    const expenses = map(recurringData, (item) => {
-      return (
-        <TouchableHighlight key={item.prop} style={styles.button}>
-          <Text style={styles.buttonText}>
-            {item.prop} ${item.value}
-          </Text>
-        </TouchableHighlight>
-      );
-    });
-    return expenses;
-  }
-
-  renderExpenses() {
-    const { expenseData } = this.state;
-    const expenses = map(expenseData, (item) => {
-      return (
-        <View key={item.prop} style={styles.expenses}>
-          <Text style={styles.expenseText}>
-            {item.value.title} - ${item.value.dollar}
-          </Text>
-          <Separator />
-        </View>
-      );
-    });
-    return expenses;
-  }
-
   render() {
+    const { income, extraIncome } = this.state;
+    console.log('income', income);
+    console.log('extra income', extraIncome);
     return (
       <ScrollView>
         <View style={styles.container}>
-          <Text style={mStyles.title}>Life Expenses</Text>
+          <Text style={mStyles.title}>Your Income</Text>
           <Separator />
-          <Text style={styles.categoryText}>Add/Edit Expenses</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="Title"
-            onChangeText={input => this.handleTitleChange(input)}
-          />
-
+          <Text style={styles.text}>Add any extra income to keep your budget up to date.</Text>
+          <Text style={styles.income}>$ {income}</Text>
+          <Text style={styles.boldText}>Earned more this month?</Text>
           <View style={styles.inputContainer}>
             <TextInput
               style={styles.input}
               placeholder="$"
-              onChangeText={input => this.handleDollarChange(input)}
+              onChangeText={input => this.handleIncomeChange(input)}
             />
             <TouchableHighlight
               style={styles.inputButton}
-              onPress={this.addExpenseToDataBase}
+              onPress={this.addIncomeToDatabase}
             >
               <Text style={styles.buttonText}>Add</Text>
             </TouchableHighlight>
           </View>
           <Separator />
-
-          <Text style={styles.categoryText}> Recurring </Text>
-          {this.renderRecurring()}
-          <Separator />
-
-          <Text style={styles.categoryText}> Other Expenses </Text>
-          {this.renderExpenses()}
         </View>
       </ScrollView>
     );
   }
 }
 
-ExpenseSummary.propTypes = {
+IncomeSummary.propTypes = {
   user: PropTypes.object.isRequired,
   navigator: PropTypes.object,
   push: PropTypes.func,
 };
 
-export default ExpenseSummary;
+export default IncomeSummary;

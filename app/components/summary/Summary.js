@@ -63,13 +63,17 @@ class Summary extends Component {
     const user = this.props.user;
     firebase.database().ref(`users/${user.uid}`).on('value', (snapshot) => {
       const data = snapshot.val() || 0;
+      // const fundsAvailable = calculateBudget(data);
       this.setState(
         {
           data,
-        }
-      );
-      this.calculateBudget();
+        }, this.calculateBudget
+      )
     });
+  }
+
+  componentWillUnmount() {
+    console.log('unmount');
   }
 
   calculateBudget() {
@@ -150,7 +154,7 @@ class Summary extends Component {
           onPress={this.goToProfile}
         >
           <Text>
-            Edit Profile
+            Profile
           </Text>
         </TouchableHighlight>
       </View>

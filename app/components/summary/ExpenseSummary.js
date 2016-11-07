@@ -128,6 +128,11 @@ class ExpenseSummary extends Component {
     });
   }
 
+  componentWillUnmount() {
+    console.log('umount in expense summary');
+    // end connection with firebase
+  }
+
 
   handleTitleChange(input) {
     this.setState(

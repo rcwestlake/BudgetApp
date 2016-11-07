@@ -50,7 +50,6 @@ const styles = StyleSheet.create({
 });
 
 class Profile extends Component {
-
   signOut() {
     firebase.auth().signOut().then(() => {
       this.props.navigator.push({
@@ -73,6 +72,14 @@ class Profile extends Component {
           Profile
         </Text>
         <Separator />
+        <Text>
+          About
+        </Text>
+        <Text>
+          In case you forgot, PennyWise is an app made for people
+          who want build a better financial future by creating a monthly budget.
+          Owls are wise, which is why we chose the fine creature as our logo. 
+        </Text>
         <TouchableHighlight
           style={styles.button}
           onPress={() => this.signOut()}

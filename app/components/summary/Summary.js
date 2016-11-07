@@ -94,7 +94,7 @@ class Summary extends Component {
 
   dailyAllowance = () => {
     const { fundsAvailable } = this.state;
-    let daily = Math.floor(fundsAvailable / this.daysLeftThisMonth());
+    return Math.floor(fundsAvailable / this.daysLeftThisMonth());
   }
 
   goToExpenses = () => {
@@ -139,13 +139,18 @@ class Summary extends Component {
           <Text style={styles.fundsAvailable}>
             $ {fundsAvailable}
           </Text>
-          <Text>{this.today()}</Text>
-          <Text>{this.daysLeftThisMonth()}</Text>
+          <Text>
+            {this.today()}
+          </Text>
+          <Text>
+            {this.daysLeftThisMonth()}
+          </Text>
           <Text style={styles.text}> days left this month</Text>
           <Separator />
           <Text style={styles.text}>
             {this.dailyAllowance()}
           </Text>
+          <Text style={styles.text}> avg. amount you could spend each day </Text>
           <TouchableHighlight
             style={styles.button}
             onPress={this.goToExpenses}

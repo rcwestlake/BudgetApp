@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
     marginBottom: 10,
     textAlign: 'left',
+    color: '#51602D'
   },
   input: {
     flex: 2,
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginBottom: 10,
     fontSize: 23,
-    color: '#393E46',
+    color: '#51602D',
   },
   inputButton: {
     flex: 1,

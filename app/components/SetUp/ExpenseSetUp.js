@@ -21,30 +21,26 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 18,
-    color: '#FFFFFF',
+    fontWeight: 'bold',
+    color: '#9CB65E',
     alignSelf: 'center',
   },
-  selectedButton: {
-    height: 45,
-    flexDirection: 'row',
-    backgroundColor: '#9CB65E',
-    borderColor: 'white',
-    borderWidth: 1,
-    borderRadius: 8,
-    marginBottom: 10,
-    marginTop: 10,
-    alignSelf: 'stretch',
-    justifyContent: 'center',
+  selectedButtonText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#ffffff',
+    alignSelf: 'center',
   },
   button: {
-    height: 45,
+    height: 40,
     flexDirection: 'row',
-    backgroundColor: '#9CB65E',
-    borderColor: 'white',
-    borderWidth: 1,
+    backgroundColor: '#ffffff',
+    borderColor: '#393E46',
+    borderWidth: 0.5,
     borderRadius: 8,
-    marginBottom: 10,
     marginTop: 10,
+    marginRight: 80,
+    marginLeft: 80,
     alignSelf: 'stretch',
     justifyContent: 'center',
   },
@@ -57,6 +53,13 @@ const styles = StyleSheet.create({
     borderColor: 'white',
     borderRadius: 8,
     color: 'white',
+  },
+  text: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#51602D',
+    marginBottom: 15,
+    textAlign: 'center',
   },
 });
 
@@ -124,7 +127,7 @@ class ExpenseSetUp extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text> Select all recurring expenses. Amounts will be entered on the next page.</Text>
+        <Text style={styles.text}> Select all recurring expenses. Amounts will be entered on the next page.</Text>
 
         <TouchableHighlight
           style={this.state.housing ? styles.selectedButton : styles.button}

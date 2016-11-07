@@ -25,11 +25,12 @@ const styles = StyleSheet.create({
   fundsAvailable: {
     fontSize: 45,
     textAlign: 'center',
+    color: '#51602D',
   },
   text: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#393E46',
+    color: '#51602D',
     marginBottom: 15,
     textAlign: 'center',
   },

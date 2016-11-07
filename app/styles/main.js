@@ -16,10 +16,11 @@ const mStyles = StyleSheet.create({
     marginTop: 10,
   },
   intro: {
-    marginTop: 40,
-    marginBottom: 50,
+    marginTop: 30,
+    marginBottom: 30,
     marginLeft: 30,
     marginRight: 30,
+    color: '#51602D',
   },
   button: {
     height: 45,

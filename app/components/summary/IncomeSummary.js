@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   boldText: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#393E46',
+    color: '#51602D',
     marginBottom: 15,
     marginLeft: 15,
     textAlign: 'center',
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginBottom: 10,
     fontSize: 23,
-    color: '#393E46',
+    color: '#51602D',
   },
   inputButton: {
     flex: 1,

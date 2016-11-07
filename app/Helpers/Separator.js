@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#e4e4e4',
     marginLeft: 15,
     marginRight: 15,
+    marginBottom: 15,
   },
 });
 

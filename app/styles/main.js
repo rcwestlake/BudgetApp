@@ -8,6 +8,12 @@ const mStyles = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: 10,
   },
+  colorTitle: {
+    color: '#00AD7C',
+    fontSize: 45,
+    fontWeight: 'bold',
+    marginTop: 10,
+  },
   intro: {
     marginTop: 50,
     marginBottom: 50,

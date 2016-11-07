@@ -24,6 +24,14 @@ const styles = StyleSheet.create({
     fontSize: 45,
     textAlign: 'center',
   },
+  categoryText: {
+    color: '#00AD7C',
+    fontSize: 25,
+    fontWeight: 'bold',
+    marginLeft: 15,
+    marginBottom: 10,
+    marginTop: 15,
+  },
   text: {
     fontSize: 16,
     fontWeight: 'bold',
@@ -32,10 +40,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   buttonText: {
-    fontSize: 18,
+    fontSize: 23,
     fontWeight: 'bold',
     color: '#393E46',
     alignSelf: 'center',
+    textAlign: 'center',
   },
   button: {
     height: 40,
@@ -50,6 +59,14 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     flexDirection: 'row',
+  },
+  expenses: {
+    marginLeft: 60,
+  },
+  expenseText: {
+    fontSize: 13,
+    marginBottom: 10,
+    textAlign: 'left',
   },
   input: {
     flex: 2,
@@ -74,6 +91,7 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
     borderRadius: 8,
     marginTop: 10,
+    marginRight: 15,
   },
 });
 
@@ -156,11 +174,12 @@ class ExpenseSummary extends Component {
     const { expenseData } = this.state;
     const expenses = map(expenseData, (item) => {
       return (
-        <TouchableHighlight key={item.prop} style={styles.button}>
-          <Text style={styles.buttonText}>
-            {item.value.title} ${item.value.dollar}
+        <View key={item.prop} style={styles.expenses}>
+          <Text style={styles.expenseText}>
+            {item.value.title} - ${item.value.dollar}
           </Text>
-        </TouchableHighlight>
+          <Separator />
+        </View>
       );
     });
     return expenses;
@@ -170,17 +189,15 @@ class ExpenseSummary extends Component {
     return (
       <ScrollView>
         <View style={styles.container}>
-          <Text
-            style={mStyles.title}
-          >
-            Life Expenses
-          </Text>
-          <Text>Add/Edit Expenses</Text>
+          <Text style={mStyles.title}>Life Expenses</Text>
+          <Separator />
+          <Text style={styles.categoryText}>Add/Edit Expenses</Text>
           <TextInput
             style={styles.input}
             placeholder="Title"
             onChangeText={input => this.handleTitleChange(input)}
           />
+
           <View style={styles.inputContainer}>
             <TextInput
               style={styles.input}
@@ -195,16 +212,13 @@ class ExpenseSummary extends Component {
             </TouchableHighlight>
           </View>
           <Separator />
-          <Text>
-            Recurring
-          </Text>
+
+          <Text style={styles.categoryText}> Recurring </Text>
           {this.renderRecurring()}
           <Separator />
-          <Text>
-            Other Expenses
-          </Text>
+
+          <Text style={styles.categoryText}> Other Expenses </Text>
           {this.renderExpenses()}
-          <Separator />
         </View>
       </ScrollView>
     );

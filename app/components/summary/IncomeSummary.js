@@ -129,18 +129,22 @@ class IncomeSummary extends Component {
     );
   }
 
-  addIncomeToDatabase = () => {
+  addIncomeToDatabase() {
     const { user } = this.props;
     const { income, extraIncome } = this.state;
     const newIncome = income + extraIncome;
+    debugger;
     firebase.database().ref(`users/${user.uid}`).update(
       {
         income: newIncome,
-      });
+      }, this.setState({
+        extraIncome: '',
+      }));
   }
 
   render() {
-    const { income } = this.state;
+    const { income, extraIncome } = this.state;
+    console.log('new income', extraIncome);
     return (
       <ScrollView>
         <View style={styles.container}>
@@ -153,11 +157,12 @@ class IncomeSummary extends Component {
             <TextInput
               style={styles.input}
               placeholder="$"
+              value={this.state.extraIncome}
               onChangeText={input => this.handleIncomeChange(input)}
             />
             <TouchableHighlight
               style={styles.inputButton}
-              onPress={this.addIncomeToDatabase}
+              onPress={() => this.addIncomeToDatabase()}
             >
               <Text style={styles.buttonText}>Add</Text>
             </TouchableHighlight>

@@ -7,6 +7,7 @@ import {
   ScrollView,
 } from 'react-native';
 import { map, sum } from 'lodash';
+import moment from 'moment';
 import firebase from 'firebase';
 import mStyles from '../../styles/main';
 import Separator from '../../helpers/Separator';
@@ -76,6 +77,16 @@ class Summary extends Component {
     });
   }
 
+  today = () => {
+    return moment().format('ddd, MMMM Do');
+  }
+
+  daysLeftThisMonth() {
+    let daysLeft = this.today() - 10;
+    console.log(daysLeft);
+    return daysLeft;
+  }
+
   calculateBudget(data) {
     const income = data.income;
     const recurring = sum(map(data.recurring, val => val));
@@ -127,6 +138,8 @@ class Summary extends Component {
           <Text style={styles.fundsAvailable}>
             $ {fundsAvailable}
           </Text>
+          <Text>{this.today()}</Text>
+          <Text>Days left this month: {this.daysLeftThisMonth()}</Text>
           <Text style={styles.text}>left this month</Text>
           <Separator />
 

@@ -44,6 +44,25 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     justifyContent: 'center',
   },
+  continueText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#ffffff',
+    alignSelf: 'center',
+  },
+  continueButton: {
+    height: 40,
+    flexDirection: 'row',
+    backgroundColor: '#9CB65E',
+    borderColor: '#393E46',
+    borderWidth: 0.5,
+    borderRadius: 8,
+    marginTop: 10,
+    marginRight: 80,
+    marginLeft: 80,
+    alignSelf: 'stretch',
+    justifyContent: 'center',
+  },
   searchInput: {
     height: 50,
     padding: 4,
@@ -53,6 +72,7 @@ const styles = StyleSheet.create({
     borderColor: 'white',
     borderRadius: 8,
     color: 'white',
+    textAlign: 'center',
   },
   text: {
     fontSize: 20,
@@ -162,11 +182,11 @@ class ExpenseSetUp extends Component {
         </TouchableHighlight>
 
         <TouchableHighlight
-          style={styles.button}
+          style={styles.continueButton}
           underlayColor="#9CB65E"
           onPress={this.handleContinue}
         >
-          <Text style={styles.buttonText} >Continue</Text>
+          <Text style={styles.continueText} >Continue</Text>
         </TouchableHighlight>
 
       </View>

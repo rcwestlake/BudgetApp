@@ -111,6 +111,7 @@ class ExpenseSummary extends Component {
 
   componentDidMount() {
     const user = this.props.user;
+    console.log('did mount expense summary');
     firebase.database().ref(`users/${user.uid}`).on('value', (snapshot) => {
       const data = snapshot.val() || 0;
       this.setState(

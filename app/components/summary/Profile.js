@@ -19,22 +19,28 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 16,
-    fontWeight: 'bold',
     color: '#393E46',
     marginBottom: 15,
-    textAlign: 'center',
+    marginLeft: 10,
+  },
+  categoryText: {
+    color: '#00AD7C',
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginLeft: 10,
+    marginBottom: 10,
+    marginTop: 15,
   },
   buttonText: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#393E46',
+    color: '#ffffff',
     alignSelf: 'center',
   },
   button: {
     height: 40,
     flexDirection: 'row',
-    flex: 1,
-    backgroundColor: '#48BBEC',
+    backgroundColor: '#FA7F7F',
     borderColor: '#ffffff',
     borderWidth: 0.5,
     borderRadius: 8,
@@ -64,27 +70,28 @@ class Profile extends Component {
   render() {
     return (
       <View style={styles.container}>
-        {/* <Image
-          style={styles.resizeMode}
-          source={require('../../styles/images/PennyWise.png')}
-        /> */}
         <Text style={mStyles.title}>
           Profile
         </Text>
         <Separator />
-        <Text>
+        <Text style={styles.categoryText}>
           About
         </Text>
-        <Text>
+        <Text style={styles.text}>
           In case you forgot, PennyWise is an app made for people
-          who want build a better financial future by creating a monthly budget.
-          Owls are wise, which is why we chose the fine creature as our logo. 
+          who want to build a better financial future by creating a monthly budget.
+          Owls are wise, which is why we chose the fine creature as our logo. By
+          using our app, you will be more wise too.
+        </Text>
+        <Text style={styles.categoryText}>
+          Account
         </Text>
         <TouchableHighlight
           style={styles.button}
           onPress={() => this.signOut()}
+          underlayColor="#F73859"
         >
-          <Text>
+          <Text style={styles.buttonText}>
             Sign Out
           </Text>
         </TouchableHighlight>

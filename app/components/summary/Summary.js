@@ -150,7 +150,7 @@ class Summary extends Component {
             style={styles.button}
             onPress={this.goToProfile}
           >
-            <Text>
+            <Text style={styles.buttonText}>
               Profile
             </Text>
           </TouchableHighlight>

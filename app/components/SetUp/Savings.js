@@ -21,12 +21,12 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#9CB65E',
+    color: '#51602D',
     marginBottom: 15,
     textAlign: 'center',
   },
   percent: {
-    color: '#393E46',
+    color: '#51602D',
     fontSize: 30,
     marginBottom: 100,
     textAlign: 'center',
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#9CB65E',
+    color: '#ffffff',
     alignSelf: 'center',
   },
   selectedButtonText: {
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   button: {
     height: 40,
     flexDirection: 'row',
-    backgroundColor: '#ffffff',
+    backgroundColor: '#9CB65E',
     borderColor: '#393E46',
     borderWidth: 0.5,
     borderRadius: 8,
@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
     marginBottom: 40,
     fontSize: 23,
     textAlign: 'center',
+    color: '#51602D',
   },
 });
 

@@ -30,6 +30,12 @@ const styles = StyleSheet.create({
     color: '#9CB65E',
     alignSelf: 'center',
   },
+  continueText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#ffffff',
+    alignSelf: 'center',
+  },
   selectedButtonText: {
     fontSize: 18,
     fontWeight: 'bold',
@@ -62,12 +68,28 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     justifyContent: 'center',
   },
+  continueButton: {
+    height: 40,
+    flexDirection: 'row',
+    backgroundColor: '#9CB65E',
+    borderColor: '#393E46',
+    borderWidth: 0.5,
+    borderRadius: 8,
+    marginTop: 10,
+    marginRight: 80,
+    marginLeft: 80,
+    alignSelf: 'stretch',
+    justifyContent: 'center',
+  },
   searchInput: {
     height: 50,
+    color: '#51602D',
     padding: 4,
     marginLeft: 40,
     marginRight: 40,
+    marginBottom: 10,
     fontSize: 23,
+    textAlign: 'center',
   },
 });
 
@@ -197,11 +219,11 @@ class IncomeSetUp extends Component {
           </TouchableHighlight>
 
           <TouchableHighlight
-            style={styles.button}
+            style={styles.continueButton}
             underlayColor="#9CB65E"
             onPress={() => this.handleSubmit()}
           >
-            <Text style={styles.buttonText}> Continue </Text>
+            <Text style={styles.continueText}> Continue </Text>
           </TouchableHighlight>
         </View>
       </ScrollView>

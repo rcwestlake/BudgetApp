@@ -112,7 +112,6 @@ class IncomeSummary extends Component {
     firebase.database().ref(`users/${user.uid}`).on('value', (snapshot) => {
       const data = snapshot.val() || 0;
       const income = data.income;
-      console.log('income', income);
       this.setState(
         {
           income,

@@ -109,7 +109,7 @@ class ExpenseSummary extends Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const user = this.props.user;
     firebase.database().ref(`users/${user.uid}`).on('value', (snapshot) => {
       const data = snapshot.val() || 0;

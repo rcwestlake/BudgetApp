@@ -10,7 +10,7 @@ import firebase from 'firebase';
 import mStyles from '../../styles/main';
 import Separator from '../../helpers/Separator';
 import ExpenseSummary from './ExpenseSummary';
-import Welcome from '../Welcome';
+import Profile from './Profile';
 
 const styles = StyleSheet.create({
   container: {
@@ -39,8 +39,9 @@ const styles = StyleSheet.create({
   button: {
     height: 40,
     flexDirection: 'row',
-    backgroundColor: '#ffffff',
-    borderColor: '#393E46',
+    flex: 1,
+    backgroundColor: '#48BBEC',
+    borderColor: '#ffffff',
     borderWidth: 0.5,
     borderRadius: 8,
     marginTop: 10,
@@ -105,14 +106,11 @@ class Summary extends Component {
     });
   }
 
-  signOut() {
-    firebase.auth().signOut().then(() => {
-      this.props.navigator.push({
-        title: 'Welcome',
-        component: Welcome,
-      });
-    }, (error) => {
-      console.log('Error with sign out process', error);
+  goToProfile = () => {
+    this.props.navigator.push({
+      title: 'Profile',
+      component: Profile,
+      navigationBarHidden: 'false',
     });
   }
 
@@ -149,10 +147,10 @@ class Summary extends Component {
         </TouchableHighlight>
         <TouchableHighlight
           style={styles.button}
-          onPress={() => this.signOut()}
+          onPress={this.goToProfile}
         >
           <Text>
-            Sign Out
+            Edit Profile
           </Text>
         </TouchableHighlight>
       </View>

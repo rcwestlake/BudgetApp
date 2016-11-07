@@ -30,11 +30,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#000',
   },
-  tagline: {
-    fontSize: 12,
-    marginBottom: 40,
-    textAlign: 'center',
-  },
   quote: {
     fontSize: 20,
     marginBottom: 50,
@@ -42,10 +37,6 @@ const styles = StyleSheet.create({
     marginTop: 20,
     padding: 5,
     color: '#6A8035',
-  },
-  privacy: {
-    fontSize: 10,
-    textAlign: 'center',
   },
   buttonText: {
     fontSize: 18,
@@ -72,7 +63,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class Welcome extends Component {
+class Welcome extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -101,7 +92,10 @@ export default class Welcome extends Component {
       <View style={styles.container}>
         <ScrollView>
           <View style={styles.main}>
-            <Image style={styles.resizeMode} source={require('../../app/styles/images/PennyWise.png')} />
+            <Image
+              style={styles.resizeMode}
+              source={require('../../app/styles/images/PennyWise.png')}
+            />
             <Text style={styles.quote}>
               {randomQuote()}
             </Text>
@@ -132,3 +126,5 @@ Welcome.propTypes = {
   push: PropTypes.string,
   navigator: PropTypes.object,
 };
+
+export default Welcome;

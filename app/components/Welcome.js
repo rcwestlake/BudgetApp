@@ -43,9 +43,11 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     alignSelf: 'center',
   },
-  buttonContainer: {
-    flexDirection: 'row',
-    alignSelf: 'stretch',
+  text: {
+    fontSize: 14,
+    color: 'black',
+    alignSelf: 'center',
+    marginBottom: 10,
   },
   resizeMode: {
     width: 275,
@@ -53,13 +55,16 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   button: {
-    height: 75,
+    height: 45,
     flexDirection: 'row',
-    backgroundColor: '#00AD7C',
-    borderRightWidth: 1,
-    borderColor: '#ffffff',
+    backgroundColor: '#B2C777',
+    borderColor: 'white',
+    borderWidth: 1,
+    borderRadius: 8,
+    marginBottom: 10,
     marginTop: 10,
     alignSelf: 'stretch',
+    justifyContent: 'center',
   },
 });
 
@@ -101,22 +106,19 @@ class Welcome extends Component {
             </Text>
           </View>
         </ScrollView>
-        <View style={styles.buttonContainer}>
           <TouchableHighlight
             style={styles.button}
-            underlayColor="#52D681"
+            underlayColor="#9CB65E"
             onPress={() => this.goToLogIn()}
           >
             <Text style={styles.buttonText}>Log in</Text>
           </TouchableHighlight>
-          <TouchableHighlight
-            style={styles.button}
-            underlayColor="#52D681"
+          <Text
+            style={styles.text}
             onPress={() => this.goToSignUp()}
           >
-            <Text style={styles.buttonText}>Sign up</Text>
-          </TouchableHighlight>
-        </View>
+            Sign up
+          </Text>
       </View>
     );
   }

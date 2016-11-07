@@ -142,7 +142,7 @@ class IncomeSummary extends Component {
   }
 
   render() {
-    const { income } = this.state;
+    const { income, extraIncome } = this.state;
     return (
       <ScrollView>
         <View style={styles.container}>
@@ -155,7 +155,7 @@ class IncomeSummary extends Component {
             <TextInput
               style={styles.input}
               placeholder="$"
-              value={this.state.extraIncome}
+              value={extraIncome}
               onChangeText={input => this.handleIncomeChange(input)}
             />
             <TouchableHighlight

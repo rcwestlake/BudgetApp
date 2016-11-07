@@ -122,7 +122,6 @@ class ExpenseSummary extends Component {
   componentWillUnmount() {
     const user = this.props.user;
     firebase.database().ref(`users/${user.uid}/expenses`).off();
-    console.log('umount in expense summary');
   }
 
   setExpenses(data) {

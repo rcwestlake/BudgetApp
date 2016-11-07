@@ -119,7 +119,7 @@ class Summary extends Component {
     return (
       <ScrollView>
         <View style={styles.container}>
-          <Text style={mStyles.colorTitle}>
+          <Text style={mStyles.title}>
             Summary
           </Text>
           <Separator />

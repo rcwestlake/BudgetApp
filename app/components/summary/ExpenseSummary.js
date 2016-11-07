@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 23,
     fontWeight: 'bold',
-    color: '#393E46',
+    color: '#ffffff',
     alignSelf: 'center',
     textAlign: 'center',
   },
@@ -86,12 +86,13 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 40,
     flexDirection: 'row',
-    backgroundColor: '#ffffff',
-    borderColor: '#393E46',
+    backgroundColor: '#B2C777',
+    borderColor: '#ffffff',
     borderWidth: 0.5,
     borderRadius: 8,
     marginTop: 10,
     marginRight: 15,
+    justifyContent: 'center',
   },
 });
 
@@ -214,6 +215,7 @@ class ExpenseSummary extends Component {
             <TouchableHighlight
               style={styles.inputButton}
               onPress={this.addExpenseToDataBase}
+              underlayColor="#9CB65E"
             >
               <Text style={styles.buttonText}>Add</Text>
             </TouchableHighlight>

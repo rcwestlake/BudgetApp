@@ -7,6 +7,7 @@ const mStyles = StyleSheet.create({
     fontSize: 45,
     fontWeight: 'bold',
     marginTop: 10,
+    color: '#51602D',
   },
   colorTitle: {
     color: '#9CB65E',

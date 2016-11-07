@@ -26,11 +26,12 @@ const styles = StyleSheet.create({
   fundsAvailable: {
     fontSize: 45,
     textAlign: 'center',
+    color: '#51602D',
   },
   text: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#393E46',
+    color: '#51602D',
     marginBottom: 15,
     textAlign: 'center',
   },
@@ -44,7 +45,7 @@ const styles = StyleSheet.create({
     height: 40,
     flexDirection: 'row',
     flex: 1,
-    backgroundColor: '#48BBEC',
+    backgroundColor: '#B2C777',
     borderColor: '#ffffff',
     borderWidth: 0.5,
     borderRadius: 8,
@@ -131,7 +132,7 @@ class Summary extends Component {
     return (
       <ScrollView>
         <View style={styles.container}>
-          <Text style={mStyles.colorTitle}>
+          <Text style={mStyles.title}>
             Summary
           </Text>
           <Separator />
@@ -154,6 +155,7 @@ class Summary extends Component {
           <TouchableHighlight
             style={styles.button}
             onPress={this.goToExpenses}
+            underlayColor="#9CB65E"
           >
             <Text style={styles.buttonText}>
               Edit Expenses
@@ -162,6 +164,7 @@ class Summary extends Component {
           <TouchableHighlight
             style={styles.button}
             onPress={this.goToIncome}
+            underlayColor="#9CB65E"
           >
             <Text style={styles.buttonText}>
               Edit Income
@@ -170,6 +173,7 @@ class Summary extends Component {
           <TouchableHighlight
             style={styles.button}
             onPress={this.goToProfile}
+            underlayColor="#9CB65E"
           >
             <Text style={styles.buttonText}>
               Profile

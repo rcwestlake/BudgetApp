@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   categoryText: {
-    color: '#00AD7C',
+    color: '#9CB65E',
     fontSize: 25,
     fontWeight: 'bold',
     marginLeft: 15,
@@ -35,14 +35,14 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#19B5CB',
+    color: '#9CB65E',
     marginBottom: 15,
     textAlign: 'center',
   },
   buttonText: {
     fontSize: 23,
     fontWeight: 'bold',
-    color: '#393E46',
+    color: '#ffffff',
     alignSelf: 'center',
     textAlign: 'center',
   },
@@ -67,12 +67,13 @@ const styles = StyleSheet.create({
     fontSize: 13,
     marginBottom: 10,
     textAlign: 'left',
+    color: '#51602D'
   },
   input: {
     flex: 2,
     borderWidth: 1,
     borderBottomWidth: 10,
-    borderColor: '#19B5CB',
+    borderColor: '#9CB65E',
     borderRadius: 8,
     height: 50,
     padding: 4,
@@ -80,18 +81,19 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginBottom: 10,
     fontSize: 23,
-    color: '#393E46',
+    color: '#51602D',
   },
   inputButton: {
     flex: 1,
     height: 40,
     flexDirection: 'row',
-    backgroundColor: '#ffffff',
-    borderColor: '#393E46',
+    backgroundColor: '#B2C777',
+    borderColor: '#ffffff',
     borderWidth: 0.5,
     borderRadius: 8,
     marginTop: 10,
     marginRight: 15,
+    justifyContent: 'center',
   },
 });
 
@@ -217,6 +219,7 @@ class ExpenseSummary extends Component {
             />
             <TouchableHighlight
               style={styles.inputButton}
+              underlayColor="#9CB65E"
               onPress={() => this.addExpenseToDataBase()}
             >
               <Text style={styles.buttonText}>Add</Text>

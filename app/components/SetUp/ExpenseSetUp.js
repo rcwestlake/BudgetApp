@@ -18,34 +18,29 @@ const styles = StyleSheet.create({
     marginTop: 65,
     flexDirection: 'column',
     justifyContent: 'center',
-    backgroundColor: '#48BBEC',
   },
   buttonText: {
     fontSize: 18,
-    color: '#FFFFFF',
+    fontWeight: 'bold',
+    color: '#9CB65E',
     alignSelf: 'center',
   },
-  selectedButton: {
-    height: 45,
-    flexDirection: 'row',
-    backgroundColor: '#10DDC2',
-    borderColor: 'white',
-    borderWidth: 1,
-    borderRadius: 8,
-    marginBottom: 10,
-    marginTop: 10,
-    alignSelf: 'stretch',
-    justifyContent: 'center',
+  selectedButtonText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#ffffff',
+    alignSelf: 'center',
   },
   button: {
-    height: 45,
+    height: 40,
     flexDirection: 'row',
-    backgroundColor: '#19B5CB',
-    borderColor: 'white',
-    borderWidth: 1,
+    backgroundColor: '#ffffff',
+    borderColor: '#393E46',
+    borderWidth: 0.5,
     borderRadius: 8,
-    marginBottom: 10,
     marginTop: 10,
+    marginRight: 80,
+    marginLeft: 80,
     alignSelf: 'stretch',
     justifyContent: 'center',
   },
@@ -58,6 +53,13 @@ const styles = StyleSheet.create({
     borderColor: 'white',
     borderRadius: 8,
     color: 'white',
+  },
+  text: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#51602D',
+    marginBottom: 15,
+    textAlign: 'center',
   },
 });
 
@@ -125,11 +127,11 @@ class ExpenseSetUp extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text> Select all recurring expenses. Amounts will be entered on the next page.</Text>
+        <Text style={styles.text}> Select all recurring expenses. Amounts will be entered on the next page.</Text>
 
         <TouchableHighlight
           style={this.state.housing ? styles.selectedButton : styles.button}
-          underlayColor="#19B5CB"
+          underlayColor="#9CB65E"
           onPress={this.handleHousingSubmit}
         >
           <Text style={styles.buttonText}> Rent/Mortgage </Text>
@@ -137,7 +139,7 @@ class ExpenseSetUp extends Component {
 
         <TouchableHighlight
           style={this.state.auto ? styles.selectedButton : styles.button}
-          underlayColor="#19B5CB"
+          underlayColor="#9CB65E"
           onPress={this.handleAutoSubmit}
         >
           <Text style={styles.buttonText}> Auto </Text>
@@ -145,7 +147,7 @@ class ExpenseSetUp extends Component {
 
         <TouchableHighlight
           style={this.state.insurance ? styles.selectedButton : styles.button}
-          underlayColor="#19B5CB"
+          underlayColor="#9CB65E"
           onPress={this.handleInsuranceSubmit}
         >
           <Text style={styles.buttonText}> Insurance </Text>
@@ -153,7 +155,7 @@ class ExpenseSetUp extends Component {
 
         <TouchableHighlight
           style={this.state.utilities ? styles.selectedButton : styles.button}
-          underlayColor="#19B5CB"
+          underlayColor="#9CB65E"
           onPress={this.handleUtilitiesSubmit}
         >
           <Text style={styles.buttonText}> Utilities </Text>
@@ -161,7 +163,7 @@ class ExpenseSetUp extends Component {
 
         <TouchableHighlight
           style={styles.button}
-          underlayColor="#19B5CB"
+          underlayColor="#9CB65E"
           onPress={this.handleContinue}
         >
           <Text style={styles.buttonText} >Continue</Text>

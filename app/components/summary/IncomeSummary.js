@@ -19,13 +19,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   income: {
-    color: '#00AD7C',
+    color: '#9CB65E',
     fontSize: 45,
     marginBottom: 15,
     textAlign: 'center',
   },
   categoryText: {
-    color: '#00AD7C',
+    color: '#9CB65E',
     fontSize: 25,
     fontWeight: 'bold',
     marginLeft: 15,
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   boldText: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#393E46',
+    color: '#51602D',
     marginBottom: 15,
     marginLeft: 15,
     textAlign: 'center',
@@ -50,15 +50,15 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 23,
     fontWeight: 'bold',
-    color: '#393E46',
+    color: '#ffffff',
     alignSelf: 'center',
     textAlign: 'center',
   },
   button: {
     height: 40,
     flexDirection: 'row',
-    backgroundColor: '#ffffff',
-    borderColor: '#393E46',
+    backgroundColor: '#B2C777',
+    borderColor: '#ffffff',
     borderWidth: 0.5,
     borderRadius: 8,
     marginTop: 10,
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     flex: 2,
     borderWidth: 1,
     borderBottomWidth: 10,
-    borderColor: '#19B5CB',
+    borderColor: '#9CB65E',
     borderRadius: 8,
     height: 50,
     padding: 4,
@@ -80,18 +80,19 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginBottom: 10,
     fontSize: 23,
-    color: '#393E46',
+    color: '#51602D',
   },
   inputButton: {
     flex: 1,
     height: 40,
     flexDirection: 'row',
-    backgroundColor: '#ffffff',
-    borderColor: '#393E46',
+    backgroundColor: '#B2C777',
+    borderColor: '#ffffff',
     borderWidth: 0.5,
     borderRadius: 8,
     marginTop: 10,
     marginRight: 15,
+    justifyContent: 'center',
   },
 });
 
@@ -160,6 +161,7 @@ class IncomeSummary extends Component {
             />
             <TouchableHighlight
               style={styles.inputButton}
+              underlayColor="#9CB65E"
               onPress={() => this.addIncomeToDatabase()}
             >
               <Text style={styles.buttonText}>Add</Text>

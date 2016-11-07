@@ -5,6 +5,7 @@ import {
   View,
   TouchableHighlight,
   ScrollView,
+  Image,
 } from 'react-native';
 import LogIn from './LogIn';
 import SignUp from './SignUp';
@@ -35,9 +36,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   quote: {
-    fontSize: 15,
+    fontSize: 20,
     marginBottom: 50,
     textAlign: 'center',
+    marginTop: 20,
+    padding: 5,
+    color: '#6A8035',
   },
   privacy: {
     fontSize: 10,
@@ -51,6 +55,11 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: 'row',
     alignSelf: 'stretch',
+  },
+  resizeMode: {
+    width: 275,
+    height: 275,
+    alignSelf: 'center',
   },
   button: {
     height: 75,
@@ -92,12 +101,7 @@ export default class Welcome extends Component {
       <View style={styles.container}>
         <ScrollView>
           <View style={styles.main}>
-            <Text style={styles.title}>
-              The app logo
-            </Text>
-            <Text style={styles.tagline}>
-              The monthly budget you’ll use and like
-            </Text>
+            <Image style={styles.resizeMode} source={require('../../app/styles/images/PennyWise.png')} />
             <Text style={styles.quote}>
               {randomQuote()}
             </Text>

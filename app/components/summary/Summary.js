@@ -14,6 +14,7 @@ import Separator from '../../helpers/Separator';
 import ExpenseSummary from './ExpenseSummary';
 import Profile from './Profile';
 import IncomeSummary from './IncomeSummary';
+import ProgressBar from './ProgressBar';
 
 const styles = StyleSheet.create({
   container: {
@@ -130,57 +131,59 @@ class Summary extends Component {
   render() {
     const { fundsAvailable } = this.state;
     return (
-      <ScrollView>
-        <View style={styles.container}>
-          <Text style={mStyles.title}>
-            Summary
-          </Text>
-          <Separator />
+      <View>
+        <ScrollView>
+          <View style={styles.container}>
+            <Text style={mStyles.title}>
+              Summary
+            </Text>
+            <Separator />
 
-          <Text style={styles.fundsAvailable}>
-            $ {fundsAvailable}
-          </Text>
-          <Text>
-            {this.today()}
-          </Text>
-          <Text>
-            {this.daysLeftThisMonth()}
-          </Text>
-          <Text style={styles.text}> days left this month</Text>
-          <Separator />
-          <Text style={styles.text}>
-            {this.dailyAllowance()}
-          </Text>
-          <Text style={styles.text}> avg. amount you could spend each day </Text>
-          <TouchableHighlight
-            style={styles.button}
-            onPress={this.goToExpenses}
-            underlayColor="#9CB65E"
-          >
-            <Text style={styles.buttonText}>
-              Edit Expenses
+            <Text style={styles.fundsAvailable}>
+              $ {fundsAvailable}
             </Text>
-          </TouchableHighlight>
-          <TouchableHighlight
-            style={styles.button}
-            onPress={this.goToIncome}
-            underlayColor="#9CB65E"
-          >
-            <Text style={styles.buttonText}>
-              Edit Income
+            <Text>
+              {this.today()}
             </Text>
-          </TouchableHighlight>
-          <TouchableHighlight
-            style={styles.button}
-            onPress={this.goToProfile}
-            underlayColor="#9CB65E"
-          >
-            <Text style={styles.buttonText}>
-              Profile
+            <Text>
+              {this.daysLeftThisMonth()}
             </Text>
-          </TouchableHighlight>
-        </View>
-      </ScrollView>
+            <Text style={styles.text}> days left this month</Text>
+            <Separator />
+            <Text style={styles.text}>
+              {this.dailyAllowance()}
+            </Text>
+            <Text style={styles.text}> avg. amount you could spend each day </Text>
+            <TouchableHighlight
+              style={styles.button}
+              onPress={this.goToExpenses}
+              underlayColor="#9CB65E"
+            >
+              <Text style={styles.buttonText}>
+                Edit Expenses
+              </Text>
+            </TouchableHighlight>
+            <TouchableHighlight
+              style={styles.button}
+              onPress={this.goToIncome}
+              underlayColor="#9CB65E"
+            >
+              <Text style={styles.buttonText}>
+                Edit Income
+              </Text>
+            </TouchableHighlight>
+            <TouchableHighlight
+              style={styles.button}
+              onPress={this.goToProfile}
+              underlayColor="#9CB65E"
+            >
+              <Text style={styles.buttonText}>
+                Profile
+              </Text>
+            </TouchableHighlight>
+          </View>
+        </ScrollView>
+      </View>
     );
   }
 }

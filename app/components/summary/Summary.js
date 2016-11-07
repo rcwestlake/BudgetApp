@@ -7,6 +7,7 @@ import {
   ScrollView,
 } from 'react-native';
 import { map, sum } from 'lodash';
+import moment from 'moment';
 import firebase from 'firebase';
 import mStyles from '../../styles/main';
 import Separator from '../../helpers/Separator';
@@ -66,14 +67,16 @@ class Summary extends Component {
     const user = this.props.user;
     firebase.database().ref(`users/${user.uid}`).on('value', (snapshot) => {
       const data = snapshot.val() || 0;
-      const fundsAvailable = this.calculateBudget(data);
-      console.log('did mount summary');
-      this.setState(
-        {
-          data, fundsAvailable,
-        }
-      );
+      this.calculateBudget(data);
     });
+  }
+
+  today = () => {
+    return moment().format('ddd, MMMM Do');
+  }
+
+  daysLeftThisMonth = () => {
+    return moment().daysInMonth() - moment().date();
   }
 
   calculateBudget(data) {
@@ -82,7 +85,16 @@ class Summary extends Component {
     const expenses = sum(map(data.expenses, val => val.dollar));
     const savings = data.savings;
     const fundsAvailable = income - recurring - expenses - savings;
-    return fundsAvailable;
+    this.setState(
+      {
+        fundsAvailable,
+      }
+    );
+  }
+
+  dailyAllowance = () => {
+    const { fundsAvailable } = this.state;
+    return Math.floor(fundsAvailable / this.daysLeftThisMonth());
   }
 
   goToExpenses = () => {
@@ -127,9 +139,18 @@ class Summary extends Component {
           <Text style={styles.fundsAvailable}>
             $ {fundsAvailable}
           </Text>
-          <Text style={styles.text}>left this month</Text>
+          <Text>
+            {this.today()}
+          </Text>
+          <Text>
+            {this.daysLeftThisMonth()}
+          </Text>
+          <Text style={styles.text}> days left this month</Text>
           <Separator />
-
+          <Text style={styles.text}>
+            {this.dailyAllowance()}
+          </Text>
+          <Text style={styles.text}> avg. amount you could spend each day </Text>
           <TouchableHighlight
             style={styles.button}
             onPress={this.goToExpenses}

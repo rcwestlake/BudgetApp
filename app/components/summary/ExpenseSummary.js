@@ -157,9 +157,9 @@ class ExpenseSummary extends Component {
     const expenses = map(expenseData, (item) => {
       return (
         <TouchableHighlight key={item.prop} style={styles.button}>
-        <Text style={styles.buttonText}>
-          {item.value.title} ${item.value.dollar}
-        </Text>
+          <Text style={styles.buttonText}>
+            {item.value.title} ${item.value.dollar}
+          </Text>
         </TouchableHighlight>
       );
     });
@@ -167,8 +167,6 @@ class ExpenseSummary extends Component {
   }
 
   render() {
-    console.log('dollar', this.state.dollar);
-    console.log('title', this.state.title);
     return (
       <ScrollView>
         <View style={styles.container}>

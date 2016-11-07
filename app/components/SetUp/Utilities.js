@@ -78,7 +78,7 @@ class Utilities extends Component {
     const { utilities } = this.state;
     firebase.database().ref(`users/${user.uid}/recurring`).update(
       {
-        utilities,
+        Utilities: utilities,
       });
 
     this.props.navigator.push({

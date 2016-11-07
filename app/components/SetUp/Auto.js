@@ -79,7 +79,7 @@ class Auto extends Component {
 
     firebase.database().ref(`users/${user.uid}/recurring`).update(
       {
-        auto,
+        Auto: auto,
       });
 
     this.props.navigator.push({

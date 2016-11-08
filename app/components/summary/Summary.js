@@ -137,7 +137,7 @@ class Summary extends Component {
 
 
   render() {
-    const { fundsAvailable } = this.state;
+    const { fundsAvailable, income } = this.state;
     return (
       <View>
         <ScrollView>
@@ -162,6 +162,7 @@ class Summary extends Component {
               $ {this.dailyAllowance()}
             </Text>
             <Text style={styles.text}> avg. amount you could spend each day </Text>
+
             <TouchableHighlight
               style={styles.button}
               onPress={this.goToExpenses}
@@ -189,9 +190,11 @@ class Summary extends Component {
                 Profile
               </Text>
             </TouchableHighlight>
+
           </View>
         </ScrollView>
-        <Chart />
+
+        <Chart income={income} fundsAvailable={fundsAvailable} />
       </View>
     );
   }

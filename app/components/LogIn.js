@@ -107,14 +107,17 @@ class LogIn extends Component {
           placeholder="Email"
           style={styles.input}
           keyboardType="email-address"
-          onChangeText={(email) => this.setState({ email })}
+          returnKeyType="next"
+          autoCapitalize="none"
+          onChangeText={input => this.setState({ email: input })}
         />
         <TextInput
           placeholder="Password"
-          secureTextEntry="true"
+          secureTextEntry={true}
           style={styles.input}
-          keyboardType="email-address"
-          onChangeText={(password) => this.setState({ password })}
+          autoCapitalize="none"
+          returnKeyType="done"
+          onChangeText={input => this.setState({ password: input })}
         />
         <TouchableHighlight
           style={this.state.email && this.state.password ? styles.button : styles.disabledButton}

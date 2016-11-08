@@ -29,12 +29,19 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 20,
     textAlign: 'center',
-    color: '#51602D',
+    color: '#E34A3E',
   },
   text: {
     fontSize: 16,
     fontWeight: 'bold',
     color: '#51602D',
+    marginBottom: 15,
+    textAlign: 'center',
+  },
+  dollarText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#E34A3E',
     marginBottom: 15,
     textAlign: 'center',
   },
@@ -159,7 +166,7 @@ class Summary extends Component {
               {this.daysLeftThisMonth()} days left this month
             </Text>
             <Separator />
-            <Text style={styles.text}>
+            <Text style={styles.dollarText}>
               $ {this.dailyAllowance()}
             </Text>
             <Text style={styles.text}> avg. amount you could spend each day </Text>

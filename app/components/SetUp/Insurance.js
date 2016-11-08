@@ -95,6 +95,8 @@ class Insurance extends Component {
       >
         <TextInput
           placeholder="Enter insurance expense"
+          autoFocus={true}
+          keyboardType="numeric"
           onChangeText={expense => this.setInsuranceState(expense)}
           style={styles.searchInput}
         />

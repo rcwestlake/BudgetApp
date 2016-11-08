@@ -95,6 +95,8 @@ class Housing extends Component {
       >
         <TextInput
           placeholder="Enter housing expense"
+          autoFocus={true}
+          keyboardType="numeric"
           onChangeText={expense => this.setHousingState(expense)}
           style={styles.searchInput}
         />

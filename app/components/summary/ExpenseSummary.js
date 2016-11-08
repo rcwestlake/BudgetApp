@@ -213,6 +213,7 @@ class ExpenseSummary extends Component {
           <View style={styles.inputContainer}>
             <TextInput
               style={styles.input}
+              keyboardType="numeric"
               placeholder="$"
               value={this.state.dollar}
               onChangeText={input => this.handleDollarChange(input)}

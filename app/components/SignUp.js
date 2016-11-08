@@ -5,6 +5,7 @@ import {
   View,
   TextInput,
   TouchableHighlight,
+  ActivityIndicator,
 } from 'react-native';
 import moment from 'moment';
 import firebase, { signUp } from '../firebase';
@@ -67,6 +68,9 @@ const styles = StyleSheet.create({
     fontSize: 23,
     color: '#393E46',
   },
+  loading: {
+    marginTop: 20,
+  },
 });
 
 class SignUp extends Component {
@@ -81,6 +85,9 @@ class SignUp extends Component {
   }
 
   handleSignUp(email, password) {
+    this.setState({
+      isLoading: true,
+    });
     signUp(email, password).then(() => {
       firebase.auth().onAuthStateChanged(user => this.setState({ user }, () => {
         this.props.navigator.push({
@@ -89,6 +96,9 @@ class SignUp extends Component {
           passProps: { user },
         });
       }));
+      this.setState({
+        isLoading: false,
+      });
     });
   }
 
@@ -128,6 +138,12 @@ class SignUp extends Component {
         >
           <Text style={styles.buttonText} > Sign Up </Text>
         </TouchableHighlight>
+        <ActivityIndicator
+          style={styles.loading}
+          animating={this.state.isLoading}
+          color="#111111"
+          size="large"
+        />
       </View>
     );
   }

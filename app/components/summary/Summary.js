@@ -95,11 +95,18 @@ class Summary extends Component {
   }
 
   calculateBudget(data) {
+    let expenses;
+    const daysLeft = this.daysLeftThisMonth();
     const income = data.income;
     const recurring = sum(map(data.recurring, val => val));
-    const expenses = sum(map(data.expenses, val => val.dollar));
     const savings = data.savings;
+    if (daysLeft === 0) {
+      expenses = 0;
+    } else {
+      expenses = sum(map(data.expenses, val => val.dollar));
+    }
     const fundsAvailable = income - recurring - expenses - savings;
+
     this.setState(
       {
         fundsAvailable,

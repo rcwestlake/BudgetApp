@@ -127,6 +127,7 @@ class LogIn extends Component {
           placeholder="Password"
           secureTextEntry={true}
           style={styles.input}
+          keyboardType="default"
           autoCapitalize="none"
           returnKeyType="done"
           onChangeText={input => this.setState({ password: input })}

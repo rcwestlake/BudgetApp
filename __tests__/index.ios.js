@@ -1,12 +1,15 @@
 import 'react-native';
 import React from 'react';
-import Index from '../index.ios.js';
-
-// Note: test renderer must be required after react-native.
 import renderer from 'react-test-renderer';
+import Application from '../index.ios.js';
+import { expect } from 'chai';
 
 it('renders correctly', () => {
-  const tree = renderer.create(
-    <Index />
-  );
+    beforeEach(() => {
+      wrapper = shallow(<Application />);
+    });
+
+    it('should render within a view', () => {
+      expect(wrapper.type()).to.equal(View);
+    });
 });

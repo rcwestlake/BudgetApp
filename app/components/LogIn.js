@@ -109,6 +109,7 @@ class LogIn extends Component {
           keyboardType="email-address"
           returnKeyType="next"
           autoCapitalize="none"
+          autoFocus={true}
           onChangeText={input => this.setState({ email: input })}
         />
         <TextInput

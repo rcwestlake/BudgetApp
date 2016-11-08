@@ -108,8 +108,9 @@ class SignUp extends Component {
           placeholder="Email"
           style={styles.input}
           keyboardType="email-address"
-          returnKeyType="Next"
+          returnKeyType="next"
           autoCapitalize="none"
+          autoFocus={true}
           onChangeText={input => this.setState({ email: input })}
         />
         <TextInput
@@ -117,7 +118,7 @@ class SignUp extends Component {
           secureTextEntry={true}
           style={styles.input}
           autoCapitalize="none"
-          returnKeyType="Done"
+          returnKeyType="done"
           onChangeText={input => this.setState({ password: input })}
         />
         <TouchableHighlight

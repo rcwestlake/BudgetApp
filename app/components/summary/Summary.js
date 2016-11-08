@@ -14,7 +14,7 @@ import Separator from '../../helpers/Separator';
 import ExpenseSummary from './ExpenseSummary';
 import Profile from './Profile';
 import IncomeSummary from './IncomeSummary';
-import ProgressBar from './ProgressBar';
+import Chart from './ProgressBar';
 
 const styles = StyleSheet.create({
   container: {
@@ -191,7 +191,7 @@ class Summary extends Component {
             </TouchableHighlight>
           </View>
         </ScrollView>
-        <ProgressBar />
+        <Chart />
       </View>
     );
   }

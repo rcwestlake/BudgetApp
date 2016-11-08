@@ -1,52 +1,51 @@
+'use strict';
 import React, { Component, PropTypes } from 'react';
 import {
   StyleSheet,
+  ProgressViewIOS,
+  View,
 } from 'react-native';
-
-const Bar = require('react-native-progress-bar');
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    marginTop: -20,
+    backgroundColor: 'transparent',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  progressView: {
+    marginTop: 20,
   },
 });
 
-class ProgressBar extends Component {
+class Chart extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      progress: 0,
+    };
+  }
+
+  getProgress(offset) {
+    let progress = this.state.progress + offset;
+    return Math.sin(progress % Math.PI) % 1;
+  }
+
   render() {
     return (
-      <Bar
-        fillStyle={{}}
-        backgroundStyle={{backgroundColor: '#cccccc', borderRadius: 2}}
-        style={{marginTop: 10, width: 300}}
-        progress={this.state.progress}
-      />
-    )
+      <View style={styles.container}>
+        <ProgressViewIOS style={styles.progressView} progressTintColor="orange" progress={this.getProgress(0.6)} />
+      </View>
+    );
   }
 }
 
-ProgressBar.propTypes = {
+Chart.propTypes = {
   income: PropTypes.number.isRequired,
-  recurring: PropTypes.number,
-  expenses: PropTypes.number,
-  savings: PropTypes.number,
   fundsAvailable: PropTypes.number.isRequired,
 };
 
 
-export default ProgressBar;
+export default Chart;
 
 // import Svg, {
 //     Rect,

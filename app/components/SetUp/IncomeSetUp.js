@@ -167,6 +167,8 @@ class IncomeSetUp extends Component {
 
           <TextInput
             style={styles.searchInput}
+            autoFocus={true}
+            keyboardType="numeric"
             onChangeText={text => this.setState({ income: text })}
             placeholder="Enter income"
           />

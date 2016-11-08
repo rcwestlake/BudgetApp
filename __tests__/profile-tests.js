@@ -1,5 +1,6 @@
 import { View,
          Text,
+         TouchableHighlight,
           } from 'react-native';
 import React from 'react';
 import { shallow } from 'enzyme';

@@ -96,8 +96,10 @@ class Auto extends Component {
       >
         <TextInput
           placeholder="Enter auto expense"
-          onChangeText={expense => this.setAutoState(expense)}
           style={styles.searchInput}
+          autoFocus={true}
+          keyboardType="numeric"
+          onChangeText={expense => this.setAutoState(expense)}
         />
         <TouchableHighlight
           style={styles.button}

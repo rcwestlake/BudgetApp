@@ -147,7 +147,9 @@ class ExpenseSetUp extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.text}> Select all recurring expenses. Amounts will be entered on the next page.</Text>
+        <Text style={styles.text}>
+          Select all recurring expenses. Amounts will be entered on the next page.
+        </Text>
 
         <TouchableHighlight
           style={this.state.housing ? styles.selectedButton : styles.button}

@@ -158,6 +158,8 @@ class Savings extends Component {
 
         <TextInput
           style={styles.input}
+          autoFocus={true}
+          keyboardType="numeric"
           onChangeText={input => this.handleInputChange(input)}
           placeholder="$"
         />

@@ -69,7 +69,7 @@ class Housing extends Component {
 
   setHousingState(expense) {
     const number = parseInt(expense, 10);
-    this.setState({ housing: number })
+    this.setState({ housing: number });
   }
 
   goBack = () => {
@@ -95,6 +95,8 @@ class Housing extends Component {
       >
         <TextInput
           placeholder="Enter housing expense"
+          autoFocus={true}
+          keyboardType="numeric"
           onChangeText={expense => this.setHousingState(expense)}
           style={styles.searchInput}
         />

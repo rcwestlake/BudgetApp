@@ -5,6 +5,7 @@ import {
   TouchableHighlight,
   View,
   StyleSheet,
+  ActivityIndicator,
 } from 'react-native';
 import firebase, { signIn } from '../firebase';
 import Separator from '../helpers/Separator';
@@ -66,6 +67,9 @@ const styles = StyleSheet.create({
     fontSize: 23,
     color: '#393E46',
   },
+  loading: {
+    marginTop: 20,
+  },
 });
 
 class LogIn extends Component {
@@ -76,10 +80,14 @@ class LogIn extends Component {
       user: null,
       email: null,
       password: null,
+      isLoading: false,
     };
   }
 
   handleSignUp(email, password) {
+    this.setState({
+      isLoading: true,
+    });
     signIn(email, password).then(() => {
       firebase.auth().onAuthStateChanged(user => this.setState({ user }, () => {
         this.props.navigator.push({
@@ -88,6 +96,9 @@ class LogIn extends Component {
           passProps: { user },
         });
       }));
+      this.setState({
+        isLoading: false,
+      });
     });
   }
 
@@ -107,14 +118,19 @@ class LogIn extends Component {
           placeholder="Email"
           style={styles.input}
           keyboardType="email-address"
-          onChangeText={(email) => this.setState({ email })}
+          returnKeyType="next"
+          autoCapitalize="none"
+          autoFocus={true}
+          onChangeText={input => this.setState({ email: input })}
         />
         <TextInput
           placeholder="Password"
-          secureTextEntry="true"
+          secureTextEntry={true}
           style={styles.input}
-          keyboardType="email-address"
-          onChangeText={(password) => this.setState({ password })}
+          keyboardType="default"
+          autoCapitalize="none"
+          returnKeyType="done"
+          onChangeText={input => this.setState({ password: input })}
         />
         <TouchableHighlight
           style={this.state.email && this.state.password ? styles.button : styles.disabledButton}
@@ -123,6 +139,12 @@ class LogIn extends Component {
         >
           <Text style={styles.buttonText} > Sign in </Text>
         </TouchableHighlight>
+        <ActivityIndicator
+          style={styles.loading}
+          animating={this.state.isLoading}
+          color="#111111"
+          size="large"
+        />
       </View>
     );
   }

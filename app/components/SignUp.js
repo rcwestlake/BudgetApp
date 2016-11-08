@@ -5,8 +5,8 @@ import {
   View,
   TextInput,
   TouchableHighlight,
+  ActivityIndicator,
 } from 'react-native';
-import moment from 'moment';
 import firebase, { signUp } from '../firebase';
 import IncomeSetUp from './SetUp/IncomeSetUp';
 import Separator from '../helpers/Separator';
@@ -67,6 +67,9 @@ const styles = StyleSheet.create({
     fontSize: 23,
     color: '#393E46',
   },
+  loading: {
+    marginTop: 20,
+  },
 });
 
 class SignUp extends Component {
@@ -81,6 +84,9 @@ class SignUp extends Component {
   }
 
   handleSignUp(email, password) {
+    this.setState({
+      isLoading: true,
+    });
     signUp(email, password).then(() => {
       firebase.auth().onAuthStateChanged(user => this.setState({ user }, () => {
         this.props.navigator.push({
@@ -89,6 +95,9 @@ class SignUp extends Component {
           passProps: { user },
         });
       }));
+      this.setState({
+        isLoading: false,
+      });
     });
   }
 
@@ -108,14 +117,19 @@ class SignUp extends Component {
           placeholder="Email"
           style={styles.input}
           keyboardType="email-address"
-          onChangeText={(email) => this.setState({ email })}
+          returnKeyType="next"
+          autoCapitalize="none"
+          autoFocus={true}
+          onChangeText={input => this.setState({ email: input })}
         />
         <TextInput
           placeholder="Password"
-          secureTextEntry="true"
+          secureTextEntry={true}
           style={styles.input}
-          keyboardType="email-address"
-          onChangeText={(password) => this.setState({ password })}
+          keyboardType="default"
+          autoCapitalize="none"
+          returnKeyType="done"
+          onChangeText={input => this.setState({ password: input })}
         />
         <TouchableHighlight
           style={this.state.email && this.state.password ? styles.button : styles.disabledButton}
@@ -124,6 +138,12 @@ class SignUp extends Component {
         >
           <Text style={styles.buttonText} > Sign Up </Text>
         </TouchableHighlight>
+        <ActivityIndicator
+          style={styles.loading}
+          animating={this.state.isLoading}
+          color="#111111"
+          size="large"
+        />
       </View>
     );
   }

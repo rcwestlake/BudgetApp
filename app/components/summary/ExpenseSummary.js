@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginBottom: 10,
     textAlign: 'left',
-    color: '#51602D'
+    color: '#51602D',
   },
   input: {
     flex: 2,
@@ -213,6 +213,7 @@ class ExpenseSummary extends Component {
           <View style={styles.inputContainer}>
             <TextInput
               style={styles.input}
+              keyboardType="numeric"
               placeholder="$"
               value={this.state.dollar}
               onChangeText={input => this.handleDollarChange(input)}
@@ -241,8 +242,6 @@ class ExpenseSummary extends Component {
 
 ExpenseSummary.propTypes = {
   user: PropTypes.object.isRequired,
-  navigator: PropTypes.object,
-  push: PropTypes.func,
 };
 
 export default ExpenseSummary;

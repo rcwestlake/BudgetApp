@@ -156,6 +156,7 @@ class IncomeSummary extends Component {
             <TextInput
               style={styles.input}
               placeholder="$"
+              keyboardType="numeric"
               value={extraIncome}
               onChangeText={input => this.handleIncomeChange(input)}
             />

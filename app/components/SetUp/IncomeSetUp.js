@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import {
   StyleSheet,
   Text,
@@ -167,6 +167,8 @@ class IncomeSetUp extends Component {
 
           <TextInput
             style={styles.searchInput}
+            autoFocus={true}
+            keyboardType="numeric"
             onChangeText={text => this.setState({ income: text })}
             placeholder="Enter income"
           />
@@ -230,5 +232,11 @@ class IncomeSetUp extends Component {
     );
   }
 }
+
+IncomeSetUp.propTypes = {
+  navigator: PropTypes.object.isRequired,
+  push: PropTypes.func,
+  user: PropTypes.object,
+};
 
 export default IncomeSetUp;

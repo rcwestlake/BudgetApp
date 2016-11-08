@@ -95,6 +95,8 @@ class Utilities extends Component {
       >
         <TextInput
           placeholder="Enter utilities expense"
+          autoFocus={true}
+          keyboardType="numeric"
           onChangeText={expense => this.setUtilitiesState(expense)}
           style={styles.searchInput}
         />

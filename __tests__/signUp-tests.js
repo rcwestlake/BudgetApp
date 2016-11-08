@@ -42,8 +42,8 @@ describe('Signup render', () => {
     expect(wrapper.type()).to.equal(View);
   });
 
-  it.skip('should render 2 text components', () => {
-    expect(wrapper.find(Text).to.have.lengthOf(2));
+  it('should render text components', () => {
+    expect(wrapper.find(Text)).to.have.lengthOf(3);
   });
 
   it('should render 2 TextInput components', () => {

@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginBottom: 10,
     textAlign: 'left',
-    color: '#51602D'
+    color: '#51602D',
   },
   input: {
     flex: 2,
@@ -242,8 +242,6 @@ class ExpenseSummary extends Component {
 
 ExpenseSummary.propTypes = {
   user: PropTypes.object.isRequired,
-  navigator: PropTypes.object,
-  push: PropTypes.func,
 };
 
 export default ExpenseSummary;

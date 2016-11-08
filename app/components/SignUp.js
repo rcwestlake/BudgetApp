@@ -7,7 +7,6 @@ import {
   TouchableHighlight,
   ActivityIndicator,
 } from 'react-native';
-import moment from 'moment';
 import firebase, { signUp } from '../firebase';
 import IncomeSetUp from './SetUp/IncomeSetUp';
 import Separator from '../helpers/Separator';

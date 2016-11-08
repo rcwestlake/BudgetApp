@@ -69,7 +69,7 @@ class Housing extends Component {
 
   setHousingState(expense) {
     const number = parseInt(expense, 10);
-    this.setState({ housing: number })
+    this.setState({ housing: number });
   }
 
   goBack = () => {

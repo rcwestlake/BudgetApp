@@ -26,6 +26,8 @@ const styles = StyleSheet.create({
   },
   fundsAvailable: {
     fontSize: 45,
+    marginTop: 10,
+    marginBottom: 20,
     textAlign: 'center',
     color: '#51602D',
   },
@@ -150,19 +152,17 @@ class Summary extends Component {
             <Text style={styles.fundsAvailable}>
               $ {fundsAvailable}
             </Text>
-            <Text>
+            <Text style={styles.text}>
               {this.today()}
             </Text>
-            <Text>
-              {this.daysLeftThisMonth()}
+            <Text style={styles.text}>
+              {this.daysLeftThisMonth()} days left this month
             </Text>
-            <Text style={styles.text}> days left this month</Text>
             <Separator />
             <Text style={styles.text}>
               $ {this.dailyAllowance()}
             </Text>
             <Text style={styles.text}> avg. amount you could spend each day </Text>
-
             <TouchableHighlight
               style={styles.button}
               onPress={this.goToExpenses}
@@ -193,7 +193,6 @@ class Summary extends Component {
 
           </View>
         </ScrollView>
-
         <Chart income={income} fundsAvailable={fundsAvailable} />
       </View>
     );

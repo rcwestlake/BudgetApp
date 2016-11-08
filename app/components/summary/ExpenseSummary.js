@@ -25,10 +25,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   categoryText: {
-    color: '#9CB65E',
-    fontSize: 25,
+    color: '#51602D',
+    fontSize: 30,
     fontWeight: 'bold',
-    marginLeft: 15,
+    marginLeft: 5,
     marginBottom: 10,
     marginTop: 15,
   },
@@ -42,19 +42,21 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 23,
     fontWeight: 'bold',
-    color: '#ffffff',
+    color: '#9CB65E',
     alignSelf: 'center',
     textAlign: 'center',
   },
   button: {
     height: 40,
+    width: 285,
+    marginLeft: 20,
+    marginTop: 5,
+    marginBottom: 5,
     flexDirection: 'row',
     backgroundColor: '#ffffff',
     borderColor: '#393E46',
     borderWidth: 0.5,
     borderRadius: 8,
-    marginTop: 10,
-    alignSelf: 'stretch',
     justifyContent: 'center',
   },
   inputContainer: {
@@ -64,7 +66,7 @@ const styles = StyleSheet.create({
     marginLeft: 60,
   },
   expenseText: {
-    fontSize: 13,
+    fontSize: 20,
     marginBottom: 10,
     textAlign: 'left',
     color: '#51602D'

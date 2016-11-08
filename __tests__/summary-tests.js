@@ -15,16 +15,20 @@ describe('Summary Component', () => {
     wrapper = shallow(<Summary />);
   });
 
-  it('renders within a ScrollView', () => {
-    expect(wrapper.type()).to.equal(ScrollView);
+  it('renders within a View', () => {
+    expect(wrapper.type()).to.equal(View);
   });
+
+  it('renders a ScrollView', () => {
+    expect(wrapper.find(ScrollView)).to.have.length(1);
+  })
 
   it('renders Text components', () => {
     expect(wrapper.find(Text)).to.have.lengthOf(9);
   });
 
-  it.skip('renders buttons', () => {
-    expect(wrapper.find(TouchableHighlight)).to.have.length(1);
+  it('renders buttons', () => {
+    expect(wrapper.find(TouchableHighlight)).to.have.length(3);
   });
 });
 

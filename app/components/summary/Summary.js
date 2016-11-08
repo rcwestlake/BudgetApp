@@ -62,6 +62,10 @@ class Summary extends Component {
     this.state = {
       data: '',
       fundsAvailable: null,
+      recurring: null,
+      expenses: null,
+      income: null,
+      savings: null,
     };
   }
 
@@ -90,6 +94,10 @@ class Summary extends Component {
     this.setState(
       {
         fundsAvailable,
+        recurring,
+        expenses,
+        savings,
+        income,
       }
     );
   }
@@ -151,7 +159,7 @@ class Summary extends Component {
             <Text style={styles.text}> days left this month</Text>
             <Separator />
             <Text style={styles.text}>
-              {this.dailyAllowance()}
+              $ {this.dailyAllowance()}
             </Text>
             <Text style={styles.text}> avg. amount you could spend each day </Text>
             <TouchableHighlight
@@ -183,6 +191,7 @@ class Summary extends Component {
             </TouchableHighlight>
           </View>
         </ScrollView>
+        <ProgressBar />
       </View>
     );
   }

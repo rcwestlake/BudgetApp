@@ -1,32 +1,39 @@
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import {
   StyleSheet,
 } from 'react-native';
+import Svg, {
+    Rect,
+    Circle,
+    Path,
+} from 'react-native-svg';
 
-const styles = StyleSheet.create({
-
-});
-
-const ProgressBar = ({ width, height }) => {
-  return (
-    <svg
-      width={width}
-      height={height}
-      viewBox={`0 0 ${width}
-      ${height}`}
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <g>
-        <rect fill="#D0011B" x={0} y={0} width={width / 2} height={height} />
-        <rect fill="#50E3C2" x={width / 2} y={0} width={width / 2} height={height} />
-      </g>
-    </svg>
-  );
-};
+class ProgressBar extends Component {
+  render() {
+    const { income, recurring, expenses, savings, fundsAvailable } = this.props;
+    let base = income;
+    return (
+      <Svg
+        height="100"
+        width="100"
+      >
+        <Rect x="0" y="0" width="50" height="25" fill="black" />
+        <Rect x="25" y="15" width="50" height="25" fill="red" />
+        <Circle cx="50" cy="50" r="30" fill="yellow" />
+        <Circle cx="40" cy="40" r="4" fill="black" />
+        <Circle cx="60" cy="40" r="4" fill="black" />
+        <Path d="M 40 60 A 10 10 0 0 0 60 60" stroke="black" />
+      </Svg>
+        );
+  }
+}
 
 ProgressBar.propTypes = {
-  width: PropTypes.number.isRequired,
-  height: PropTypes.number.isRequired,
+  income: PropTypes.number.isRequired,
+  recurring: PropTypes.number,
+  expenses: PropTypes.number,
+  savings: PropTypes.number,
+  fundsAvailable: PropTypes.number.isRequired,
 };
 
 export default ProgressBar;

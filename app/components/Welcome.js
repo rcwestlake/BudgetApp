@@ -30,11 +30,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#000',
   },
-  tagline: {
-    fontSize: 12,
-    marginBottom: 40,
-    textAlign: 'center',
-  },
   quote: {
     fontSize: 20,
     marginBottom: 50,
@@ -43,18 +38,16 @@ const styles = StyleSheet.create({
     padding: 5,
     color: '#6A8035',
   },
-  privacy: {
-    fontSize: 10,
-    textAlign: 'center',
-  },
   buttonText: {
     fontSize: 18,
     color: '#ffffff',
     alignSelf: 'center',
   },
-  buttonContainer: {
-    flexDirection: 'row',
-    alignSelf: 'stretch',
+  text: {
+    fontSize: 14,
+    color: 'black',
+    alignSelf: 'center',
+    marginBottom: 10,
   },
   resizeMode: {
     width: 275,
@@ -62,17 +55,20 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   button: {
-    height: 75,
+    height: 45,
     flexDirection: 'row',
-    backgroundColor: '#00AD7C',
-    borderRightWidth: 1,
-    borderColor: '#ffffff',
+    backgroundColor: '#B2C777',
+    borderColor: 'white',
+    borderWidth: 1,
+    borderRadius: 8,
+    marginBottom: 10,
     marginTop: 10,
     alignSelf: 'stretch',
+    justifyContent: 'center',
   },
 });
 
-export default class Welcome extends Component {
+class Welcome extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -101,28 +97,28 @@ export default class Welcome extends Component {
       <View style={styles.container}>
         <ScrollView>
           <View style={styles.main}>
-            <Image style={styles.resizeMode} source={require('../../app/styles/images/PennyWise.png')} />
+            <Image
+              style={styles.resizeMode}
+              source={require('../../app/styles/images/PennyWise.png')}
+            />
             <Text style={styles.quote}>
               {randomQuote()}
             </Text>
           </View>
         </ScrollView>
-        <View style={styles.buttonContainer}>
           <TouchableHighlight
             style={styles.button}
-            underlayColor="#52D681"
+            underlayColor="#9CB65E"
             onPress={() => this.goToLogIn()}
           >
             <Text style={styles.buttonText}>Log in</Text>
           </TouchableHighlight>
-          <TouchableHighlight
-            style={styles.button}
-            underlayColor="#52D681"
+          <Text
+            style={styles.text}
             onPress={() => this.goToSignUp()}
           >
-            <Text style={styles.buttonText}>Sign up</Text>
-          </TouchableHighlight>
-        </View>
+            Sign up
+          </Text>
       </View>
     );
   }
@@ -132,3 +128,5 @@ Welcome.propTypes = {
   push: PropTypes.string,
   navigator: PropTypes.object,
 };
+
+export default Welcome;

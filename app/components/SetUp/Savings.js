@@ -21,12 +21,12 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#19B5CB',
+    color: '#51602D',
     marginBottom: 15,
     textAlign: 'center',
   },
   percent: {
-    color: '#393E46',
+    color: '#51602D',
     fontSize: 30,
     marginBottom: 100,
     textAlign: 'center',
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#00AD7C',
+    color: '#ffffff',
     alignSelf: 'center',
   },
   selectedButtonText: {
@@ -46,8 +46,8 @@ const styles = StyleSheet.create({
   selectedButton: {
     height: 40,
     flexDirection: 'row',
-    backgroundColor: '#00AD7C',
-    borderColor: '#00AD7C',
+    backgroundColor: '#9CB65E',
+    borderColor: '#9CB65E',
     borderWidth: 0.2,
     borderRadius: 8,
     marginTop: 10,
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   button: {
     height: 40,
     flexDirection: 'row',
-    backgroundColor: '#ffffff',
+    backgroundColor: '#9CB65E',
     borderColor: '#393E46',
     borderWidth: 0.5,
     borderRadius: 8,
@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
     marginBottom: 40,
     fontSize: 23,
     textAlign: 'center',
+    color: '#51602D',
   },
 });
 
@@ -170,7 +171,7 @@ class Savings extends Component {
 
         <TouchableHighlight
           style={styles.button}
-          underlayColor="#10DDC2"
+          underlayColor="#9CB65E"
           onPress={() => this.handleSubmit()}
         >
           <Text

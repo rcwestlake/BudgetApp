@@ -106,19 +106,19 @@ class Welcome extends Component {
             </Text>
           </View>
         </ScrollView>
-          <TouchableHighlight
-            style={styles.button}
-            underlayColor="#9CB65E"
-            onPress={() => this.goToLogIn()}
-          >
-            <Text style={styles.buttonText}>Log in</Text>
-          </TouchableHighlight>
-          <Text
-            style={styles.text}
-            onPress={() => this.goToSignUp()}
-          >
-            Sign up
-          </Text>
+        <TouchableHighlight
+          style={styles.button}
+          underlayColor="#9CB65E"
+          onPress={() => this.goToLogIn()}
+        >
+          <Text style={styles.buttonText}>Log in</Text>
+        </TouchableHighlight>
+        <Text
+          style={styles.text}
+          onPress={() => this.goToSignUp()}
+        >
+          Sign up
+        </Text>
       </View>
     );
   }

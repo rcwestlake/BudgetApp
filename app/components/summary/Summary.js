@@ -14,6 +14,7 @@ import Separator from '../../helpers/Separator';
 import ExpenseSummary from './ExpenseSummary';
 import Profile from './Profile';
 import IncomeSummary from './IncomeSummary';
+import Chart from './ProgressBar';
 
 const styles = StyleSheet.create({
   container: {
@@ -63,6 +64,10 @@ class Summary extends Component {
     this.state = {
       data: '',
       fundsAvailable: null,
+      recurring: null,
+      expenses: null,
+      income: null,
+      savings: null,
     };
   }
 
@@ -91,6 +96,10 @@ class Summary extends Component {
     this.setState(
       {
         fundsAvailable,
+        recurring,
+        expenses,
+        savings,
+        income,
       }
     );
   }
@@ -130,58 +139,62 @@ class Summary extends Component {
 
 
   render() {
-    const { fundsAvailable } = this.state;
+    const { fundsAvailable, income } = this.state;
     return (
-      <ScrollView>
-        <View style={styles.container}>
-          <Text style={mStyles.title}>
-            Summary
-          </Text>
-          <Separator />
+      <View>
+        <ScrollView>
+          <View style={styles.container}>
+            <Text style={mStyles.title}>
+              Summary
+            </Text>
+            <Separator />
 
-          <Text style={styles.fundsAvailable}>
-            $ {fundsAvailable}
-          </Text>
-          <Text style={styles.text}>
-            {this.today()}
-          </Text>
-          <Text style={styles.text}>
-            {this.daysLeftThisMonth()} days left this month
-          </Text>
-          <Separator />
-          <Text style={styles.text}>
-            $ {this.dailyAllowance()}
-          </Text>
-          <Text style={styles.text}> avg. amount you could spend each day </Text>
-          <TouchableHighlight
-            style={styles.button}
-            onPress={this.goToExpenses}
-            underlayColor="#9CB65E"
-          >
-            <Text style={styles.buttonText}>
-              Edit Expenses
+            <Text style={styles.fundsAvailable}>
+              $ {fundsAvailable}
             </Text>
-          </TouchableHighlight>
-          <TouchableHighlight
-            style={styles.button}
-            onPress={this.goToIncome}
-            underlayColor="#9CB65E"
-          >
-            <Text style={styles.buttonText}>
-              Edit Income
+            <Text style={styles.text}>
+              {this.today()}
             </Text>
-          </TouchableHighlight>
-          <TouchableHighlight
-            style={styles.button}
-            onPress={this.goToProfile}
-            underlayColor="#9CB65E"
-          >
-            <Text style={styles.buttonText}>
-              Profile
+            <Text style={styles.text}>
+              {this.daysLeftThisMonth()} days left this month
             </Text>
-          </TouchableHighlight>
-        </View>
-      </ScrollView>
+            <Separator />
+            <Text style={styles.text}>
+              $ {this.dailyAllowance()}
+            </Text>
+            <Text style={styles.text}> avg. amount you could spend each day </Text>
+            <TouchableHighlight
+              style={styles.button}
+              onPress={this.goToExpenses}
+              underlayColor="#9CB65E"
+            >
+              <Text style={styles.buttonText}>
+                Edit Expenses
+              </Text>
+            </TouchableHighlight>
+            <TouchableHighlight
+              style={styles.button}
+              onPress={this.goToIncome}
+              underlayColor="#9CB65E"
+            >
+              <Text style={styles.buttonText}>
+                Edit Income
+              </Text>
+            </TouchableHighlight>
+            <TouchableHighlight
+              style={styles.button}
+              onPress={this.goToProfile}
+              underlayColor="#9CB65E"
+            >
+              <Text style={styles.buttonText}>
+                Profile
+              </Text>
+            </TouchableHighlight>
+
+          </View>
+        </ScrollView>
+        <Chart income={income} fundsAvailable={fundsAvailable} />
+      </View>
     );
   }
 }
